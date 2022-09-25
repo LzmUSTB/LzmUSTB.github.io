@@ -39,6 +39,35 @@
   </entry>
   
   <entry>
+    <title>Vue3</title>
+    <link href="https://lzmustb.github.io/2022/09/25/Vue3-conclusion/"/>
+    <id>https://lzmustb.github.io/2022/09/25/Vue3-conclusion/</id>
+    <published>2022-09-25T14:03:42.000Z</published>
+    <updated>2022-09-25T06:54:48.722Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="Vue3"   >          <a href="#Vue3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h1>      <hr>        <h2 id="概念"   >          <a href="#概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#概念" class="headerlink" title="概念"></a>概念</h2>      <ul><li>指令：<code>v-for</code>,<code>v-model</code>,<code>v-bind</code></li></ul><span id="more"></span>        <h2 id="step0-搭建环境"   >          <a href="#step0-搭建环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#step0-搭建环境" class="headerlink" title="step0_搭建环境"></a>step0_搭建环境</h2>              <h2 id="step1-创建应用实例"   >          <a href="#step1-创建应用实例" class="heading-link"><i class="fas fa-link"></i></a><a href="#step1-创建应用实例" class="headerlink" title="step1_创建应用实例"></a>step1_创建应用实例</h2>      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">main.<span class="property">js</span><span class="comment">//入口文件</span></span><br><span class="line"></span><br><span class="line">&lt;!--<span class="number">1.</span>创建应用实例--&gt;</span><br><span class="line"><span class="comment">//导入createApp，单文件根组件</span></span><br><span class="line"><span class="keyword">import</span> &#123;createApp&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//createApp(根组件,根组件Props[可选])</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"><span class="comment">/*---外部导入↑或↓内联---*/</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">    <span class="comment">/*内联根组件*/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;!--<span class="number">2.</span>将应用实例挂载在一个容器元素中--&gt;</span><br><span class="line"><span class="comment">//mount(DOM元素或CSS选择器)</span></span><br><span class="line"><span class="comment">//每个应用实例仅能调用一次mount()</span></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"><span class="comment">/*---CSS选择器↑或↓DOM元素---*/</span></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">firstChild</span>)</span><br></pre></td></tr></table></div></figure><p>App相关方法，属性</p><ul><li><code>unmount()</code>：卸载一个已挂载的应用</li><li><a href="https://cn.vuejs.org/api/application.html#app-provide"><code>provide()</code></a>：提供一个值，在应用中的所有后代组件中注入使用。</li><li><a href="https://cn.vuejs.org/api/application.html#app-component"><code>component()</code></a>：注册组件</li><li><a href="https://cn.vuejs.org/api/application.html#app-directive"><code>directive()</code></a>：注册指令</li><li><a href="https://cn.vuejs.org/api/application.html#app-use"><code>use()</code></a>：安装一个插件</li><li><code>version</code>：当前应用所使用的 Vue 版本号</li><li><a href="https://cn.vuejs.org/api/application.html#app-config"><code>config</code></a>：对这个应用的配置设定</li><li><a href="https://cn.vuejs.org/api/application.html#app-config-globalproperties"><code>config.globalProperties</code></a>：注册能够被应用内所有组件访问的全局属性的对象</li></ul>        <h2 id="step2-组件-component"   >          <a href="#step2-组件-component" class="heading-link"><i class="fas fa-link"></i></a><a href="#step2-组件-component" class="headerlink" title="step2_组件(component)"></a>step2_组件(component)</h2>      ]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Vue3&quot;   &gt;
+          &lt;a href=&quot;#Vue3&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#Vue3&quot; class=&quot;headerlink&quot; title=&quot;Vue3&quot;&gt;&lt;/a&gt;Vue3&lt;/h1&gt;
+      &lt;hr&gt;
+
+        &lt;h2 id=&quot;概念&quot;   &gt;
+          &lt;a href=&quot;#概念&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;
+      &lt;ul&gt;
+&lt;li&gt;指令：&lt;code&gt;v-for&lt;/code&gt;,&lt;code&gt;v-model&lt;/code&gt;,&lt;code&gt;v-bind&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="前端" scheme="https://lzmustb.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue-组合式API</title>
     <link href="https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/"/>
     <id>https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/</id>
@@ -80,35 +109,6 @@
 &lt;/blockquote&gt;
 &lt;p&gt;​		将一个Vue组件的模板(html)，逻辑(javascript)，样式(css)封装在单个文件&lt;code&gt;*.vue&lt;/code&gt;中。&lt;br&gt;​	&lt;br&gt;​		每个文件都由三种顶层语言模块构成：&lt;code&gt;&amp;lt;template&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; &lt;/p&gt;
 &lt;hr&gt;</summary>
-    
-    
-    
-    <category term="前端" scheme="https://lzmustb.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue3</title>
-    <link href="https://lzmustb.github.io/2022/09/25/Vue3-conclusion/"/>
-    <id>https://lzmustb.github.io/2022/09/25/Vue3-conclusion/</id>
-    <published>2022-09-25T14:03:42.000Z</published>
-    <updated>2022-09-25T06:54:48.722Z</updated>
-    
-    <content type="html"><![CDATA[        <h1 id="Vue3"   >          <a href="#Vue3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h1>      <hr>        <h2 id="概念"   >          <a href="#概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#概念" class="headerlink" title="概念"></a>概念</h2>      <ul><li>指令：<code>v-for</code>,<code>v-model</code>,<code>v-bind</code></li></ul><span id="more"></span>        <h2 id="step0-搭建环境"   >          <a href="#step0-搭建环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#step0-搭建环境" class="headerlink" title="step0_搭建环境"></a>step0_搭建环境</h2>              <h2 id="step1-创建应用实例"   >          <a href="#step1-创建应用实例" class="heading-link"><i class="fas fa-link"></i></a><a href="#step1-创建应用实例" class="headerlink" title="step1_创建应用实例"></a>step1_创建应用实例</h2>      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">main.<span class="property">js</span><span class="comment">//入口文件</span></span><br><span class="line"></span><br><span class="line">&lt;!--<span class="number">1.</span>创建应用实例--&gt;</span><br><span class="line"><span class="comment">//导入createApp，单文件根组件</span></span><br><span class="line"><span class="keyword">import</span> &#123;createApp&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//createApp(根组件,根组件Props[可选])</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"><span class="comment">/*---外部导入↑或↓内联---*/</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">    <span class="comment">/*内联根组件*/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;!--<span class="number">2.</span>将应用实例挂载在一个容器元素中--&gt;</span><br><span class="line"><span class="comment">//mount(DOM元素或CSS选择器)</span></span><br><span class="line"><span class="comment">//每个应用实例仅能调用一次mount()</span></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"><span class="comment">/*---CSS选择器↑或↓DOM元素---*/</span></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">firstChild</span>)</span><br></pre></td></tr></table></div></figure><p>App相关方法，属性</p><ul><li><code>unmount()</code>：卸载一个已挂载的应用</li><li><a href="https://cn.vuejs.org/api/application.html#app-provide"><code>provide()</code></a>：提供一个值，在应用中的所有后代组件中注入使用。</li><li><a href="https://cn.vuejs.org/api/application.html#app-component"><code>component()</code></a>：注册组件</li><li><a href="https://cn.vuejs.org/api/application.html#app-directive"><code>directive()</code></a>：注册指令</li><li><a href="https://cn.vuejs.org/api/application.html#app-use"><code>use()</code></a>：安装一个插件</li><li><code>version</code>：当前应用所使用的 Vue 版本号</li><li><a href="https://cn.vuejs.org/api/application.html#app-config"><code>config</code></a>：对这个应用的配置设定</li><li><a href="https://cn.vuejs.org/api/application.html#app-config-globalproperties"><code>config.globalProperties</code></a>：注册能够被应用内所有组件访问的全局属性的对象</li></ul>        <h2 id="step2-组件-component"   >          <a href="#step2-组件-component" class="heading-link"><i class="fas fa-link"></i></a><a href="#step2-组件-component" class="headerlink" title="step2_组件(component)"></a>step2_组件(component)</h2>      ]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Vue3&quot;   &gt;
-          &lt;a href=&quot;#Vue3&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#Vue3&quot; class=&quot;headerlink&quot; title=&quot;Vue3&quot;&gt;&lt;/a&gt;Vue3&lt;/h1&gt;
-      &lt;hr&gt;
-
-        &lt;h2 id=&quot;概念&quot;   &gt;
-          &lt;a href=&quot;#概念&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;
-      &lt;ul&gt;
-&lt;li&gt;指令：&lt;code&gt;v-for&lt;/code&gt;,&lt;code&gt;v-model&lt;/code&gt;,&lt;code&gt;v-bind&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
     
     
     
