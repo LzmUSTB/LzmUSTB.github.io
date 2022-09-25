@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="&amp;emsp;&amp;emsp;刚学完Java，为了巩固所学，做了个坦克大战。这次主要挑战了下自定义地图和敌人寻路两个功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java坦克大战个人总结">
+<meta property="og:url" content="https://lzmustb.github.io/2022/04/29/my-TankWar-conclusion/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;刚学完Java，为了巩固所学，做了个坦克大战。这次主要挑战了下自定义地图和敌人寻路两个功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzmustb.github.io/_imgs/tankwar.png">
+<meta property="og:image" content="https://lzmustb.github.io/_imgs/tankwar2.png">
+<meta property="article:published_time" content="2022-04-29T07:03:30.000Z">
+<meta property="article:modified_time" content="2022-09-25T05:16:34.777Z">
+<meta property="article:author" content="Lzm">
+<meta property="article:tag" content="大学生活">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzmustb.github.io/_imgs/tankwar.png"><title>Java坦克大战个人总结 | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2022/04/29/my-TankWar-conclusion/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Java坦克大战个人总结</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-04-29</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.3k</span></span></div></header><div class="post-body"><p>&amp;emsp;&amp;emsp;刚学完Java，为了巩固所学，做了个坦克大战。这次主要挑战了下自定义地图和敌人寻路两个功能。</p>
+<span id="more"></span>
+
+
+        <h2 id="自定义地图"   >
+          <a href="#自定义地图" class="heading-link"><i class="fas fa-link"></i></a><a href="#自定义地图" class="headerlink" title="自定义地图"></a>自定义地图</h2>
+      <p>自定义地图比较简单，只要将地图作为外部文件读取就可以了。</p>
+<p>如这么一个txt文件，W是墙壁，P是玩家起始位置，E是敌人起始位置（可以有多个）：</p>
+<blockquote>
+<p>WWWWWW<br>WPOOOW<br>WOOOEW<br>WWWWWW</p>
+</blockquote>
+<p><img src="/../_imgs/tankwar.png"></p>
+<p>读取文件基本结构：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String filePath=<span class="string">&quot;../maps/&quot;</span>+name+<span class="string">&quot;.txt&quot;</span>;<span class="comment">//用String生成文件路径，可以根据传入的name读取不同文件</span></span><br><span class="line">      InputStream inputStream=getClass().getResourceAsStream(filePath);</span><br><span class="line">      <span class="type">int</span> data;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">while</span>((data=inputStream.read())!=-<span class="number">1</span>)&#123;<span class="comment">//read()返回-1，说明读取完毕</span></span><br><span class="line">              <span class="type">char</span> ele=(<span class="type">char</span>)data;<span class="comment">//将以整数读取的数据转换为字符</span></span><br><span class="line">              ......</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="敌人寻路"   >
+          <a href="#敌人寻路" class="heading-link"><i class="fas fa-link"></i></a><a href="#敌人寻路" class="headerlink" title="敌人寻路"></a>敌人寻路</h2>
+      <p>&amp;emsp;&amp;emsp;常用的寻路算法有广度优先搜索，A-star算法等等。但这次我还是打算自己挑战一下写一个适合这个程序的算法。<del>其实是没学会怎么写</del><br>最后经舍友启发，写出了一个虽然不是最优路径，但很简短的寻路算法。</p>
+
+        <h3 id="核心思路"   >
+          <a href="#核心思路" class="heading-link"><i class="fas fa-link"></i></a><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3>
+      <p>从起点开始依次遍历相邻方格，并让它们指向起点的方向（好比单向链表），形象点说就是在所有可以行走的方格画上箭头，指向起点。待所有方格填完，再从<strong>终点</strong>沿着箭头寻回起点，就形成了一条唯一的路径。（最后还要反转一下）</p>
+<p><img src="/../_imgs/tankwar2.png"></p>
+
+        <h3 id="地图存储方式"   >
+          <a href="#地图存储方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#地图存储方式" class="headerlink" title="地图存储方式"></a>地图存储方式</h3>
+      <p>对于寻路来说，不需要知道地图的所有信息，只要知道每个方格能否通过就行。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单个结点</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> Px;</span><br><span class="line">    <span class="type">int</span> Py;</span><br><span class="line">    <span class="type">boolean</span> canPass;<span class="comment">//是否可以通过（水流，墙壁为无法通过的地形）</span></span><br><span class="line">    Node last=<span class="literal">null</span>;<span class="comment">//用于在寻路算法中形成指向起点的链表</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用Vector存储结点集合</span></span><br><span class="line">Vector&lt;Node&gt; nodes=<span class="keyword">new</span> <span class="title class_">Vector</span>&lt;Node&gt;();</span><br><span class="line"><span class="comment">//用于获取相邻4个结点中可以通过的方格的方法，在后续寻路时起到重要作用</span></span><br><span class="line">    Vector&lt;Node&gt; <span class="title function_">neighbors</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">        Vector&lt;Node&gt; neighborNodes=<span class="keyword">new</span> <span class="title class_">Vector</span>&lt;Node&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Node n:nodes)&#123;</span><br><span class="line">            <span class="keyword">if</span>((n.Px-x==-<span class="number">1</span>||n.Px-x==<span class="number">1</span>)&amp;&amp;(n.Py==y)&amp;&amp;(n.isOpen&amp;&amp;n.canPass))&#123;</span><br><span class="line">                neighborNodes.add(n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>((n.Px==x)&amp;&amp;(n.Py-y==-<span class="number">1</span>||n.Py-y==<span class="number">1</span>)&amp;&amp;(n.isOpen&amp;&amp;n.canPass))&#123;</span><br><span class="line">                neighborNodes.add(n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> neighborNodes;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>用Graph类存储所有方格的信息，并提供寻路中要用到的算法：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Graph</span> &#123;</span><br><span class="line">    Vector&lt;Node&gt; nodes=<span class="keyword">new</span> <span class="title class_">Vector</span>&lt;Node&gt;();</span><br><span class="line">     <span class="keyword">void</span> <span class="title function_">setGraph</span><span class="params">()</span>;<span class="comment">//根据读取的文件初始化所有方格的信息（略）</span></span><br><span class="line">     <span class="keyword">void</span> <span class="title function_">clearAll</span><span class="params">()</span>;<span class="comment">//使所有node的last=null，以便下一轮寻路（略）</span></span><br><span class="line">     Node <span class="title function_">findNode</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>;<span class="comment">//根据坐标找到相应的node（略）</span></span><br><span class="line">     <span class="keyword">void</span> <span class="title function_">setVector</span><span class="params">(Node now)</span>;<span class="comment">//核心算法，给所有方格填上箭头</span></span><br><span class="line">     <span class="keyword">void</span> <span class="title function_">setRoute</span><span class="params">(Node start,Node goal,Vector&lt;Node&gt; route)</span>;<span class="comment">//寻回起点，形成路径</span></span><br><span class="line">     Vector&lt;Node&gt; <span class="title function_">reverseRoute</span><span class="params">(Vector&lt;Node&gt; route)</span>;<span class="comment">//反转路径【Vector竟然没提供（略）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="寻路算法"   >
+          <a href="#寻路算法" class="heading-link"><i class="fas fa-link"></i></a><a href="#寻路算法" class="headerlink" title="寻路算法"></a>寻路算法</h3>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">findRoute</span><span class="params">()</span>&#123;</span><br><span class="line">    Vector&lt;Node&gt; newRoute=<span class="keyword">new</span> <span class="title class_">Vector</span>&lt;Node&gt;();</span><br><span class="line">    <span class="type">int</span> Tx=MyPanel.player1.p_x;</span><br><span class="line">    <span class="type">int</span> Ty=MyPanel.player1.p_y;</span><br><span class="line">    Node start=graph.findNode(p_x,p_y);<span class="comment">//自身所在位置</span></span><br><span class="line">    Node goal=graph.findNode(Tx,Ty);<span class="comment">//目标所在位置</span></span><br><span class="line">    graph.setVector(start);<span class="comment">//“画箭头”的方法</span></span><br><span class="line">    graph.setRoute(start,goal,newRoute);<span class="comment">//从终点寻回起点，形成路径</span></span><br><span class="line">    route=graph.reverseRoute(newRoute);<span class="comment">//反转路径，从起点指向终点</span></span><br><span class="line">    graph.clearAll();<span class="comment">//清除所有箭头</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="用递归”画箭头”"   >
+          <a href="#用递归”画箭头”" class="heading-link"><i class="fas fa-link"></i></a><a href="#用递归”画箭头”" class="headerlink" title="用递归”画箭头”"></a>用递归”画箭头”</h3>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">setVector</span><span class="params">(Node now)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(Node n:neighbors(now.Px,now.Py))&#123;</span><br><span class="line">    	<span class="comment">//对于now相邻的每个方格n，如果还没有画上箭头，就让n.last=now</span></span><br><span class="line">        <span class="keyword">if</span>(n.last==<span class="literal">null</span>)&#123;</span><br><span class="line">            n.last=now;</span><br><span class="line">            setVector(n);<span class="comment">//递归，直到其相邻方格均画上箭头就停止</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="从终点寻回起点，形成路径"   >
+          <a href="#从终点寻回起点，形成路径" class="heading-link"><i class="fas fa-link"></i></a><a href="#从终点寻回起点，形成路径" class="headerlink" title="从终点寻回起点，形成路径"></a>从终点寻回起点，形成路径</h3>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">setRoute</span><span class="params">(Node start,Node goal,Vector&lt;Node&gt; route)</span>&#123;</span><br><span class="line">    Node now=goal;</span><br><span class="line">    route.add(now);<span class="comment">//将now从终点开始沿着箭头位移，并加入到route</span></span><br><span class="line">    <span class="keyword">while</span>(!now.equals(start))&#123;</span><br><span class="line">        now=now.last;</span><br><span class="line">        route.add(now);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="多线程能做的事"   >
+          <a href="#多线程能做的事" class="heading-link"><i class="fas fa-link"></i></a><a href="#多线程能做的事" class="headerlink" title="多线程能做的事"></a>多线程能做的事</h2>
+      <p>&amp;emsp;&amp;emsp;本次坦克大战和飞机大战相比，最大的不同还是用到了多线程。在专业的游戏中，渲染引擎，物理引擎等都是在不同线程下以不同频率工作。相比单线程，更加发挥出了硬件的性能，流畅地运行计算量更大的游戏。<br>我在坦克大战中，将每个敌人作为一个线程，同时每个敌人的【攻击判断，移动，路径生成】为单独的线程，路径每隔3秒生成一次，攻击判断和移动间隔为30毫秒。<br>将行为包装为抽象类，子类行为只要重写job()和canUse()方法就行</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//run()为启用线程时执行的方法，job()为抽象方法，子类须重写</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(KEY!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(canUse())&#123;</span><br><span class="line">                job();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">30</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p>刚刚接触多线程，设计还不到位（比如没有把渲染和物理分离），希望在将来的学习中改进。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2022/04/29/my-TankWar-conclusion/">https://lzmustb.github.io/2022/04/29/my-TankWar-conclusion/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%B4%BB/">大学生活</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/Java/">Java</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/05/03/my-forge-learning-registry/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Forge1.18-注册</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/04/09/my-GameMakingProcess/"><span class="paginator-prev__text">飞机大战-详细流程</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9C%B0%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">
+          自定义地图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%8C%E4%BA%BA%E5%AF%BB%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">
+          敌人寻路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">
+          核心思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">
+          地图存储方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">
+          寻路算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E9%80%92%E5%BD%92%E2%80%9D%E7%94%BB%E7%AE%AD%E5%A4%B4%E2%80%9D"><span class="toc-number">2.4.</span> <span class="toc-text">
+          用递归”画箭头”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E7%BB%88%E7%82%B9%E5%AF%BB%E5%9B%9E%E8%B5%B7%E7%82%B9%EF%BC%8C%E5%BD%A2%E6%88%90%E8%B7%AF%E5%BE%84"><span class="toc-number">2.5.</span> <span class="toc-text">
+          从终点寻回起点，形成路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%83%BD%E5%81%9A%E7%9A%84%E4%BA%8B"><span class="toc-number">3.</span> <span class="toc-text">
+          多线程能做的事</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/ustb-lzm/image-data/raw/master/202201111554344.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

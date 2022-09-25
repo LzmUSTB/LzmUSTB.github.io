@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="Blocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Forge1.18-Blocks">
+<meta property="og:url" content="https://lzmustb.github.io/2022/05/07/my-forge-learning-block/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="Blocks">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-07T00:08:39.000Z">
+<meta property="article:modified_time" content="2022-05-30T10:51:23.493Z">
+<meta property="article:author" content="Lzm">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary"><title>Forge1.18-Blocks | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2022/05/07/my-forge-learning-block/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Forge1.18-Blocks</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-05-07</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.6k</span></span></div></header><div class="post-body">
+        <h1 id="Blocks"   >
+          <a href="#Blocks" class="heading-link"><i class="fas fa-link"></i></a><a href="#Blocks" class="headerlink" title="Blocks"></a>Blocks</h1>
+      <span id="more"></span>
+
+
+        <h2 id="Register-注册"   >
+          <a href="#Register-注册" class="heading-link"><i class="fas fa-link"></i></a><a href="#Register-注册" class="headerlink" title="Register-注册"></a>Register-注册</h2>
+      <p>地面上的方块是<code>Block</code>，物品栏的方块是继承了<code>Item</code>的<code>BlockItem</code>。因此在注册方块的同时，通常需要同时注册方块物品。(也有像水方块等例外，其没有直接对应的物品) 因此可以将注册方法进行包装，便于后续注册方块。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BLOCKS注册器</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> DeferredRegister&lt;Block&gt; BLOCKS=DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);</span><br><span class="line"><span class="comment">//BlockItem的注册方法</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Block</span>&gt; RegistryObject&lt;Item&gt; <span class="title function_">registryBlockItem</span><span class="params">(String name, Supplier&lt;T&gt; block, CreativeModeTab tab)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ItemRegistry.ITEMS.register(name,()-&gt;<span class="keyword">new</span> <span class="title class_">BlockItem</span>(block.get(), <span class="keyword">new</span> <span class="title class_">Item</span>.Properties().tab(tab)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Block的注册方法，并调用BlockItem注册方法</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Block</span>&gt; RegistryObject&lt;T&gt; <span class="title function_">registryBlock</span><span class="params">(String name,RegistryObject&lt;T&gt; block,CreativeModeTab tab)</span>&#123;</span><br><span class="line">    RegistryObject&lt;T&gt; newBlock=BLOCKS.register(name,block);</span><br><span class="line">    registryBlockItem(name,newBlock,tab);</span><br><span class="line">    <span class="keyword">return</span> newBlock;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注册Block</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> RegistryObject&lt;Block&gt; TEST_BLOCK =registryBlockWithItem(<span class="string">&quot;test_block&quot;</span>,()-&gt;<span class="keyword">new</span> <span class="title class_">TestBlock</span>(),CustomTab.instance);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Properties-属性"   >
+          <a href="#Properties-属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#Properties-属性" class="headerlink" title="Properties-属性"></a>Properties-属性</h2>
+      <p>原版方块的属性可在<code>net.minecraft.world.level.block.Blocks</code>中查看</p>
+
+        <h3 id="Properties方法一览"   >
+          <a href="#Properties方法一览" class="heading-link"><i class="fas fa-link"></i></a><a href="#Properties方法一览" class="headerlink" title="Properties方法一览"></a>Properties方法一览</h3>
+      <p><code>of(Material)</code>：设置方块的材质<br><code>destroyTime(float)</code>：设置挖掘时间<br><code>explosionResistance(float)</code>：设置爆炸抗性(须大于0F)<br><code>strength(float，float)</code>：调用以上两个方法<br><code>requireCorrectToolForDrops()</code><br><code>sound(SoundType)</code>：详见<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://mcforge.readthedocs.io/en/1.18.x/gameeffects/sounds/" >sounds</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><code>lightLevel((state)-&gt;)</code>：设置方块的亮度，通常为0~15(可通过state属性控制)<br><code>friction</code>：摩擦力，默认0.6，冰块为0.98。<br><code>speedFactor(float)</code>：对速度的影响，默认为1F(灵魂沙为0.4F,减速至40%左右)<br><code>jumpFactor(float)</code>：对跳跃的影响,默认为1F(蜂蜜块为0.5F，跳跃高度减至15%)<br><code>instabreak()</code><br><code>randomTicks()</code>：接收随机刻<br><code>noCollission()</code>：设为无碰撞方块(按钮等)但对速度，跳跃的影响依然生效<br><code>noOcclusion()</code>：是否会使玩家窒息<br><code>dynamicShape()</code><br><code>noDrops()</code>：无掉落<br><code>lootFrom()</code><br><code>air()</code><br><code>isValidSpawn(BlockBehaviour.StateArgumentPredicate&lt;EntityType&lt;?&gt;&gt;)</code><br><code>isRedstoneConductor(BlockBehaviour.StatePredicate)</code><br><code>copy(Block.BlockBehaviour)</code>：复制另一个方块的属性</p>
+<p>所有这些方法都可以连锁调用。</p>
+
+        <h2 id="IForgeBlock接口"   >
+          <a href="#IForgeBlock接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#IForgeBlock接口" class="headerlink" title="IForgeBlock接口"></a>IForgeBlock接口</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果为true，会作为燃烧的方块对生物造成伤害</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isBurning</span><span class="params">(BlockState state, BlockGetter level, BlockPos pos)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span> == Blocks.FIRE || <span class="built_in">this</span> == Blocks.LAVA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h2 id="其他Method"   >
+          <a href="#其他Method" class="heading-link"><i class="fas fa-link"></i></a><a href="#其他Method" class="headerlink" title="其他Method"></a>其他Method</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//玩家右键方块时调用</span></span><br><span class="line"><span class="keyword">public</span> InteractionResult <span class="title function_">use</span><span class="params">(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)</span></span><br><span class="line"><span class="comment">//返回true时，方块可以种植植物</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canSustainPlant</span><span class="params">(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable)</span></span><br><span class="line"><span class="comment">//接收随机刻</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isRandomlyTicking</span><span class="params">(BlockState state)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">randomTick</span><span class="params">(BlockState state, ServerLevel world, BlockPos pos, Random rand)</span></span><br><span class="line"><span class="comment">//玩家踩在方块上时调用(例子为施加加速效果)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">stepOn</span><span class="params">(Level level,BlockPos pos,BlockState state,Entity entity)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!level.isClientSide())&#123;</span><br><span class="line">		<span class="keyword">if</span>(entity <span class="keyword">instanceof</span> LivingEntity)&#123;</span><br><span class="line">            LivingEntity livingEntity=((LivingEntity)entity);</span><br><span class="line">            livingEntity.addEffect(<span class="keyword">new</span> <span class="title class_">MobEffectInstance</span>(MobEffects.MOVEMENT_SPEED,<span class="number">300</span>));</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//（被实体）放置时调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPlacedBy</span><span class="params">(Level level, BlockPos pos, BlockState state, <span class="meta">@Nullable</span> LivingEntity placer, ItemStack stack)</span></span><br><span class="line"><span class="comment">//玩家左键方块时调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attack</span><span class="params">(BlockState state, Level level, BlockPos pos, Player player)</span></span><br><span class="line"><span class="comment">//在玩家破坏方块前调用(原版的活塞，TNT重写了此方法)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">playerWillDestroy</span><span class="params">(Level level, BlockPos pos, BlockState state, Player player)</span>&#123;</span><br><span class="line">    <span class="built_in">super</span>.playerWillDestroy(level,pos,state,player);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当有实体与方块碰撞/重叠时调用(如篝火)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">entityInside</span><span class="params">(BlockState state, Level level, BlockPos pos, Entity entity)</span></span><br></pre></td></tr></table></div></figure>
+
+<ul>
+<li><code>playerDestroy </code>(used by beehives to release angry bees when you break them)</li>
+<li><code>onRemove </code>: called when the block is destroyed for any reason</li>
+<li><code>handleRain </code>: 1&#x2F;16 chance to be called each tick while its raining (used by cauldrons to fill with water)</li>
+<li><code>fallOn </code>: called when an entity falls on the block. Deals the fall damage by calling <code>Entity.causeFallDamage(distance, damageMultiplier) </code>. (used by farm land to break the crop)</li>
+<li><code>onPlace</code></li>
+<li><code>getExpDrop </code>returns the number of experience points to give when broken (like some vanilla ores)</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//use()使用案例</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> InteractionResult <span class="title function_">use</span><span class="params">(BlockState p_60503_, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result)</span> &#123;</span><br><span class="line">    <span class="type">ItemStack</span> <span class="variable">held</span> <span class="operator">=</span> player.getItemInHand(hand);</span><br><span class="line">    <span class="keyword">if</span> (!world.isClientSide() &amp;&amp; held.getItem() == Items.GUNPOWDER) &#123;</span><br><span class="line">        world.explode(player, pos.getX(), pos.getY(), pos.getZ(), <span class="number">4.0F</span>, <span class="literal">true</span>, Explosion.BlockInteraction.DESTROY);</span><br><span class="line">        held.shrink(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> InteractionResult.CONSUME;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> InteractionResult.FAIL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Stair-x2F-Slab-x2F-Fence-x2F-Gate"   >
+          <a href="#Stair-x2F-Slab-x2F-Fence-x2F-Gate" class="heading-link"><i class="fas fa-link"></i></a><a href="#Stair-x2F-Slab-x2F-Fence-x2F-Gate" class="headerlink" title="Stair&#x2F;Slab&#x2F;Fence&#x2F;Gate"></a>Stair&#x2F;Slab&#x2F;Fence&#x2F;Gate</h2>
+      <p>楼梯，台阶，栅栏，栅栏门</p>
+
+        <h2 id="Door-x2F-Trapdoor-x2F-Button-x2F-PressurePlate"   >
+          <a href="#Door-x2F-Trapdoor-x2F-Button-x2F-PressurePlate" class="heading-link"><i class="fas fa-link"></i></a><a href="#Door-x2F-Trapdoor-x2F-Button-x2F-PressurePlate" class="headerlink" title="Door&#x2F;Trapdoor&#x2F;Button&#x2F;PressurePlate"></a>Door&#x2F;Trapdoor&#x2F;Button&#x2F;PressurePlate</h2>
+      <p>门&#x2F;活板门&#x2F;按钮&#x2F;压力板</p>
+
+        <h2 id="透明-x2F-半透明方块"   >
+          <a href="#透明-x2F-半透明方块" class="heading-link"><i class="fas fa-link"></i></a><a href="#透明-x2F-半透明方块" class="headerlink" title="透明&#x2F;半透明方块"></a>透明&#x2F;半透明方块</h2>
+      <p>继承<code>GlassBlock</code>，（或其父类）</p>
+
+        <h2 id="ItemBlockRenderTypes"   >
+          <a href="#ItemBlockRenderTypes" class="heading-link"><i class="fas fa-link"></i></a><a href="#ItemBlockRenderTypes" class="headerlink" title="ItemBlockRenderTypes"></a>ItemBlockRenderTypes</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>ItemBlockRenderTypes</th>
+<th align="left">Block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RenderType.tripwire()</td>
+<td align="left">绊线钩</td>
+</tr>
+<tr>
+<td>cutoutMipped()</td>
+<td align="left">草方块，铁栏杆，玻璃板</td>
+</tr>
+<tr>
+<td>cutout()</td>
+<td align="left">玻璃，床，门，蜘蛛网，各种花草</td>
+</tr>
+<tr>
+<td>translucent()</td>
+<td align="left">染色玻璃，粘液块，蜂蜜块</td>
+</tr>
+</tbody></table></div>
+
+        <h2 id="应用自定义模型"   >
+          <a href="#应用自定义模型" class="heading-link"><i class="fas fa-link"></i></a><a href="#应用自定义模型" class="headerlink" title="应用自定义模型"></a>应用自定义模型</h2>
+      <p>设置碰撞箱：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">VoxelShape</span> <span class="variable">SHAPE</span> <span class="operator">=</span> Block.box(x1,y1,z1,x2,y2,z2);</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> VoxelShape <span class="title function_">getShape</span><span class="params">(BlockState state,BlockGetter level,BlockPos,pos,CollisionContext,context)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SHAPE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="Block-States"   >
+          <a href="#Block-States" class="heading-link"><i class="fas fa-link"></i></a><a href="#Block-States" class="headerlink" title="Block States"></a>Block States</h1>
+      
+        <h2 id="简介"   >
+          <a href="#简介" class="heading-link"><i class="fas fa-link"></i></a><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
+      <p>一个特定的方块只存在一个实例，位于对应的注册器中。而BlockStates就是在此基础上附加了BlockPosition，BlockProperties，BlockStateProperties的实例，并通过<code>World(Level)</code>保存和修改。</p>
+<p>方块的每个属性（property）都通过<code>Property&lt;?&gt;</code>的一个实例描述。属性包括但不限于：<br>instruments（<code>EnumProperty&lt;NoteBlockInstrument&gt;</code>）</p>
+<p>facing（<code>DirectionProperty</code>）</p>
+<p>poweredness（<code>Property&lt;Boolean&gt;</code>）</p>
+
+        <h2 id="使用BlockState-Properties"   >
+          <a href="#使用BlockState-Properties" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用BlockState-Properties" class="headerlink" title="使用BlockState Properties"></a>使用BlockState Properties</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomBlock</span> <span class="keyword">extends</span> <span class="title class_">Block</span>&#123;</span><br><span class="line">    <span class="comment">//创建property</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> BooleanProperty CLICKED=BooleanProperty.create(<span class="string">&quot;clicked&quot;</span>);</span><br><span class="line">    <span class="comment">//关联property</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">createBlockStateDefinition</span><span class="params">(StateDefinition.Builder&lt;Block, BlockState&gt; pBuilder)</span> &#123;</span><br><span class="line">        pBuilder.add(CLICKED);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//使用property</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> InteractionResult <span class="title function_">use</span><span class="params">(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(!level.isClientSide()&amp;&amp;hand==InteractionHand.MAIN_HAND)&#123;</span><br><span class="line">    <span class="comment">//获取当前CLICKED值</span></span><br><span class="line">    <span class="type">boolean</span> currentState=state.getValue(CLICKED);</span><br><span class="line">    <span class="comment">//修改CLICKED的值</span></span><br><span class="line">    level.setBlock(pos,state.setValue(CLICKED,!currentState),<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> InteractionResult.SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>调用<code>BlockState#getValue(Property&lt;?&gt;)</code>可以获得属性的值。<br>调用<code>BlockState#setValue(Property&lt;T&gt;,T)</code>设置属性的值。<br>原版提供的实现如下：</p>
+<ul>
+<li><p><code>IntegerProperty</code>实现：<code>Property&lt;Integer&gt;</code></p>
+<ul>
+<li>创建：<code>IntegerProperty#create(String propertyName, int minimum, int maximum)</code></li>
+</ul>
+</li>
+<li><p><code>BooleanProperty</code> 实现：<code>Property&lt;Boolean&gt;</code></p>
+<ul>
+<li>创建：<code>BooleanProperty#create(String propertyName)</code></li>
+</ul>
+</li>
+<li><p><code>EnumProperty&lt;E extends Enum&lt;E&gt;&gt;</code>实现：<code>Property&lt;E&gt;</code></p>
+<ul>
+<li><p>创建：<code>EnumProperty#create(String propertyName, Class&lt;E&gt; enumClass)</code><br>※也可以仅使用Enum中的一个子集</p>
+<p>（见<code>EnumProperty#create</code>重载）</p>
+</li>
+</ul>
+</li>
+<li><p><code>DirectionProperty</code>简化<code>EnumProperty&lt;Direction&gt;</code></p>
+<ul>
+<li>一些方法：<code>DirectionProperty.create(&quot;&lt;name&gt;&quot;, Direction.Plane.HORIZONTAL)</code></li>
+<li><code>DirectionProperty.create(&quot;&lt;name&gt;&quot;, Direction.Axis.X)</code></li>
+</ul>
+</li>
+</ul>
+<p><code>BlockStateProperties</code>类包含了原版共通的属性，而无需自己创建。</p>
+<p>当你有期望的<code>Property&lt;&gt;</code>，在你的block类中重写<code>Block#createBlockStateDefinition(StateDefinition$Builder)</code>，并在其中调用<code>StateDefinition$Builder#add(Property)</code>。</p>
+<p>每个block都会有默认的state设置。你可以通过在构造器中调用<code>Block#registerDefaultState(BlockState)</code>修改默认属性。<br><code>DoorBlock</code>的默认属性：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.registerDefaultState(</span><br><span class="line">  <span class="built_in">this</span>.stateDefinition.any()</span><br><span class="line">    .setValue(FACING, Direction.NORTH)</span><br><span class="line">    .setValue(OPEN, <span class="literal">false</span>)</span><br><span class="line">    .setValue(HINGE, DoorHingeSide.LEFT)</span><br><span class="line">    .setValue(POWERED, <span class="literal">false</span>)</span><br><span class="line">    .setValue(HALF, DoubleBlockHalf.LOWER)</span><br><span class="line">);</span><br></pre></td></tr></table></div></figure>
+
+<p>如果你希望在放置方块时改变<code>BlockState</code>，（比如依照玩家的朝向），你可以重写<code>Block#getStateForPlacement(BlockPlaceContext)</code></p>
+<p>因为所有可能的<code>BlockState</code>都在初始化时生成，你可以使用<code>==</code>判断两个<code>BlockState</code>是否相等。</p>
+<p>You can get and place <code>BlockState</code>‘s in the level using <code>Level#setBlockAndUpdate(BlockPos, BlockState)</code> and <code>Level#getBlockState(BlockState)</code>. If you are placing a <code>Block</code>, call <code>Block#defaultBlockState()</code> to get the “default” state, and use subsequent calls to <code>BlockState#setValue(Property&lt;T&gt;, T)</code> as stated above to achieve the desired state.</p>
+
+        <h2 id="BlockStates和模型的绑定"   >
+          <a href="#BlockStates和模型的绑定" class="heading-link"><i class="fas fa-link"></i></a><a href="#BlockStates和模型的绑定" class="headerlink" title="BlockStates和模型的绑定"></a>BlockStates和模型的绑定</h2>
+      <p>文件路径</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">resources</span><br><span class="line">├── assets</span><br><span class="line">│   └── MOD_ID</span><br><span class="line">│       ├── blockstates</span><br><span class="line">│       │   └── CustomBlock.json      </span><br></pre></td></tr></table></div></figure>
+
+<p>文件内</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;variants&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;clicked=false&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MOD_ID:block/custom_block_off&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="attr">&quot;clicked=true&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MOD_ID:block/custom_block_on&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure></div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2022/05/07/my-forge-learning-block/">https://lzmustb.github.io/2022/05/07/my-forge-learning-block/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/Java/">Java</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/05/08/my-forge-learning-projectile/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Forge1.18-Projectile</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/05/06/my-forge-learning-localization/"><span class="paginator-prev__text">Forge1.18-本地化</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Blocks"><span class="toc-number">1.</span> <span class="toc-text">
+          Blocks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Register-%E6%B3%A8%E5%86%8C"><span class="toc-number">1.1.</span> <span class="toc-text">
+          Register-注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Properties-属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Properties%E6%96%B9%E6%B3%95%E4%B8%80%E8%A7%88"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          Properties方法一览</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IForgeBlock%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">
+          IForgeBlock接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96Method"><span class="toc-number">1.4.</span> <span class="toc-text">
+          其他Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stair-x2F-Slab-x2F-Fence-x2F-Gate"><span class="toc-number">1.5.</span> <span class="toc-text">
+          Stair&#x2F;Slab&#x2F;Fence&#x2F;Gate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Door-x2F-Trapdoor-x2F-Button-x2F-PressurePlate"><span class="toc-number">1.6.</span> <span class="toc-text">
+          Door&#x2F;Trapdoor&#x2F;Button&#x2F;PressurePlate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E-x2F-%E5%8D%8A%E9%80%8F%E6%98%8E%E6%96%B9%E5%9D%97"><span class="toc-number">1.7.</span> <span class="toc-text">
+          透明&#x2F;半透明方块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ItemBlockRenderTypes"><span class="toc-number">1.8.</span> <span class="toc-text">
+          ItemBlockRenderTypes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.9.</span> <span class="toc-text">
+          应用自定义模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Block-States"><span class="toc-number">2.</span> <span class="toc-text">
+          Block States</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">
+          简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8BlockState-Properties"><span class="toc-number">2.2.</span> <span class="toc-text">
+          使用BlockState Properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BlockStates%E5%92%8C%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BB%91%E5%AE%9A"><span class="toc-number">2.3.</span> <span class="toc-text">
+          BlockStates和模型的绑定</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/ustb-lzm/image-data/raw/master/202201111554344.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

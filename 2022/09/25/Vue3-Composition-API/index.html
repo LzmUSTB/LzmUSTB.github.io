@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="组合式API(Composition API)        使用函数而不是声明选项的方式书写Vue组件 包括响应式API，生命周期钩子，依赖注入                      组合式API的优势       更灵活地组织代码，让逻辑相关的代码能够集中在一处  组合式 API 不像选项式 API 那样会手把手教你该把代码放在哪里。但反过来，它却让">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distant Dreamer">
+<meta property="og:url" content="https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="组合式API(Composition API)        使用函数而不是声明选项的方式书写Vue组件 包括响应式API，生命周期钩子，依赖注入                      组合式API的优势       更灵活地组织代码，让逻辑相关的代码能够集中在一处  组合式 API 不像选项式 API 那样会手把手教你该把代码放在哪里。但反过来，它却让">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-25T06:45:16.995Z">
+<meta property="article:modified_time" content="2022-09-25T01:51:52.042Z">
+<meta property="article:author" content="Lzm">
+<meta name="twitter:card" content="summary"><title>[ 文章无标题 ] | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ 文章无标题 ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-09-25</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.1k</span></span></div></header><div class="post-body">
+        <h1 id="组合式API-Composition-API"   >
+          <a href="#组合式API-Composition-API" class="heading-link"><i class="fas fa-link"></i></a><a href="#组合式API-Composition-API" class="headerlink" title="组合式API(Composition API)"></a>组合式API(Composition API)</h1>
+      <hr>
+<p>使用函数而不是声明选项的方式书写Vue组件</p>
+<p>包括响应式API，生命周期钩子，依赖注入</p>
+<hr>
+
+        <h2 id="组合式API的优势"   >
+          <a href="#组合式API的优势" class="heading-link"><i class="fas fa-link"></i></a><a href="#组合式API的优势" class="headerlink" title="组合式API的优势"></a>组合式API的优势</h2>
+      <p>更灵活地组织代码，让逻辑相关的代码能够集中在一处</p>
+<blockquote>
+<p>组合式 API 不像选项式 API 那样会手把手教你该把代码放在哪里。但反过来，它却让你可以像编写普通的 JavaScript 那样来编写组件代码。这意味着<strong>你能够，并且应该在写组合式 API 的代码时也运用上所有普通 JavaScript 代码组织的最佳实践</strong>。如果你可以编写组织良好的 JavaScript，你也应该有能力编写组织良好的组合式 API 代码。</p>
+</blockquote>
+<hr>
+
+        <h2 id="响应式API"   >
+          <a href="#响应式API" class="heading-link"><i class="fas fa-link"></i></a><a href="#响应式API" class="headerlink" title="响应式API"></a>响应式API</h2>
+      
+        <h3 id="理解响应性"   >
+          <a href="#理解响应性" class="heading-link"><i class="fas fa-link"></i></a><a href="#理解响应性" class="headerlink" title="理解响应性"></a>理解响应性</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/extras/reactivity-in-depth.html#what-is-reactivity" >Vue的解释</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>响应性是可以声明式地处理变化的编程范式，使一个对象发生变化时，与其相关联的对象也能随之发生变化。</p>
+</blockquote>
+<p>响应式对象： Vue 能够跟踪，访问，修改其属性的对象，实际是JavaScript Proxy。</p>
+
+        <h3 id="定义响应式变量-reactive"   >
+          <a href="#定义响应式变量-reactive" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义响应式变量-reactive" class="headerlink" title="定义响应式变量-reactive()"></a>定义响应式变量-reactive()</h3>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = <span class="title function_">reactive</span>(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;)</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="reactive-规则"   >
+          <a href="#reactive-规则" class="heading-link"><i class="fas fa-link"></i></a><a href="#reactive-规则" class="headerlink" title="reactive()规则"></a>reactive()规则</h4>
+      <ul>
+<li><p>Proxy和原始对象并非全等，因此使用Vue 的响应式系统应<strong>仅使用你声明对象的代理版本</strong>。</p>
+</li>
+<li><p>已存在的代理对象传入<code>reactive()</code>会返回该代理本身。</p>
+</li>
+<li><p>同一个对象传入<code>reactive()</code>总是会返回同一个代理对象。</p>
+</li>
+<li><p><code>reactive()</code>对原始数据类型无效。</p>
+</li>
+<li><p>将<code>reactive()</code>响应式对象解构或传入函数时，失去响应性连接。</p>
+</li>
+<li><p>当一个变量多次接受<code>reactive()</code>返回的代理对象，旧的响应式连接会丢失。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> state = <span class="title function_">reactive</span>(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;)</span><br><span class="line"><span class="comment">// 上面的 (&#123; count: 0 &#125;) 将不再被追踪</span></span><br><span class="line">state = <span class="title function_">reactive</span>(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;)</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="定义响应式变量-ref"   >
+          <a href="#定义响应式变量-ref" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义响应式变量-ref" class="headerlink" title="定义响应式变量-ref()"></a>定义响应式变量-ref()</h3>
+      <p><code>ref()</code>可以创建任何值类型的响应式，且传给函数或是从一般对象上被解构时，不会丢失响应性，可用于将逻辑提取到 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/reusability/composables.html" >组合函数</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 中</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">const count = ref(0)</span><br><span class="line">const object = &#123;foo:ref(1)&#125;</span><br><span class="line">//ref()将创建一个带value属性的对象</span><br><span class="line">//count=&#123;value:0&#125;</span><br><span class="line">//count.value=0</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>当ref是模板渲染上下文的顶层属性或文本插值计算的最终值时将自动解包</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;!-- ↓解包，结果为：0 --&gt;</span><br><span class="line">&#123;&#123; count &#125;&#125;</span><br><span class="line">&lt;!-- ↓解包，结果为：1 --&gt;</span><br><span class="line">&#123;&#123;object.foo&#125;&#125;</span><br><span class="line">&lt;!-- ↓不解包，结果为：[object Object]1 --&gt;</span><br><span class="line">&#123;&#123;object.foo+1&#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#ref-unwrapping-in-reactive-objects" >ref在响应式对象中的解包</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>（略）</p>
+
+        <h3 id="计算属性"   >
+          <a href="#计算属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3>
+      <p><code>computed()</code>方法接收一个getter函数，并返回一个计算属性<strong>ref</strong>，与一般ref用法类似。计算属性会自动追踪响应式依赖并随之变化。</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//setup内</span></span><br><span class="line"><span class="keyword">import</span> &#123;computed&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">let</span> number = <span class="title function_">ref</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">let</span> sign = <span class="title function_">computed</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> number&gt;<span class="number">0</span>?<span class="string">&#x27;plus&#x27;</span>:<span class="string">&#x27;minus&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>与直接调用方法相比，计算属性会有<strong>缓存</strong>功能，只要其响应式依赖不改变，计算属性就会立即返回先前的结果而不重复计算。<br>&amp;emsp;&amp;emsp;<font color='#aaa'>※计算函数不应进行计算以外的作用(如更改DOM或做异步请求)</font></p>
+<hr>
+
+        <h2 id="生命周期钩子"   >
+          <a href="#生命周期钩子" class="heading-link"><i class="fas fa-link"></i></a><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h2>
+      <p>以下API全部在<code>setup()</code>阶段被调用</p>
+<hr>
+
+        <h2 id="依赖注入"   >
+          <a href="#依赖注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2>
+      <hr>
+
+        <h2 id="使用组合式API"   >
+          <a href="#使用组合式API" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用组合式API" class="headerlink" title="使用组合式API"></a>使用组合式API</h2>
+      
+        <h3 id="setup"   >
+          <a href="#setup" class="heading-link"><i class="fas fa-link"></i></a><a href="#setup" class="headerlink" title="setup()"></a>setup()</h3>
+      <p><code>setup()</code> 钩子是在组件中使用组合式 API 的入口，通常只在以下情况下使用：</p>
+<ol>
+<li>需要在非单文件组件中使用组合式 API 时。</li>
+<li>需要在基于选项式 API 的组件中集成基于组合式 API 的代码时。</li>
+</ol>
+<p><strong>其他情况下，都应优先使用&lt;script setup&gt;语法。</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">export default &#123;</span><br><span class="line">    props:&#123;    </span><br><span class="line">    &#125;,</span><br><span class="line">    setup(props,context) &#123;</span><br><span class="line">    const count = ref(0)</span><br><span class="line">    // 通过return返回的变量会暴露给模板和其他的选项式API钩子</span><br><span class="line">    return &#123;</span><br><span class="line">      count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>在模板中访问从 <code>setup</code> 返回的 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-core.html#ref" >ref</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 时，它会<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#deep-reactivity" >自动浅层解包</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，因此你无须再在模板中为它写 <code>.value</code>。当通过 <code>this</code> 访问时也会同样如此解包。<br><code>setup()</code> 自身并不含对组件实例的访问权，即在 <code>setup()</code> 中访问 <code>this</code> 会是 <code>undefined</code>。你可以在选项式 API 中访问组合式 API 暴露的值，但反过来则不行。</p>
+</blockquote>
+
+        <h3 id="lt-script-setup-gt"   >
+          <a href="#lt-script-setup-gt" class="heading-link"><i class="fas fa-link"></i></a><a href="#lt-script-setup-gt" class="headerlink" title="&lt;script setup&gt;"></a>&lt;script setup&gt;</h3>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/">https://lzmustb.github.io/2022/09/25/Vue3-Composition-API/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/09/25/Vue3-conclusion/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">[ 文章无标题 ]</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/09/25/Vue3-Commands/"><span class="paginator-prev__text">[ 文章无标题 ]</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%BC%8FAPI-Composition-API"><span class="toc-number">1.</span> <span class="toc-text">
+          组合式API(Composition API)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.1.</span> <span class="toc-text">
+          组合式API的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8FAPI"><span class="toc-number">1.2.</span> <span class="toc-text">
+          响应式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E5%93%8D%E5%BA%94%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          理解响应性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8F%98%E9%87%8F-reactive"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          定义响应式变量-reactive()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reactive-%E8%A7%84%E5%88%99"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">
+          reactive()规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8F%98%E9%87%8F-ref"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          定义响应式变量-ref()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          计算属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90"><span class="toc-number">1.3.</span> <span class="toc-text">
+          生命周期钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="toc-number">1.4.</span> <span class="toc-text">
+          依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%84%E5%90%88%E5%BC%8FAPI"><span class="toc-number">1.5.</span> <span class="toc-text">
+          使用组合式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setup"><span class="toc-number">1.5.1.</span> <span class="toc-text">
+          setup()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-script-setup-gt"><span class="toc-number">1.5.2.</span> <span class="toc-text">
+          &lt;script setup&gt;</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/ustb-lzm/image-data/raw/master/202201111554344.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

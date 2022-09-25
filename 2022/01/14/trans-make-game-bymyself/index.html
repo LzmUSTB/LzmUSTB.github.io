@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="原文链接：大学生が自作ゲームを1本作るまでに経験した数々の地獄のお話原作者：Matsumoto                      译者摘要       这篇文章讲述了一位非科班的大学生从学习编程，到最后制作出一款完整的游戏所经历的种种磨难。从他的回忆中，我能感受到作者满溢的创作热情，其中的许多经验，以及最后的话语也给我莫大的鼓励和启发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】大学生为了制作一部游戏而经历的地狱">
+<meta property="og:url" content="https://lzmustb.github.io/2022/01/14/trans-make-game-bymyself/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="原文链接：大学生が自作ゲームを1本作るまでに経験した数々の地獄のお話原作者：Matsumoto                      译者摘要       这篇文章讲述了一位非科班的大学生从学习编程，到最后制作出一款完整的游戏所经历的种种磨难。从他的回忆中，我能感受到作者满溢的创作热情，其中的许多经验，以及最后的话语也给我莫大的鼓励和启发。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/ustb-lzm/image-data/raw/master/202201141420300.png">
+<meta property="og:image" content="https://gitee.com/ustb-lzm/image-data/raw/master/202201141437310.png">
+<meta property="og:image" content="https://gitee.com/ustb-lzm/image-data/raw/master/202201141716419.jpg">
+<meta property="article:published_time" content="2022-01-14T02:48:58.000Z">
+<meta property="article:modified_time" content="2022-01-14T09:30:18.928Z">
+<meta property="article:author" content="Lzm">
+<meta property="article:tag" content="游戏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/ustb-lzm/image-data/raw/master/202201141420300.png"><title>【翻译】大学生为了制作一部游戏而经历的地狱 | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2022/01/14/trans-make-game-bymyself/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">【翻译】大学生为了制作一部游戏而经历的地狱</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-01-14</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">4.4k</span></span></div></header><div class="post-body"><blockquote>
+<p>原文链接：<br><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://note.com/dom_cob1/n/n8eaf211cba2b?magazine_key=mcaf9d5648d65" >大学生が自作ゲームを1本作るまでに経験した数々の地獄のお話</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br>原作者：<br><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://note.com/dom_cob1/" >Matsumoto</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+
+        <h2 id="译者摘要"   >
+          <a href="#译者摘要" class="heading-link"><i class="fas fa-link"></i></a><a href="#译者摘要" class="headerlink" title="译者摘要"></a>译者摘要</h2>
+      <p>这篇文章讲述了一位非科班的大学生从学习编程，到最后制作出一款完整的游戏所经历的种种磨难。从他的回忆中，我能感受到作者满溢的创作热情，其中的许多经验，以及最后的话语也给我莫大的鼓励和启发。</p>
+<span id="more"></span>
+
+
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+      <p>&amp;emsp;&amp;emsp;初次见面。虽然有些唐突，但各位！<br>&amp;emsp;&amp;emsp;一定也有过“人生至少要做一次游戏制作者！”这样的想法吧。<br>&amp;emsp;&amp;emsp;这篇文章讲述的就是我，从大二开始学习制作游戏，到实际完成所经历的种种地狱。<br>&amp;emsp;&amp;emsp;至于为什么把这件事特意写成文章，在最后会解释。<br>&amp;emsp;&amp;emsp;不限于游戏，如果你正想要开始某些事情，请务必看一看。</p>
+
+        <h2 id="经济学院的地狱"   >
+          <a href="#经济学院的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#经济学院的地狱" class="headerlink" title="经济学院的地狱"></a>经济学院的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;常说“如果没有想做的事，就先去大学增加未来的选项”,但我想对高中时的自己说，并不是到了大学就会找到想做的事情。<br>&amp;emsp;&amp;emsp;什么都没考虑就选择了经济学。<br>&amp;emsp;&amp;emsp;课程对我而言很无聊不说，还因为看不起经济学院那群逼王，没有交到朋友，大概有一年没去学校。<br>&amp;emsp;&amp;emsp;在那个时期我开始思考就职的事情，而一看同学的求职方向大多都是银行，证券公司，周围的人就像坏掉的机器人一样一天到晚求职咨询。而且大家比起说是对工作内容感兴趣，嘴上聊的都是年收入和头衔的话题。而我，一边觉得他们扯淡，却也找不到自己想做的事。<br>&amp;emsp;&amp;emsp;从这个时候，我开始思考自己真正想做的事情。</p>
+
+        <h2 id="编程的地狱"   >
+          <a href="#编程的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#编程的地狱" class="headerlink" title="编程的地狱"></a>编程的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;因为觉得编程就像黑客一样酷炫，我决定学习编程。<br>&amp;emsp;&amp;emsp;因为编程的话题根本不好玩，所以我就不展开来谈了，但大约遇到过5次挫折。<br>&amp;emsp;&amp;emsp;看不懂写着“猫也能看懂”的书而对猫肃然起敬；搞不来环境配置而扬言自己的电脑不适合编程；去向工学院的教授问“安装”是什么意思被批了一通等等。<br>&amp;emsp;&amp;emsp;但我想对接下来要学习编程的所有人说一句话。<br><strong>就算完全不懂也没关系，尝试着自己去使用它</strong><br>&amp;emsp;&amp;emsp;这点非常重要，像考试科目那样“先掌握基础，再去理解整体~”这样的学法对编程是不怎么管用的。<br>&amp;emsp;&amp;emsp;还有就是不要去看推特上的大佬。  </p>
+<p>经过一段时间后，我就试着用python做了一个2048。<br><span align='center'><img src='https://gitee.com/ustb-lzm/image-data/raw/master/202201141420300.png' width=60%></span><br>&amp;emsp;&amp;emsp;当看到程序按照自己所想的一样运作时，我从中第一次感受到了游戏制作的乐趣。<br>&amp;emsp;&amp;emsp;建议在学编程学完函数和类左右的时候，可以试着自己思考做些程序。</p>
+
+        <h2 id="从Python转到C-的地狱"   >
+          <a href="#从Python转到C-的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#从Python转到C-的地狱" class="headerlink" title="从Python转到C++的地狱"></a>从Python转到C++的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;因为有人说做游戏的话学C更好，我就开始学习C++。<br>&amp;emsp;&amp;emsp;了解过的人应该知道，C++和Python完全不同。差不多就像Wii Sports的保龄球和真实的保龄球那种程度不同。<br>&amp;emsp;&amp;emsp;开始出现指针，变量声明之类从未接触的术语，而且又败在了环境配置这一步。<br>&amp;emsp;&amp;emsp;编程初学者的最大敌人就是环境配置。具体就不展开说了，但如今我更喜欢易阅读的C++。</p>
+
+        <h2 id="Unity的天堂"   >
+          <a href="#Unity的天堂" class="heading-link"><i class="fas fa-link"></i></a><a href="#Unity的天堂" class="headerlink" title="Unity的天堂"></a>Unity的天堂</h2>
+      <p>&amp;emsp;&amp;emsp;就算是没有做过游戏的人，想必也听说过Unity。简而言之就是能做游戏的工具。<br>&amp;emsp;&amp;emsp;第一次接触的时候，得知它能演算重力，判定碰撞等等各种事情，让我非常感动。<br>&amp;emsp;&amp;emsp;在Unity中需要用到C#这门语言，但就算没学过也问题不大，在想要实现某种功能时现查就可以了。<br>&amp;emsp&amp;emsp;就像先前说过的，“尝试着自己去使用它”。我就在按照书本制作游戏的途中记住了编程的方法。<br>&amp;emsp;&amp;emsp;实际看到自己的角色动起来的时候，真的是很有乐趣。</p>
+
+        <h2 id="实习的地狱"   >
+          <a href="#实习的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#实习的地狱" class="headerlink" title="实习的地狱"></a>实习的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;就在这个时期，我看机会难得，就参加了游戏公司的实习。<br>&amp;emsp;&amp;emsp;因为要进行作品评比，我花了一个月左右，从ddl三天前开始熬夜赶工做出了以下这款游戏。<br><span align='center'><img src='https://gitee.com/ustb-lzm/image-data/raw/master/202201141437310.png' width=60%></span><br>&amp;emsp;&amp;emsp;游戏机制什么的都比较单薄，而且说实话比看上去还要不好玩，道具按钮也只是个单纯的按钮。<br>&amp;emsp;&amp;emsp;但毕竟是独立完成的游戏，就自信满满参加了评比会。<br>&amp;emsp;&amp;emsp;轮到我发表的时候，本来还自信满满的，但被问到有趣在哪里，怎么游玩的时候却几乎答不上来。<br>&amp;emsp;&amp;emsp;轮到下一个人——“这是日本游戏大奖的获奖作品……”<br>&amp;emsp;&amp;emsp;再下一个人——“这是我拿去参加韩国的比赛的作品……”<br>&amp;emsp;&amp;emsp;再下一个人——“这是可以在Wii上运行的……”<br>&amp;emsp;&amp;emsp;差不多到这个时候我就感觉社死了，心情非常消沉，觉得自己完全不是一个水平。<br>&amp;emsp;&amp;emsp;轮到最后一个人——“对不起，看了别人的作品我还是决定不拿出来献丑了……”<br>&amp;emsp;&amp;emsp;正当我为找到同伴而稍微安心的时候，评委说就算这样也可以拿出来看一看。确实作为游戏的完成度还不够，但想法非常有创意。很难具体表达，但我感觉像是能火的有趣作品。<br>&amp;emsp;&amp;emsp;那天以后，我想着自己又没技术，又没创意，全都玩完了，过了一段暴饮暴食的日子。</p>
+
+        <h2 id="想不出创意的地狱"   >
+          <a href="#想不出创意的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#想不出创意的地狱" class="headerlink" title="想不出创意的地狱"></a>想不出创意的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;后来我的精神又恢复了过来，准备再次挑战的时候，却迟迟没法下手。<br>&amp;emsp;&amp;emsp;以往我只是把角色动起来就很满意了，但这次开始觉得如果不好玩的话做出来也没有意义。<br>&amp;emsp;&amp;emsp;无法忘记在评比会上看到的那些游戏专业学生的作品，或是有足够创意的作品，尤其是那个拿了大奖的作品，我还经常想起来，在油管上反复观看。<br>&amp;emsp;&amp;emsp;那个悲惨时期的我就只能跟朋友吹吹“我跟这样的大佬一起参加过实习”。<br>&amp;emsp;&amp;emsp;只是，多亏实习的失败经历，我查阅了很多GameJam，游戏奖，独立游戏等等相关的资料，并认识了很多优秀的游戏。<br>&amp;emsp;&amp;emsp;然后我想着先不管怎么说要做点东西出来，就把想到的主意逐个做成了demo。<br>&amp;emsp;&amp;emsp;以下是我废弃的辣鸡游戏，追悼。</p>
+<ul>
+<li>边躲避激光边搬运武器的游戏</li>
+<li>移动箭头对战的游戏</li>
+<li>数字俄罗斯方块（想法还可以就是没能做出来）</li>
+<li>把战车和洗车混合的游戏<font color='gray'>(※日文中战车和洗车发音相同)</font></li>
+<li>通过预知能力躲避攻击的游戏</li>
+<li>在自动扶梯上逆行的游戏</li>
+<li>让电梯恰好停住的游戏</li>
+<li>很多隐藏砖块的坑人游戏</li>
+<li>不容易被敌人干掉的游戏</li>
+<li>血条和蓝条共用的游戏</li>
+<li>改变角色大小的游戏</li>
+<li>立体停车场（没想好要怎么玩）</li>
+<li>屏幕画面之外非常乱的游戏</li>
+<li>变成虫子诱导人（已经有了）</li>
+</ul>
+<p>&amp;emsp;&amp;emsp;像这样做了很多游戏，虽然大部分都不是很有趣。但是！！最后有两个游戏存活了下来。</p>
+<ul>
+<li>关卡会旋转的游戏</li>
+<li>和透明的敌人战斗，然后重播后观看自己动作的游戏<br>&amp;emsp;&amp;emsp;它们会在后文提到。</li>
+</ul>
+
+        <h2 id="编程的地狱-Part2"   >
+          <a href="#编程的地狱-Part2" class="heading-link"><i class="fas fa-link"></i></a><a href="#编程的地狱-Part2" class="headerlink" title="编程的地狱 Part2"></a>编程的地狱 Part2</h2>
+      <p>&amp;emsp;&amp;emsp;既然做不出创意，就用编程能力一决胜负吧！然而，从结果来看就是我的错觉。在技术上取胜是世界第一难事。<br>&amp;emsp;&amp;emsp;但总之，不能全部依赖引擎！要自己写出重力和画面！！！这么想着，我买了一本书——《在成为游戏工程师之前应该记住的技术》。<br>&amp;emsp;&amp;emsp;真的是地狱。<br>&amp;emsp;&amp;emsp;看了书之后我才发现自己至今的编程都只是图一乐。<br>&amp;emsp;&amp;emsp;必须在完全理解了指针，继承，二进制等等才能看得进去。<br>&amp;emsp;&amp;emsp;现在来看，那个时期学的知识都有很大的帮助，但我也不希望萌新看了这本书而被劝退。<br>&amp;emsp;&amp;emsp;不过对于学编程比较轻松的人来说，我还是非常推荐这本书。<br>&amp;emsp;&amp;emsp;顺便一提，我因为实在是搞不懂，至少敲了100次桌子，还在阳台大喊“谁tm搞这个”，也因为太过挫败深夜骑自行车去金阁寺，在推特上发过“我真是一无是处”，在麦当劳暴饮暴食吃胖了15kg。</p>
+
+        <h2 id="自制游戏的地狱"   >
+          <a href="#自制游戏的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#自制游戏的地狱" class="headerlink" title="自制游戏的地狱"></a>自制游戏的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;好不容易看了书，事实后该不用引擎制作游戏了！这么想着，我完成了“关卡会旋转的游戏”。<br>&amp;emsp;&amp;emsp;别看只有“完成了”这么三个字，过程是真的累死累活。当遇到报错的时候，那个波浪线总是划在不是我写的代码的地方（标准库），让我完全不知道哪里出了错。<br>&amp;emsp;&amp;emsp;就好像是迷路的时候看一眼手机发现导航显示自己在大海上一样。<br>&amp;emsp;&amp;emsp;这样的事情一天至少要发生10次。<br>&amp;emsp;&amp;emsp;或许大佬不同，但我的话至少有70%左右的时间花在了寻找出错原因上面。<br>&amp;emsp;&amp;emsp;这段时间又因为真的搞不懂而经历了暴饮暴食，去银阁寺的路上迷路，无所事事地改改字体大小等等。<br>&amp;emsp;&amp;emsp;结果就完成了这么个游戏。<br><span align='center'><img src='https://gitee.com/ustb-lzm/image-data/raw/master/202201141716419.jpg' width=60%></span><br>&amp;emsp;&amp;emsp;图画是朋友帮忙画的，右下角的猫是玩家。<br>&amp;emsp;&amp;emsp;虽然我写的都是怎么怎么受挫，但一旦不用引擎完成了自制游戏，那成就感是非同一般的。<br>&amp;emsp;&amp;emsp;比如，从菜单到关卡选择的迁移方式都需要自己考虑，还自制了保存制成的关卡名的时候的文本框。<br>&amp;emsp;&amp;emsp;一边怀疑自己是不是走偏了，一边又用谁也想不到的方法制作，运行成功的时候，我是发自内心感到兴奋的。<br>&amp;emsp;&amp;emsp;我真是天才！！（然后30分钟后因为各种报错而崩溃)<br>&amp;emsp;&amp;emsp;可惜最后还是有判定奇怪等种种问题，没能达到发行的质量。</p>
+
+        <h2 id="虚幻引擎的天国"   >
+          <a href="#虚幻引擎的天国" class="heading-link"><i class="fas fa-link"></i></a><a href="#虚幻引擎的天国" class="headerlink" title="虚幻引擎的天国"></a>虚幻引擎的天国</h2>
+      <p>&amp;emsp;&amp;emsp;具体时间有些搞不清了，但我偶然看到这个视频，大受感动，开始使用虚幻引擎。</p>
+<blockquote>
+<p>&amp;emsp;&amp;emsp;<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y5411s7Sa" >虚幻5技术演示(B站)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>&amp;emsp;&amp;emsp;就算现在再看也让我起鸡皮疙瘩，让我觉得“可以亲手创造这样美丽而充满激情的世界吗！”<br>&amp;emsp;&amp;emsp;然后我就回想起纯粹制作游戏的感觉，开始学习虚幻引擎。<br>&amp;emsp;&amp;emsp;虚幻引擎不需要任何编程就可以做游戏，利用一种叫蓝图的可视化脚本语言，让角色动起来，或是制作机关。顺便一提，我用它制作的游戏也一次都没有写代码。<br>&amp;emsp;&amp;emsp;然后我就想，和之前不同，既然用了引擎就一定要做出有趣的游戏，把技术力抛在脑后，一个劲打磨游戏的趣味性。<br>&amp;emsp;&amp;emsp;就在这时，我想到了“和透明的敌人战斗，然后重播后观看自己动作的游戏”，因为重播自己的动作很有趣，从而想到制作一款把自己的动作倒放，然后和倒放的自己合作的游戏。</p>
+
+        <h2 id="自制游戏的地狱-Part2"   >
+          <a href="#自制游戏的地狱-Part2" class="heading-link"><i class="fas fa-link"></i></a><a href="#自制游戏的地狱-Part2" class="headerlink" title="自制游戏的地狱 Part2"></a>自制游戏的地狱 Part2</h2>
+      <p>&amp;emsp;&amp;emsp;虽然写着地狱，但和先前的游戏制作比起来，这次的经历绝对是最让我快乐的。<br>&amp;emsp;&amp;emsp;一方面是自己对这个游戏的有趣程度有自信，一方面是由于引擎而让想法的实现变得简单了。<br>&amp;emsp;&amp;emsp;但也有一些比较心累的地方：</p>
+<ol>
+<li>看到推特上的大佬会无法避免地产生自卑感</li>
+<li>存档和包装等为了游戏发行而不得不考虑的事情</li>
+</ol>
+<p>&amp;emsp;&amp;emsp;第一点想必对哪个领域都一样。真正厉害的人是真的厉害，不去看他们更好。写Qiita<font color='gray'>(日本一个工程师论坛)</font>的人也都是天才。他们的人生估计已经五周目了，一周目的我就满怀感激地接受教导吧。<br>&amp;emsp;&amp;emsp;第二点应该是大多数人受挫的原因。同样是做游戏，随意制作的人和完整地制作一部的人是完全不同的。就像做意大利面也有买酱回来做的人和从酱开始做的人。除了包装之外，我也考虑了美工和建模等等问题。<br>&amp;emsp;&amp;emsp;即便如此，这也是真的很快乐的事情。<br>&amp;emsp;&amp;emsp;<strong>不用去学会所有的东西</strong><br>&amp;emsp;&amp;emsp;<strong>只要查阅自己创作所需要的就行</strong><br>&amp;emsp;&amp;emsp;<strong>制作自己认为有趣的东西</strong><br>&amp;emsp;&amp;emsp;<strong>想象着自己的游戏大卖然后出名</strong><br>&amp;emsp;&amp;emsp;以上这些应该就是感到快乐的原因。关于游戏的设计，我也看了不少制作人的演讲，游戏分析博主的视频等等，还疯狂拜托别人去试玩。</p>
+
+        <h2 id="开始怀疑是否有趣的地狱"   >
+          <a href="#开始怀疑是否有趣的地狱" class="heading-link"><i class="fas fa-link"></i></a><a href="#开始怀疑是否有趣的地狱" class="headerlink" title="开始怀疑是否有趣的地狱"></a>开始怀疑是否有趣的地狱</h2>
+      <p>&amp;emsp;&amp;emsp;中途开始患上了担心这个游戏实际上没意思的病。不过后来知道这种情况在游戏开发者身上是常有的。<br>&amp;emsp;&amp;emsp;当时问了朋友们对试玩版的感想，大家可能是比较善良，都说很好玩。我就坚信他们的话坚持了下来。<br>&amp;emsp;&amp;emsp;顺便一提其中有一个朋友因为太过热衷而把大学考试全翘掉了，学科全挂。<br>&amp;emsp;&amp;emsp;爱死你了！经济学院！</p>
+
+        <h2 id="游戏被别人玩的天国"   >
+          <a href="#游戏被别人玩的天国" class="heading-link"><i class="fas fa-link"></i></a><a href="#游戏被别人玩的天国" class="headerlink" title="游戏被别人玩的天国"></a>游戏被别人玩的天国</h2>
+      <p>&amp;emsp;&amp;emsp;历经坎坷，游戏终于在steam上公开了试玩版，推特上的宣传也被转发了3742次！当时太过开心，给试玩的朋友门疯狂打电话。<br><font color='gray'>（※游戏名【Relash】steam上可以看到商店界面，现已停止试玩）</font></p>
+
+        <h2 id="想说的话"   >
+          <a href="#想说的话" class="heading-link"><i class="fas fa-link"></i></a><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2>
+      <p>&amp;emsp;&amp;emsp;在刚刚接触游戏制作时，我觉得那些爆火的都是天选的人。但实际上到现在，我也依然边抱怨搞不懂边做着游戏。<br>&amp;emsp;&amp;emsp;我写这篇文章，就是想让那些今后想要制作游戏的人意识到，“原来大家都会受挫折”，“做出没有意思的作品也是理所当然的”。<br>&amp;emsp;&amp;emsp;我在开始制作游戏时，最想知道的，就是<strong>不知道也没关系</strong>。<br>&amp;emsp;&amp;emsp;就是因为不知道这点，我好几次都差点放弃制作游戏。<br>&amp;emsp;&amp;emsp;我还只是完成了一款游戏，但因为不想被别的开发者认为是在装逼，所以我会马上就说我并不厉害。<br>&amp;emsp;&amp;emsp;但这正是在过去让我痛苦的话语。<br>&amp;emsp;&amp;emsp;因为那些比我厉害的人，摆着一副这种程度理所应当的表情，所以才会觉得“是我不适合”。<br>&amp;emsp;&amp;emsp;正因如此我才要勇敢地说出来，我能制作一款完整的游戏，是一件很厉害的事情，但更多地，是一件非常吃力的事情，充满了未知的事情。<br>&amp;emsp;&amp;emsp;所以我才希望今后想要制作游戏的人意识到<strong>不知道也没关系</strong>，以“做出来就很厉害！”的心态去面对。<br>&amp;emsp;&amp;emsp;以上就是我制作一款游戏所经历的种种地狱。</p>
+
+        <h2 id="笔记"   >
+          <a href="#笔记" class="heading-link"><i class="fas fa-link"></i></a><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2>
+      <blockquote>
+<p>肩書き(かたがき)：头衔，官衔<br>殆ど(ほとんど)：几乎<br>垢(あか)：污垢，油泥<br>遷移(せんい)：变迁，迁移<br>ダントツ：压倒性地出众，领先<br>語呂合わせ(ごろあわせ)： 双关，谐音<br>別格(べっかく)：特别处理，特殊待遇</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2022/01/14/trans-make-game-bymyself/">https://lzmustb.github.io/2022/01/14/trans-make-game-bymyself/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/01/15/my-programing-Problem/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">程序设计题目——整数分治</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/14/trans-hurukawa-lyric/"><span class="paginator-prev__text">【翻译】古川本铺-聊聊作词的方法</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%91%E8%80%85%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">
+          译者摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E6%B5%8E%E5%AD%A6%E9%99%A2%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">3.</span> <span class="toc-text">
+          经济学院的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">4.</span> <span class="toc-text">
+          编程的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8EPython%E8%BD%AC%E5%88%B0C-%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">5.</span> <span class="toc-text">
+          从Python转到C++的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E7%9A%84%E5%A4%A9%E5%A0%82"><span class="toc-number">6.</span> <span class="toc-text">
+          Unity的天堂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%B9%A0%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">7.</span> <span class="toc-text">
+          实习的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E4%B8%8D%E5%87%BA%E5%88%9B%E6%84%8F%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">8.</span> <span class="toc-text">
+          想不出创意的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9C%B0%E7%8B%B1-Part2"><span class="toc-number">9.</span> <span class="toc-text">
+          编程的地狱 Part2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">10.</span> <span class="toc-text">
+          自制游戏的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E%E7%9A%84%E5%A4%A9%E5%9B%BD"><span class="toc-number">11.</span> <span class="toc-text">
+          虚幻引擎的天国</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E7%9A%84%E5%9C%B0%E7%8B%B1-Part2"><span class="toc-number">12.</span> <span class="toc-text">
+          自制游戏的地狱 Part2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%80%80%E7%96%91%E6%98%AF%E5%90%A6%E6%9C%89%E8%B6%A3%E7%9A%84%E5%9C%B0%E7%8B%B1"><span class="toc-number">13.</span> <span class="toc-text">
+          开始怀疑是否有趣的地狱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E8%A2%AB%E5%88%AB%E4%BA%BA%E7%8E%A9%E7%9A%84%E5%A4%A9%E5%9B%BD"><span class="toc-number">14.</span> <span class="toc-text">
+          游戏被别人玩的天国</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-number">15.</span> <span class="toc-text">
+          想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0"><span class="toc-number">16.</span> <span class="toc-text">
+          笔记</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/ustb-lzm/image-data/raw/master/202201111554344.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
