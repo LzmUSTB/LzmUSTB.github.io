@@ -1,0 +1,1 @@
+import{w as t,h as a,a4 as s}from"./index.cfe1fa39.js";const u="update:modelValue",d=({from:r,replacement:i,scope:o,version:l,ref:c,type:m="API"},e)=>{t(()=>a(e),n=>{},{immediate:!0})},f=s("mainStore",{state:()=>({articleList:{article_1:{title:"\u57CE\u91CC\u7684\u8611\u83C7",list:[]},article_2:{title:"\u53D8\u8272\u9F99",list:[]}}})});export{u as U,f as a,d as u};
