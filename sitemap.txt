@@ -1,3 +1,4 @@
+https://lzmustb.github.io/2022/10/16/my-vue-practice1/
 https://lzmustb.github.io/2022/09/25/Vue3-conclusion/
 https://lzmustb.github.io/2022/10/13/web-design-note/
 https://lzmustb.github.io/2022/10/12/Css-flexbox/

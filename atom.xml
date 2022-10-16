@@ -6,7 +6,7 @@
   <link href="https://lzmustb.github.io/atom.xml" rel="self"/>
   
   <link href="https://lzmustb.github.io/"/>
-  <updated>2022-10-13T08:05:26.807Z</updated>
+  <updated>2022-10-16T00:42:05.956Z</updated>
   <id>https://lzmustb.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>餐厅管理网页练习</title>
+    <link href="https://lzmustb.github.io/2022/10/16/my-vue-practice1/"/>
+    <id>https://lzmustb.github.io/2022/10/16/my-vue-practice1/</id>
+    <published>2022-10-15T23:29:46.000Z</published>
+    <updated>2022-10-16T00:42:05.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下这两天用vue模写网页的过程。</p><p>成品：</p><p><img src="https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/my-vue-practice1.png" alt="my-vue-practice1"></p><span id="more"></span><p>※设计图来自IQQNIC Design的<span class="exturl"><a class="exturl__link"   href="https://pixso.cn/community/file/iwhOWVDOeICw39kGAlSxrA" >免费餐厅管理模板</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><p>页面最外层：</p><ul><li><p>sidebar：固定像素，fixed固定在侧边</p></li><li><p>navigationBar+router-view：上下结构，这次只做了home界面所以路由不会切换</p></li></ul><p>黄色框内的元素均为响应式渲染，由store里的数据管理。</p>        <h1 id="解决的技术问题"   >          <a href="#解决的技术问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#解决的技术问题" class="headerlink" title="解决的技术问题"></a>解决的技术问题</h1>              <h2 id="滚动条显示异常"   >          <a href="#滚动条显示异常" class="heading-link"><i class="fas fa-link"></i></a><a href="#滚动条显示异常" class="headerlink" title="滚动条显示异常"></a>滚动条显示异常</h2>      <p>在写<code>Home.vue</code>时，明明页面超出了屏幕，却不显示滚动条，也无法滑动。</p><figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--App.vue--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;APPcontainer&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">SideBar</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">&quot;APPmain&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navigation&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">NavigationBar</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mainView&quot;</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--这部分超出了界面--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">router-view</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></div></figure><p><strong>解决方法</strong>：</p><figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--在最外层容器添加--&gt;</span><br><span class="line"><span class="selector-class">.APPcontainer</span> &#123;</span><br><span class="line">    <span class="attribute">overflow-y</span>: scroll;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100vw</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure><p>原理没搞懂，<code>height:100vh</code>比较关键，不加这句的话滚动条长得会比较奇怪。</p>        <h2 id="CSS简单动效"   >          <a href="#CSS简单动效" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSS简单动效" class="headerlink" title="CSS简单动效"></a>CSS简单动效</h2>      <p><code>transition:[时间]</code>可以在元素样式产生变化时自动生成补间，像淡出淡入，侧栏展开等。</p><p><code>filter</code>属性可以改变元素的颜色，功能繁多。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;记录一下这两天用vue模写网页的过程。&lt;/p&gt;
+&lt;p&gt;成品：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/my-vue-practice1.png&quot; alt=&quot;my-vue-practice1&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="前端" scheme="https://lzmustb.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>网页设计学习笔记</title>
@@ -528,35 +551,6 @@
     <summary type="html">&lt;h1 id=&quot;事件（Events）&quot;   &gt;
           &lt;a href=&quot;#事件（Events）&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#事件（Events）&quot; class=&quot;headerlink&quot; title=&quot;事件（Events）&quot;&gt;&lt;/a&gt;事件（Events）&lt;/h1&gt;
       &lt;p&gt;Forge使用事件总线监听模组的各种行为。&lt;br&gt;&lt;code&gt;FMLJavaModLoadingContext#getModEventBus&lt;/code&gt;：Mod总线，负责生命周期事件。&lt;br&gt;&lt;code&gt;MinecraftForge#EVENT_BUS&lt;/code&gt;：Forge总线，负责除生命周期事件外的所有事件。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="游戏制作" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/"/>
-    
-    <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
-    
-    
-    <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
-    <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Forge1.18-Sides</title>
-    <link href="https://lzmustb.github.io/2022/05/04/my-forge-learning-sides/"/>
-    <id>https://lzmustb.github.io/2022/05/04/my-forge-learning-sides/</id>
-    <published>2022-05-04T04:38:20.000Z</published>
-    <updated>2022-05-19T00:01:59.279Z</updated>
-    
-    <content type="html"><![CDATA[        <h1 id="Sides"   >          <a href="#Sides" class="heading-link"><i class="fas fa-link"></i></a><a href="#Sides" class="headerlink" title="Sides"></a>Sides</h1>      <p>在制作模组时的一个重要概念就是两个Side：client（客户端）和server（服务器）</p><span id="more"></span>        <h2 id="不同类型的Sides"   >          <a href="#不同类型的Sides" class="heading-link"><i class="fas fa-link"></i></a><a href="#不同类型的Sides" class="headerlink" title="不同类型的Sides"></a>不同类型的Sides</h2>      <p>我们通常说的“客户端”或“服务器”，是直觉性地将游戏区分为两部分，客户端就是用户交互的地方，服务器是用户连接多人游戏的地方。</p><p>事实上，这两个概念并没有那么清晰的界线。这里为了消除歧义，列出4个可能的“client”和“server”的意义。</p><ul><li>Physical client：指的是你启动MC时需要运行的整个程序。所有进程，线程，以及运行时需要提供的图形，交互等等服务都包含在内。</li><li>Physical server：通常被称为专属服务器(dedicated server)，是运行<code>minecraft_server.jar</code>的整个程序，它不会提供可游玩的GUI。</li><li>Logical server：运行游戏逻辑的服务器。包括mob生成，天气，更新建筑物品，生物AI等等。通常逻辑服务器附属在物理服务器中，但它也可以和逻辑客户端一同在物理客户端中运行，比如在单机模式中。逻辑服务器通常在<code>Server Thread</code>线程中运行。</li><li>Logical client：负责接收玩家的输入并输送到逻辑服务器。除此之外，也能从逻辑服务器接收信息，并以图像呈现给玩家。逻辑客户端运行在<code>Render Thread</code>，有时也会开启其他线程去处理音声或渲染分支。</li></ul><p>在Forge代码中，用enum<code>Dist</code>代表物理端，用enum<code>LogicalSide</code>代表逻辑端。</p>        <h2 id="针对特定端的处理"   >          <a href="#针对特定端的处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#针对特定端的处理" class="headerlink" title="针对特定端的处理"></a>针对特定端的处理</h2>              <h3 id="Level-isClientSide"   >          <a href="#Level-isClientSide" class="heading-link"><i class="fas fa-link"></i></a><a href="#Level-isClientSide" class="headerlink" title="Level#isClientSide"></a><code>Level#isClientSide</code></h3>      <p>用于检查一个域所属的<strong>逻辑端</strong>。※<span class="exturl"><a class="exturl__link"   href="https://mcforge.readthedocs.io/en/1.18.x/concepts/sides/#performing-side-specific-operations" >暂略</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><p>当你需要确定游戏逻辑或其他气质是否需要运行时可以使用这个check。比如，如果你想要让玩家每次点击某个方块时受到伤害，或者让你的机器将沙子变成钻石，你要确保<code>#isClientSide</code>为<code>false</code>。将游戏逻辑应用在逻辑客户端可能会导致游戏不同步（幽灵实体，未同步的状态等），严重会导致游戏崩溃。</p>        <h3 id="DistExecutor"   >          <a href="#DistExecutor" class="heading-link"><i class="fas fa-link"></i></a><a href="#DistExecutor" class="headerlink" title="DistExecutor"></a><code>DistExecutor</code></h3>      <p><span class="exturl"><a class="exturl__link"   href="https://mcforge.readthedocs.io/en/1.18.x/concepts/sides/#distexecutor" >暂略</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><code>DistExecutor</code>提供了多种方法，以在不同物理端运行，以及只在某一端运行的方法。</p><blockquote><p>FML checks基于物理端，一个单人游戏世界（物理客户端内包含逻辑客户端和逻辑服务器）总是使用Dist.CLIENT</p></blockquote>        <h3 id="基本错误"   >          <a href="#基本错误" class="heading-link"><i class="fas fa-link"></i></a><a href="#基本错误" class="headerlink" title="基本错误"></a>基本错误</h3>              <h3 id="编写单端模组"   >          <a href="#编写单端模组" class="heading-link"><i class="fas fa-link"></i></a><a href="#编写单端模组" class="headerlink" title="编写单端模组"></a>编写单端模组</h3>              <h1 id="笔记"   >          <a href="#笔记" class="heading-link"><i class="fas fa-link"></i></a><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1>      <blockquote><p>generic:泛型</p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Sides&quot;   &gt;
-          &lt;a href=&quot;#Sides&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#Sides&quot; class=&quot;headerlink&quot; title=&quot;Sides&quot;&gt;&lt;/a&gt;Sides&lt;/h1&gt;
-      &lt;p&gt;在制作模组时的一个重要概念就是两个Side：client（客户端）和server（服务器）&lt;/p&gt;</summary>
     
     
     
