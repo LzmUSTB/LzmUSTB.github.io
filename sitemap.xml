@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://lzmustb.github.io/films/index.html</loc>
+    
+    <lastmod>2023-02-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://lzmustb.github.io/2023/02/25/read-Flowers-for-Algernon/</loc>
     
     <lastmod>2023-02-25</lastmod>
@@ -59,15 +68,6 @@
     <loc>https://lzmustb.github.io/2022/10/03/my-first-vue-app/</loc>
     
     <lastmod>2022-10-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://lzmustb.github.io/films/index.html</loc>
-    
-    <lastmod>2022-09-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
