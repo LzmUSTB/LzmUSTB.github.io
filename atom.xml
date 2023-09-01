@@ -6,7 +6,7 @@
   <link href="https://lzmustb.github.io/atom.xml" rel="self"/>
   
   <link href="https://lzmustb.github.io/"/>
-  <updated>2023-09-01T04:14:37.883Z</updated>
+  <updated>2023-06-26T03:13:50.740Z</updated>
   <id>https://lzmustb.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://lzmustb.github.io/2023/07/19/my-music-note/"/>
-    <id>https://lzmustb.github.io/2023/07/19/my-music-note/</id>
-    <published>2023-07-19T14:52:46.398Z</published>
-    <updated>2023-09-01T04:14:37.883Z</updated>
-    
-    <content type="html"><![CDATA[        <h1 id="基本乐理"   >          <a href="#基本乐理" class="heading-link"><i class="fas fa-link"></i></a><a href="#基本乐理" class="headerlink" title="基本乐理"></a>基本乐理</h1>              <h2 id="声音的物理性质"   >          <a href="#声音的物理性质" class="heading-link"><i class="fas fa-link"></i></a><a href="#声音的物理性质" class="headerlink" title="声音的物理性质"></a>声音的物理性质</h2>              <h3 id="泛音-倍音，倍频"   >          <a href="#泛音-倍音，倍频" class="heading-link"><i class="fas fa-link"></i></a><a href="#泛音-倍音，倍频" class="headerlink" title="泛音(倍音，倍频)"></a>泛音(倍音，倍频)</h3>      <p><img src="E:\BlogData\source_imgs\スペクトラムアナライザー説明-1-1024x561.jpg" alt="img"></p><p><img src="E:\BlogData\source_imgs\倍音の分類-1024x576.jpg" alt="img"></p><p>和弦和单音在物理学意义上没有区别</p><p><img src="/../_imgs/%E9%9F%B3%E5%90%8D%E3%81%A8%E5%91%A8%E6%B3%A2%E6%95%B0%E4%B8%80%E8%A6%A7%E8%A1%A8.jpg" alt="音名と周波数一覧表"></p>        <h2 id="音乐基础"   >          <a href="#音乐基础" class="heading-link"><i class="fas fa-link"></i></a><a href="#音乐基础" class="headerlink" title="音乐基础"></a>音乐基础</h2>              <h3 id="音程"   >          <a href="#音程" class="heading-link"><i class="fas fa-link"></i></a><a href="#音程" class="headerlink" title="音程"></a>音程</h3>      <div class="table-container"><table><thead><tr><th><strong>度数名</strong></th><th><strong>英語</strong></th><th><strong>例（ドの場合※）</strong></th><th><strong>半音の数</strong></th><th><strong>テンションとして見た場合</strong></th></tr></thead><tbody><tr><td><strong>完全1度</strong></td><td>P1&#x2F;d2</td><td>ド（同じ音）</td><td>0</td><td></td></tr><tr><td>増1度&#x2F;短2度</td><td>m2&#x2F;A1</td><td>ド♯&#x2F;レ♭</td><td>1</td><td>♭9th</td></tr><tr><td>長2度&#x2F;減3度</td><td>M2&#x2F;d3</td><td>レ&#x2F;ミ♭♭</td><td>2</td><td>9th</td></tr><tr><td>増2度&#x2F;短3度</td><td>m3&#x2F;A2</td><td>レ#&#x2F;ミ♭</td><td>3</td><td>♯9th</td></tr><tr><td>長3度&#x2F;減4度</td><td>M3&#x2F;d4</td><td>ミ&#x2F;ファ♭</td><td>4</td><td></td></tr><tr><td><strong>完全4度</strong>&#x2F;増3度</td><td>P4&#x2F;A3</td><td>ファ&#x2F;ミ♯</td><td>5</td><td>11th</td></tr><tr><td>増4度&#x2F;減5度</td><td>A5&#x2F;d5</td><td>ファ♯&#x2F;ソ♭</td><td>6</td><td>♯11th</td></tr><tr><td><strong>完全5度</strong></td><td>P5</td><td>ソ</td><td>7</td><td></td></tr><tr><td>増5度&#x2F;短6度</td><td>A5&#x2F;m6</td><td>ソ♯&#x2F;ラ♭</td><td>8</td><td>♭13th</td></tr><tr><td>長6度&#x2F;減7度</td><td>M6&#x2F;d7</td><td>ラ&#x2F;シ♭♭</td><td>9</td><td>13th</td></tr><tr><td>短7度</td><td>m7</td><td>ラ♯&#x2F;シ♭</td><td>10</td><td></td></tr><tr><td>長7度</td><td>M7</td><td>シ</td><td>11</td><td></td></tr><tr><td><strong>完全8度</strong></td><td>P8</td><td>ド（オクターブ上）</td><td>12</td><td></td></tr></tbody></table></div><ul><li><strong>P</strong>…パーフェクト（完全）</li><li><strong>M</strong>…メジャー（長）</li><li><strong>m</strong>…マイナー（短）</li><li><strong>A</strong>…オーグメンテッド（増）</li><li><strong>d</strong>…ディミニッシュト（減）</li></ul><p>异名同音(×为##)：</p><p><img src="E:\BlogData\source_imgs\異名同音-鍵盤.png" alt="img"></p>        <h3 id="长短调"   >          <a href="#长短调" class="heading-link"><i class="fas fa-link"></i></a><a href="#长短调" class="headerlink" title="长短调"></a>长短调</h3>      <p>长调：major scale</p><p>短调：miner scale</p><p>通常看三度的音是长三度还是短三度</p>        <h3 id="和声"   >          <a href="#和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声" class="headerlink" title="和声"></a>和声</h3>      <ul><li>Tonic</li><li>Dominant</li><li>Subdominant</li></ul>        <h3 id="冠音"   >          <a href="#冠音" class="heading-link"><i class="fas fa-link"></i></a><a href="#冠音" class="headerlink" title="冠音"></a>冠音</h3>      <p>最高音，大部分情况下是旋律音</p><p><img src="/../_imgs/image-20230829115933572.png" alt="image-20230829115933572"></p><p><img src="/../_imgs/%E3%82%B3%E3%83%BC%E3%83%89%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%AE%E4%B8%BB%E3%81%AA%E4%BB%95%E7%B5%84%E3%81%BF-1024x576.jpg" alt="img"></p>        <h3 id="五度圈"   >          <a href="#五度圈" class="heading-link"><i class="fas fa-link"></i></a><a href="#五度圈" class="headerlink" title="五度圈"></a>五度圈</h3>      <p><img src="/../_imgs/%E4%BA%94%E5%BA%A6%E5%9C%8F-1024x1024.jpg" alt="img"></p>        <h2 id="和声进行"   >          <a href="#和声进行" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声进行" class="headerlink" title="和声进行"></a>和声进行</h2>              <h3 id="cadence-x2F-终止"   >          <a href="#cadence-x2F-终止" class="heading-link"><i class="fas fa-link"></i></a><a href="#cadence-x2F-终止" class="headerlink" title="cadence&#x2F;终止"></a>cadence&#x2F;终止</h3>      <ul><li>Authentic（Ⅴ→Ⅰ）<ul><li>perfect authentic（根音&#x3D;和弦最低音&amp;和弦最高声部为Tonic）</li><li>imperfect authentic</li></ul></li><li>half（→Ⅴ）</li><li>plagal（Ⅳ→Ⅰ）</li><li>deceptive（Ⅴ→Ⅰ以外）</li></ul>        <h3 id="常见和声"   >          <a href="#常见和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见和声" class="headerlink" title="常见和声"></a>常见和声</h3>      <ul><li>丸之内&#x2F;just the two of us</li></ul><p>$$<br>ⅣM7-Ⅲ7-Ⅵm7-Ⅰ7<br>$$</p>        <h1 id="设计声音"   >          <a href="#设计声音" class="heading-link"><i class="fas fa-link"></i></a><a href="#设计声音" class="headerlink" title="设计声音"></a>设计声音</h1>      <ul><li>数学</li><li>物理学</li><li>心理学</li></ul>        <h2 id="物理学部分"   >          <a href="#物理学部分" class="heading-link"><i class="fas fa-link"></i></a><a href="#物理学部分" class="headerlink" title="物理学部分"></a>物理学部分</h2>      <ul><li><p>自由度：物体能够运动的方向的数量（三个平移自由度，三个转动自由度）在声音模型中通常假设仅有一个自由度</p></li><li><p>激励者：把能量带给系统的物体</p></li><li><p>受激：产生振动的物体</p><p>在声音的产生过程中，激励者和受激缺一不可</p></li></ul>        <h3 id="材料"   >          <a href="#材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#材料" class="headerlink" title="材料"></a>材料</h3>      <ul><li>质量</li><li>弹性&#x2F;塑性</li><li>硬度</li><li>密度</li><li>结构与强度</li></ul><p>材料对声音的影响主要体现在质量和弹性两个方面。不同状态(固液气)的物体对声音的传导能力不同</p><p>体积模量K（E：杨氏模量；v：泊松比）：<br>$$<br>K&#x3D;\frac{E}{3(1-2v)}<br>$$</p>        <h3 id="波"   >          <a href="#波" class="heading-link"><i class="fas fa-link"></i></a><a href="#波" class="headerlink" title="波"></a>波</h3>      <ul><li><p>横波&#x2F;纵波&#x2F;扭转波</p></li><li><p>速度（质点速度，相速度，群速度）</p></li><li><p>幅度</p></li></ul><p><strong>声速</strong>（相速度phase velocity）c近似公式（K：杨氏模量；ρ：密度）：<br>$$<br>c&#x3D;\sqrt{\frac{K}{ρ}}<br>$$</p><p>$$<br>c&#x3D;fλ<br>$$</p><p><strong>群速度</strong>：取决于介质属性的常量，通常与相速度相等。当相速度和群速度不完全相等时，该介质弥散（dispersive），如水波冲刷海岸的现象。</p>        <h3 id="界面"   >          <a href="#界面" class="heading-link"><i class="fas fa-link"></i></a><a href="#界面" class="headerlink" title="界面"></a>界面</h3>      <p>当界面的两种物质相差极大时，声音中有很大一部分会被反射，很小一部分会传导。对于水和空气，这个比率约为99%。</p><p>入射角会影响反射波的强度，在布鲁斯特角，反射波会消失。</p><p><strong>固体界面处的弯曲波相位</strong>：对于坚硬界面的材料，波会反相反射；对于弹性界面的材料，波会同相反射。</p><p>反射波与入射波具有相同的波长和波速，但幅度较小。</p><p>被传导的波在新的介质中有新的波长，频率不变。</p><p><strong>驻波</strong>：持续不断的行波与反射波叠加干涉，形成驻波（在吉他中，第一个是基音，后面的是泛音）</p><p><img src="/../_imgs/image-20230901105905563.png" alt="image-20230901105905563"></p>        <h3 id="模拟（analogue）"   >          <a href="#模拟（analogue）" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟（analogue）" class="headerlink" title="模拟（analogue）"></a>模拟（analogue）</h3>      <p>借由其他类似系统进行推理，达到连续测量的目的。在声音设计中主要考虑“电，力，声”三种系统。</p><ul><li><p>流动：</p><ul><li><p>电学：电流</p></li><li><p>力学：速度</p></li><li><p>声学：体积流动</p><p><img src="/../_imgs/image-20230901115743564.png" alt="image-20230901115743564"></p></li></ul></li><li><p>质量：</p><ul><li><p>电学：电感</p></li><li><p>力学：质量</p></li><li><p>声学：声质量 <em>inertance</em></p><blockquote><p>（流动介质的质量除以波阵面的横截面积）</p></blockquote></li></ul></li><li><p>阻抗：</p><ul><li><p>电学：电阻</p></li><li><p>力学：摩擦</p></li><li><p>声学：粘滞力，介质的耗散属性</p><blockquote><p>（波阵面上的声波压强除以体积速度）</p></blockquote><p><img src="/../_imgs/image-20230901115909642.png" alt="image-20230901115909642"></p></li></ul></li><li><p>容抗</p><ul><li>电学：电容</li><li>力学：柔度，硬度的倒数</li><li>声学：声容，与所施压强的变化相抗的量<br>  <img src="/../_imgs/image-20230901115803986.png" alt="image-20230901115803986"></li></ul></li></ul><p><strong>将被敲打的弦的类比系统</strong>：</p><p><img src="/../_imgs/image-20230901120723041.png" alt="image-20230901120723041"></p><p><strong>对钟和小提琴的entity-action解构</strong>：</p><p><img src="/../_imgs/image-20230901120828572.png" alt="image-20230901120828572"></p>        <h3 id="振动"   >          <a href="#振动" class="heading-link"><i class="fas fa-link"></i></a><a href="#振动" class="headerlink" title="振动"></a>振动</h3>      <p>周期波听起来像有固定的音高，而非周期波听起来很复杂或类似噪声。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">
-        &lt;h1 id=&quot;基本乐理&quot;   &gt;
-          &lt;a href=&quot;#基本乐理&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#基本乐理&quot; class=&quot;headerlink&quot; </summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title></title>
@@ -539,6 +517,35 @@
     
     <summary type="html">&lt;h1 id=&quot;Blocks&quot;   &gt;
           &lt;a href=&quot;#Blocks&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#Blocks&quot; class=&quot;headerlink&quot; title=&quot;Blocks&quot;&gt;&lt;/a&gt;Blocks&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="游戏制作" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/"/>
+    
+    <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
+    
+    
+    <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+    <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Forge1.18-本地化</title>
+    <link href="https://lzmustb.github.io/2022/05/06/my-forge-learning-localization/"/>
+    <id>https://lzmustb.github.io/2022/05/06/my-forge-learning-localization/</id>
+    <published>2022-05-06T07:51:08.000Z</published>
+    <updated>2022-05-19T00:01:05.089Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="Internationalization-and-localization"   >          <a href="#Internationalization-and-localization" class="heading-link"><i class="fas fa-link"></i></a><a href="#Internationalization-and-localization" class="headerlink" title="Internationalization and localization"></a>Internationalization and localization</h1>      <p>internationalization简称i18n，是一种让代码能够在不同语言下生效的设计。Localization则是将显示文字适应用户语言的过程。</p><span id="more"></span><p>i18n通过<em>translation keys</em>实现。translation key是一个字符串，用于识别一块可显示的文字，例如<code>block.minecraft.dirt</code>是Dirt block的translation key。</p>        <h2 id="Language-files"   >          <a href="#Language-files" class="heading-link"><i class="fas fa-link"></i></a><a href="#Language-files" class="headerlink" title="Language files"></a>Language files</h2>      <p>位于<code>assets/[namespace]/lang/[locale].json</code><br>例如<code>examplemod</code>的英文翻译位于<code>assets/examplemod/lang/en_us.json</code>。<br>翻译文件必须用UTF-8编码。</p>        <h2 id="Usage-with-Blocks-and-Items"   >          <a href="#Usage-with-Blocks-and-Items" class="heading-link"><i class="fas fa-link"></i></a><a href="#Usage-with-Blocks-and-Items" class="headerlink" title="Usage with Blocks and Items"></a>Usage with Blocks and Items</h2>      <p>方块，道具以及一些其他MC中的类已经提供了translation keys。这些translation keys可以通过重写<code>@getDescriptionId</code>定义。<em>Item also has</em><code>#getDescriptionId(ItemStack)</code> <em>which can be overridden to provide different translation keys depending on ItemStack NBT.</em></p><p><code>#getDescriptionId</code>默认返回<code>block</code>或<code>item</code>，例如，一个ID为<code>examplemod:example_item</code>的道具，其language file为：</p><figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;item.examplemod.example_item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Example Item Name&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>        <h2 id="Localization-methods"   >          <a href="#Localization-methods" class="heading-link"><i class="fas fa-link"></i></a><a href="#Localization-methods" class="headerlink" title="Localization methods"></a>Localization methods</h2>      <p><span class="exturl"><a class="exturl__link"   href="https://mcforge.readthedocs.io/en/1.18.x/concepts/internationalization/#localization-methods" >暂略</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Internationalization-and-localization&quot;   &gt;
+          &lt;a href=&quot;#Internationalization-and-localization&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#Internationalization-and-localization&quot; class=&quot;headerlink&quot; title=&quot;Internationalization and localization&quot;&gt;&lt;/a&gt;Internationalization and localization&lt;/h1&gt;
+      &lt;p&gt;internationalization简称i18n，是一种让代码能够在不同语言下生效的设计。Localization则是将显示文字适应用户语言的过程。&lt;/p&gt;</summary>
     
     
     
