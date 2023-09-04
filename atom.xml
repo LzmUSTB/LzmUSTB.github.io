@@ -6,7 +6,7 @@
   <link href="https://lzmustb.github.io/atom.xml" rel="self"/>
   
   <link href="https://lzmustb.github.io/"/>
-  <updated>2023-09-01T08:54:03.629Z</updated>
+  <updated>2023-09-04T06:15:09.867Z</updated>
   <id>https://lzmustb.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://lzmustb.github.io/2023/07/19/my-music-note/"/>
     <id>https://lzmustb.github.io/2023/07/19/my-music-note/</id>
     <published>2023-07-19T14:52:54.000Z</published>
-    <updated>2023-09-01T08:54:03.629Z</updated>
+    <updated>2023-09-04T06:15:09.867Z</updated>
     
-    <content type="html"><![CDATA[        <h2 id="声音的物理性质"   >          <a href="#声音的物理性质" class="heading-link"><i class="fas fa-link"></i></a><a href="#声音的物理性质" class="headerlink" title="声音的物理性质"></a>声音的物理性质</h2>              <h3 id="泛音-倍音，倍频"   >          <a href="#泛音-倍音，倍频" class="heading-link"><i class="fas fa-link"></i></a><a href="#泛音-倍音，倍频" class="headerlink" title="泛音(倍音，倍频)"></a>泛音(倍音，倍频)</h3>      <p><img src="/../images/image-20230901164632960.png" alt="image-20230901164632960"></p><p>整数次谐波&#x3D;&gt;基音，倍音<br><img src="/../images/image-20230901164700405.png" alt="image-20230901164700405"></p><p>和弦和单音在物理学意义上没有区别<br><img src="/../images/image-20230901164715003.png" alt="image-20230901164715003"></p>        <h2 id="音乐基础"   >          <a href="#音乐基础" class="heading-link"><i class="fas fa-link"></i></a><a href="#音乐基础" class="headerlink" title="音乐基础"></a>音乐基础</h2>              <h3 id="音程"   >          <a href="#音程" class="heading-link"><i class="fas fa-link"></i></a><a href="#音程" class="headerlink" title="音程"></a>音程</h3>      <div class="table-container"><table><thead><tr><th><strong>度数名</strong></th><th><strong>英語</strong></th><th><strong>例（ドの場合※）</strong></th><th><strong>半音の数</strong></th><th><strong>テンションとして見た場合</strong></th></tr></thead><tbody><tr><td><strong>完全1度</strong></td><td>P1&#x2F;d2</td><td>ド（同じ音）</td><td>0</td><td></td></tr><tr><td>増1度&#x2F;短2度</td><td>m2&#x2F;A1</td><td>ド♯&#x2F;レ♭</td><td>1</td><td>♭9th</td></tr><tr><td>長2度&#x2F;減3度</td><td>M2&#x2F;d3</td><td>レ&#x2F;ミ♭♭</td><td>2</td><td>9th</td></tr><tr><td>増2度&#x2F;短3度</td><td>m3&#x2F;A2</td><td>レ#&#x2F;ミ♭</td><td>3</td><td>♯9th</td></tr><tr><td>長3度&#x2F;減4度</td><td>M3&#x2F;d4</td><td>ミ&#x2F;ファ♭</td><td>4</td><td></td></tr><tr><td><strong>完全4度</strong>&#x2F;増3度</td><td>P4&#x2F;A3</td><td>ファ&#x2F;ミ♯</td><td>5</td><td>11th</td></tr><tr><td>増4度&#x2F;減5度</td><td>A5&#x2F;d5</td><td>ファ♯&#x2F;ソ♭</td><td>6</td><td>♯11th</td></tr><tr><td><strong>完全5度</strong></td><td>P5</td><td>ソ</td><td>7</td><td></td></tr><tr><td>増5度&#x2F;短6度</td><td>A5&#x2F;m6</td><td>ソ♯&#x2F;ラ♭</td><td>8</td><td>♭13th</td></tr><tr><td>長6度&#x2F;減7度</td><td>M6&#x2F;d7</td><td>ラ&#x2F;シ♭♭</td><td>9</td><td>13th</td></tr><tr><td>短7度</td><td>m7</td><td>ラ♯&#x2F;シ♭</td><td>10</td><td></td></tr><tr><td>長7度</td><td>M7</td><td>シ</td><td>11</td><td></td></tr><tr><td><strong>完全8度</strong></td><td>P8</td><td>ド（オクターブ上）</td><td>12</td><td></td></tr></tbody></table></div><ul><li><strong>P</strong>…パーフェクト（完全）</li><li><strong>M</strong>…メジャー（長）</li><li><strong>m</strong>…マイナー（短）</li><li><strong>A</strong>…オーグメンテッド（増）</li><li><strong>d</strong>…ディミニッシュト（減）</li></ul><p>异名同音(×为##)：<br><img src="/../images/image-20230901164732238.png" alt="image-20230901164732238"></p>        <h3 id="长短调"   >          <a href="#长短调" class="heading-link"><i class="fas fa-link"></i></a><a href="#长短调" class="headerlink" title="长短调"></a>长短调</h3>      <p>长调：major scale</p><p>短调：miner scale</p><p>通常看三度的音是长三度还是短三度</p>        <h3 id="和声"   >          <a href="#和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声" class="headerlink" title="和声"></a>和声</h3>      <ul><li>Tonic</li><li>Dominant</li><li>Subdominant</li></ul>        <h3 id="冠音"   >          <a href="#冠音" class="heading-link"><i class="fas fa-link"></i></a><a href="#冠音" class="headerlink" title="冠音"></a>冠音</h3>      <p>最高音，大部分情况下是旋律音</p><p><img src="/../images/image-20230829115933572.png" alt="image-20230829115933572"></p><p><img src="/../images/image-20230901164746538.png" alt="image-20230901164746538"></p>        <h3 id="五度圈"   >          <a href="#五度圈" class="heading-link"><i class="fas fa-link"></i></a><a href="#五度圈" class="headerlink" title="五度圈"></a>五度圈</h3>      <p><img src="/../images/image-20230901164757365.png" alt="image-20230901164757365"></p>        <h2 id="和声进行"   >          <a href="#和声进行" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声进行" class="headerlink" title="和声进行"></a>和声进行</h2>              <h3 id="cadence-x2F-终止"   >          <a href="#cadence-x2F-终止" class="heading-link"><i class="fas fa-link"></i></a><a href="#cadence-x2F-终止" class="headerlink" title="cadence&#x2F;终止"></a>cadence&#x2F;终止</h3>      <ul><li>Authentic（Ⅴ→Ⅰ）<ul><li>perfect authentic（根音&#x3D;和弦最低音&amp;和弦最高声部为Tonic）</li><li>imperfect authentic</li></ul></li><li>half（→Ⅴ）</li><li>plagal（Ⅳ→Ⅰ）</li><li>deceptive（Ⅴ→Ⅰ以外）</li></ul>        <h3 id="常见和声"   >          <a href="#常见和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见和声" class="headerlink" title="常见和声"></a>常见和声</h3>      <ul><li>丸之内&#x2F;just the two of us</li></ul><p>$$<br>ⅣM7-Ⅲ7-Ⅵm7-Ⅰ7<br>$$</p>        <h1 id="设计声音"   >          <a href="#设计声音" class="heading-link"><i class="fas fa-link"></i></a><a href="#设计声音" class="headerlink" title="设计声音"></a>设计声音</h1>              <h2 id="物理学系统"   >          <a href="#物理学系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#物理学系统" class="headerlink" title="物理学系统"></a>物理学系统</h2>      <ul><li><p>自由度：物体能够运动的方向的数量（三个平移自由度，三个转动自由度）在声音模型中通常假设仅有一个自由度</p></li><li><p>激励者：把能量带给系统的物体</p></li><li><p>受激：产生振动的物体</p><p>在声音的产生过程中，激励者和受激缺一不可</p></li></ul>        <h3 id="材料"   >          <a href="#材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#材料" class="headerlink" title="材料"></a>材料</h3>      <ul><li>质量</li><li>弹性&#x2F;塑性</li><li>硬度</li><li>密度</li><li>结构与强度</li></ul><p>材料对声音的影响主要体现在质量和弹性两个方面。不同状态(固液气)的物体对声音的传导能力不同</p><p>体积模量K（E：杨氏模量；v：泊松比）：<br>$$<br>K&#x3D;\frac{E}{3(1-2v)}<br>$$</p>        <h3 id="波"   >          <a href="#波" class="heading-link"><i class="fas fa-link"></i></a><a href="#波" class="headerlink" title="波"></a>波</h3>      <ul><li><p>横波&#x2F;纵波&#x2F;扭转波</p></li><li><p>速度（质点速度，相速度，群速度）</p></li><li><p>幅度</p></li></ul><p><strong>声速</strong>（相速度phase velocity）c近似公式（K：杨氏模量；ρ：密度）：<br>$$<br>c&#x3D;\sqrt{\frac{K}{ρ}}<br>$$</p><p>$$<br>c&#x3D;fλ<br>$$</p><p><strong>群速度</strong>：取决于介质属性的常量，通常与相速度相等。当相速度和群速度不完全相等时，该介质弥散（dispersive），如水波冲刷海岸的现象。</p>        <h3 id="界面"   >          <a href="#界面" class="heading-link"><i class="fas fa-link"></i></a><a href="#界面" class="headerlink" title="界面"></a>界面</h3>      <p>当界面的两种物质相差极大时，声音中有很大一部分会被反射，很小一部分会传导。对于水和空气，这个比率约为99%。</p><p>入射角会影响反射波的强度，在布鲁斯特角，反射波会消失。</p><p><strong>固体界面处的弯曲波相位</strong>：对于坚硬界面的材料，波会反相反射；对于弹性界面的材料，波会同相反射。</p><p>反射波与入射波具有相同的波长和波速，但幅度较小。</p><p>被传导的波在新的介质中有新的波长，频率不变。</p><p><strong>驻波</strong>：持续不断的行波与反射波叠加干涉，形成驻波（在吉他中，第一个是基音，后面的是泛音）</p><p><img src="/../images/image-20230901105905563.png" alt="image-20230901105905563"></p>        <h3 id="模拟（analogue）"   >          <a href="#模拟（analogue）" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟（analogue）" class="headerlink" title="模拟（analogue）"></a>模拟（analogue）</h3>      <p>借由其他类似系统进行推理，达到连续测量的目的。在声音设计中主要考虑“电，力，声”三种系统。</p><ul><li><p>流动：</p><ul><li><p>电学：电流</p></li><li><p>力学：速度</p></li><li><p>声学：体积流动</p><p><img src="/../images/image-20230901115743564.png" alt="image-20230901115743564"></p></li></ul></li><li><p>质量：</p><ul><li><p>电学：电感</p></li><li><p>力学：质量</p></li><li><p>声学：声质量 <em>inertance</em></p><blockquote><p>（流动介质的质量除以波阵面的横截面积）</p></blockquote></li></ul></li><li><p>阻抗：</p><ul><li><p>电学：电阻</p></li><li><p>力学：摩擦</p></li><li><p>声学：粘滞力，介质的耗散属性</p><blockquote><p>（波阵面上的声波压强除以体积速度）</p></blockquote><p><img src="/../images/image-20230901115909642.png" alt="image-20230901115909642"></p></li></ul></li><li><p>容抗</p><ul><li>电学：电容</li><li>力学：柔度，硬度的倒数</li><li>声学：声容，与所施压强的变化相抗的量<br>  <img src="/../images/image-20230901115803986.png" alt="image-20230901115803986"></li></ul></li></ul><p><strong>将被敲打的弦的类比系统</strong>：</p><p><img src="/../images/image-20230901120723041.png" alt="image-20230901120723041"></p><p><strong>对钟和小提琴的entity-action解构</strong>：</p><p><img src="/../images/image-20230901120828572.png" alt="image-20230901120828572"></p>        <h3 id="振动"   >          <a href="#振动" class="heading-link"><i class="fas fa-link"></i></a><a href="#振动" class="headerlink" title="振动"></a>振动</h3>      <p>周期波听起来像有固定的音高，而非周期波听起来很复杂或类似噪声。</p><ul><li><p>弛豫振荡relaxation oscillator</p></li><li><p>简谐振荡</p></li></ul><p>弦的固有频率：(L:长度；T:张力；mu:单位长度质量)<br>$$<br>f&#x3D;\frac{1}{2L}\sqrt{\frac{T}{m_u}}<br>$$<br>简单几何形状的物体大致可以分为两类：能够自由振动的物体，和在张力下的物体。琴弦，鼓皮会以与它们所受张力有关的频率振动。</p>        <h4 id="受激振荡与谐振"   >          <a href="#受激振荡与谐振" class="heading-link"><i class="fas fa-link"></i></a><a href="#受激振荡与谐振" class="headerlink" title="受激振荡与谐振"></a>受激振荡与谐振</h4>      <p>共振系统在不同阻尼下的响应：</p><p><img src="/../images/image-20230901145420644.png" alt="image-20230901145420644"></p><p>将驱动振荡器看作是对能量流动的阻抗，随着驱动频率远离固有频率，能量的转移越来越小。</p><p>受激系统的行为就像是<strong>滤波器(filter)<strong>。当系统阻尼较小时，系统具有</strong>高谐振，窄带宽</strong>的特性，而受到强烈阻尼的系统具有<strong>低谐振，宽带宽</strong>的特性。</p>        <h2 id="声学系统"   >          <a href="#声学系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#声学系统" class="headerlink" title="声学系统"></a>声学系统</h2>      <p>在声学中我们仅考虑<strong>纵波</strong>，总体积的行为。</p><p>空气中的声速方程：<br>$$<br>c&#x3D;\sqrt{\frac{γp}{ρ}}&#x3D;\sqrt{\frac{γRT}{M}}<br>$$<br>R：摩尔气体常数，T：绝对温度，M：摩尔质量</p>        <h3 id="声压级-amp-声强级"   >          <a href="#声压级-amp-声强级" class="heading-link"><i class="fas fa-link"></i></a><a href="#声压级-amp-声强级" class="headerlink" title="声压级&amp;声强级"></a>声压级&amp;声强级</h3>      <p>声压p是单位面积上的一个力，波的峰值声压反比于距离，所以若与声源相距为r，则峰值按1&#x2F;r减少。</p><p>声压级（Sound pressure level）是一个以分贝为单位的比率，设20μN&#x2F;m^2^作为声学上最小可测量值，则：<br>$$<br>SPL&#x3D;20log_{10}\frac{p(N&#x2F;m^2)}{2*10^{-5}}<br>$$<br>※声波的声压级不会超过194dB，这个值意味着疏部压强为真空压强。（在爆炸和闪电中存在压强大于194dB的单极性脉冲）</p><hr><p>声音强度I是单位面积上的功率，用W(瓦特)&#x2F;m^2表示，它正比于声压级的平方。</p><p>对于谐波平面波：（ρ：密度，c：相速度）<br>$$<br>I&#x3D;±\frac{p^2}{2ρc}<br>$$<br>声强级(sound intensity level)是以分贝为单位的比率，以10^-12^W&#x2F;m^2^作为参考值：<br>$$<br>SIL&#x3D;10log_{10}{\frac{I}{10^{-12}}}<br>$$</p>        <h3 id="位置与相干性"   >          <a href="#位置与相干性" class="heading-link"><i class="fas fa-link"></i></a><a href="#位置与相干性" class="headerlink" title="位置与相干性"></a>位置与相干性</h3>      <p>当观察者听到来自不同声源（或是反射波）的<strong>相关</strong>声音时，声音可能被加强或减小。当声源移动，则声音不断地加强或对消，观察者会听到一个扫频的陷波滤波效果。</p><p><img src="/../images/image-20230901153530820.png" alt="image-20230901153530820"></p><p>如果各个声源相似但由单独的机制产生（如合唱，一团蜜蜂）那么声源之间不具有<strong>相关性</strong>。</p><p>对于大量的声源集合，相关与否会导致观察到的平均幅度上的显著差异：<br>$$<br>A_{相关}&#x3D;A_a+A_b+A_c\cdots\<br>A_{不相关}&#x3D;\sqrtNaN<br>$$</p>        <h3 id="衰减"   >          <a href="#衰减" class="heading-link"><i class="fas fa-link"></i></a><a href="#衰减" class="headerlink" title="衰减"></a>衰减</h3>              <h4 id="距离导致的几何损耗"   >          <a href="#距离导致的几何损耗" class="heading-link"><i class="fas fa-link"></i></a><a href="#距离导致的几何损耗" class="headerlink" title="距离导致的几何损耗"></a>距离导致的几何损耗</h4>      <p><img src="/../images/image-20230901160653650.png" alt="image-20230901160653650"></p><p>对于圆柱模型（琴弦，或是繁忙的公路），辐射功率的耗散正比于距离。</p><p>对于球模型，功率耗散正比于距离的平方。</p>        <h4 id="吸收导致的能量损耗"   >          <a href="#吸收导致的能量损耗" class="heading-link"><i class="fas fa-link"></i></a><a href="#吸收导致的能量损耗" class="headerlink" title="吸收导致的能量损耗"></a>吸收导致的能量损耗</h4>      <p>声音频率越高，吸收损耗越大（斯托克斯定律）</p><p>衰减α：(η：粘滞度)<br>$$<br>α&#x3D;\frac{2η2\pi\f^2}{3ρc^3}(Np&#x2F;m)\ *8.685889\rightarrow(dB&#x2F;m)<br>$$</p>]]></content>
+    <content type="html"><![CDATA[        <h2 id="声音的物理性质"   >          <a href="#声音的物理性质" class="heading-link"><i class="fas fa-link"></i></a><a href="#声音的物理性质" class="headerlink" title="声音的物理性质"></a>声音的物理性质</h2>              <h3 id="泛音-倍音，倍频"   >          <a href="#泛音-倍音，倍频" class="heading-link"><i class="fas fa-link"></i></a><a href="#泛音-倍音，倍频" class="headerlink" title="泛音(倍音，倍频)"></a>泛音(倍音，倍频)</h3>      <p><img src="/../images/image-20230901164632960.png" alt="image-20230901164632960"></p><p>整数次谐波&#x3D;&gt;基音，倍音<br><img src="/../images/image-20230901164700405.png" alt="image-20230901164700405"></p><p>和弦和单音在物理学意义上没有区别<br><img src="/../images/image-20230901164715003.png" alt="image-20230901164715003"></p>        <h2 id="音乐基础"   >          <a href="#音乐基础" class="heading-link"><i class="fas fa-link"></i></a><a href="#音乐基础" class="headerlink" title="音乐基础"></a>音乐基础</h2>              <h3 id="音程"   >          <a href="#音程" class="heading-link"><i class="fas fa-link"></i></a><a href="#音程" class="headerlink" title="音程"></a>音程</h3>      <div class="table-container"><table><thead><tr><th><strong>度数名</strong></th><th><strong>英語</strong></th><th><strong>例（ドの場合※）</strong></th><th><strong>半音の数</strong></th><th><strong>テンションとして見た場合</strong></th></tr></thead><tbody><tr><td><strong>完全1度</strong></td><td>P1&#x2F;d2</td><td>ド（同じ音）</td><td>0</td><td></td></tr><tr><td>増1度&#x2F;短2度</td><td>m2&#x2F;A1</td><td>ド♯&#x2F;レ♭</td><td>1</td><td>♭9th</td></tr><tr><td>長2度&#x2F;減3度</td><td>M2&#x2F;d3</td><td>レ&#x2F;ミ♭♭</td><td>2</td><td>9th</td></tr><tr><td>増2度&#x2F;短3度</td><td>m3&#x2F;A2</td><td>レ#&#x2F;ミ♭</td><td>3</td><td>♯9th</td></tr><tr><td>長3度&#x2F;減4度</td><td>M3&#x2F;d4</td><td>ミ&#x2F;ファ♭</td><td>4</td><td></td></tr><tr><td><strong>完全4度</strong>&#x2F;増3度</td><td>P4&#x2F;A3</td><td>ファ&#x2F;ミ♯</td><td>5</td><td>11th</td></tr><tr><td>増4度&#x2F;減5度</td><td>A5&#x2F;d5</td><td>ファ♯&#x2F;ソ♭</td><td>6</td><td>♯11th</td></tr><tr><td><strong>完全5度</strong></td><td>P5</td><td>ソ</td><td>7</td><td></td></tr><tr><td>増5度&#x2F;短6度</td><td>A5&#x2F;m6</td><td>ソ♯&#x2F;ラ♭</td><td>8</td><td>♭13th</td></tr><tr><td>長6度&#x2F;減7度</td><td>M6&#x2F;d7</td><td>ラ&#x2F;シ♭♭</td><td>9</td><td>13th</td></tr><tr><td>短7度</td><td>m7</td><td>ラ♯&#x2F;シ♭</td><td>10</td><td></td></tr><tr><td>長7度</td><td>M7</td><td>シ</td><td>11</td><td></td></tr><tr><td><strong>完全8度</strong></td><td>P8</td><td>ド（オクターブ上）</td><td>12</td><td></td></tr></tbody></table></div><ul><li><strong>P</strong>…パーフェクト（完全）</li><li><strong>M</strong>…メジャー（長）</li><li><strong>m</strong>…マイナー（短）</li><li><strong>A</strong>…オーグメンテッド（増）</li><li><strong>d</strong>…ディミニッシュト（減）</li></ul><p>异名同音(×为##)：<br><img src="/../images/image-20230901164732238.png" alt="image-20230901164732238"></p>        <h3 id="长短调"   >          <a href="#长短调" class="heading-link"><i class="fas fa-link"></i></a><a href="#长短调" class="headerlink" title="长短调"></a>长短调</h3>      <p>长调：major scale</p><p>短调：miner scale</p><p>通常看三度的音是长三度还是短三度</p>        <h3 id="和声"   >          <a href="#和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声" class="headerlink" title="和声"></a>和声</h3>      <ul><li>Tonic</li><li>Dominant</li><li>Subdominant</li></ul>        <h3 id="冠音"   >          <a href="#冠音" class="heading-link"><i class="fas fa-link"></i></a><a href="#冠音" class="headerlink" title="冠音"></a>冠音</h3>      <p>最高音，大部分情况下是旋律音</p><p><img src="/../images/image-20230829115933572.png" alt="image-20230829115933572"></p><p><img src="/../images/image-20230901164746538.png" alt="image-20230901164746538"></p>        <h3 id="五度圈"   >          <a href="#五度圈" class="heading-link"><i class="fas fa-link"></i></a><a href="#五度圈" class="headerlink" title="五度圈"></a>五度圈</h3>      <p><img src="/../images/image-20230901164757365.png" alt="image-20230901164757365"></p>        <h2 id="和声进行"   >          <a href="#和声进行" class="heading-link"><i class="fas fa-link"></i></a><a href="#和声进行" class="headerlink" title="和声进行"></a>和声进行</h2>              <h3 id="cadence-x2F-终止"   >          <a href="#cadence-x2F-终止" class="heading-link"><i class="fas fa-link"></i></a><a href="#cadence-x2F-终止" class="headerlink" title="cadence&#x2F;终止"></a>cadence&#x2F;终止</h3>      <ul><li>Authentic（Ⅴ→Ⅰ）<ul><li>perfect authentic（根音&#x3D;和弦最低音&amp;和弦最高声部为Tonic）</li><li>imperfect authentic</li></ul></li><li>half（→Ⅴ）</li><li>plagal（Ⅳ→Ⅰ）</li><li>deceptive（Ⅴ→Ⅰ以外）</li></ul>        <h3 id="常见和声"   >          <a href="#常见和声" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见和声" class="headerlink" title="常见和声"></a>常见和声</h3>      <ul><li>丸之内&#x2F;just the two of us</li></ul><p>$$<br>ⅣM7-Ⅲ7-Ⅵm7-Ⅰ7<br>$$</p>        <h2 id="人声的范围"   >          <a href="#人声的范围" class="heading-link"><i class="fas fa-link"></i></a><a href="#人声的范围" class="headerlink" title="人声的范围"></a>人声的范围</h2>      <p><img src="/../images/image-20230903194409225.png" alt="image-20230903194409225"></p>        <h2 id="转调"   >          <a href="#转调" class="heading-link"><i class="fas fa-link"></i></a><a href="#转调" class="headerlink" title="转调"></a>转调</h2>      <p><img src="/../images/image-20230903194746090.png" alt="image-20230903194746090"></p>        <h2 id="旋律"   >          <a href="#旋律" class="heading-link"><i class="fas fa-link"></i></a><a href="#旋律" class="headerlink" title="旋律"></a>旋律</h2>      <p><img src="/../images/image-20230903200858730.png" alt="image-20230903200858730"></p>        <h3 id="付点-x2F-切分"   >          <a href="#付点-x2F-切分" class="heading-link"><i class="fas fa-link"></i></a><a href="#付点-x2F-切分" class="headerlink" title="付点&#x2F;切分"></a>付点&#x2F;切分</h3>              <h1 id="设计声音"   >          <a href="#设计声音" class="heading-link"><i class="fas fa-link"></i></a><a href="#设计声音" class="headerlink" title="设计声音"></a>设计声音</h1>              <h2 id="物理学系统"   >          <a href="#物理学系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#物理学系统" class="headerlink" title="物理学系统"></a>物理学系统</h2>      <ul><li><p>自由度：物体能够运动的方向的数量（三个平移自由度，三个转动自由度）在声音模型中通常假设仅有一个自由度</p></li><li><p>激励者：把能量带给系统的物体</p></li><li><p>受激：产生振动的物体</p><p>在声音的产生过程中，激励者和受激缺一不可</p></li></ul>        <h3 id="材料"   >          <a href="#材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#材料" class="headerlink" title="材料"></a>材料</h3>      <ul><li>质量</li><li>弹性&#x2F;塑性</li><li>硬度</li><li>密度</li><li>结构与强度</li></ul><p>材料对声音的影响主要体现在质量和弹性两个方面。不同状态(固液气)的物体对声音的传导能力不同</p><p>体积模量K（E：杨氏模量；v：泊松比）：<br>$$<br>K&#x3D;\frac{E}{3(1-2v)}<br>$$</p>        <h3 id="波"   >          <a href="#波" class="heading-link"><i class="fas fa-link"></i></a><a href="#波" class="headerlink" title="波"></a>波</h3>      <ul><li><p>横波&#x2F;纵波&#x2F;扭转波</p></li><li><p>速度（质点速度，相速度，群速度）</p></li><li><p>幅度</p></li></ul><p><strong>声速</strong>（相速度phase velocity）c近似公式（K：杨氏模量；ρ：密度）：<br>$$<br>c&#x3D;\sqrt{\frac{K}{ρ}}<br>$$</p><p>$$<br>c&#x3D;fλ<br>$$</p><p><strong>群速度</strong>：取决于介质属性的常量，通常与相速度相等。当相速度和群速度不完全相等时，该介质弥散（dispersive），如水波冲刷海岸的现象。</p>        <h3 id="界面"   >          <a href="#界面" class="heading-link"><i class="fas fa-link"></i></a><a href="#界面" class="headerlink" title="界面"></a>界面</h3>      <p>当界面的两种物质相差极大时，声音中有很大一部分会被反射，很小一部分会传导。对于水和空气，这个比率约为99%。</p><p>入射角会影响反射波的强度，在布鲁斯特角，反射波会消失。</p><p><strong>固体界面处的弯曲波相位</strong>：对于坚硬界面的材料，波会反相反射；对于弹性界面的材料，波会同相反射。</p><p>反射波与入射波具有相同的波长和波速，但幅度较小。</p><p>被传导的波在新的介质中有新的波长，频率不变。</p><p><strong>驻波</strong>：持续不断的行波与反射波叠加干涉，形成驻波（在吉他中，第一个是基音，后面的是泛音）</p><p><img src="/../images/image-20230901105905563.png" alt="image-20230901105905563"></p>        <h3 id="模拟（analogue）"   >          <a href="#模拟（analogue）" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟（analogue）" class="headerlink" title="模拟（analogue）"></a>模拟（analogue）</h3>      <p>借由其他类似系统进行推理，达到连续测量的目的。在声音设计中主要考虑“电，力，声”三种系统。</p><ul><li><p>流动：</p><ul><li><p>电学：电流</p></li><li><p>力学：速度</p></li><li><p>声学：体积流动</p><p><img src="/../images/image-20230901115743564.png" alt="image-20230901115743564"></p></li></ul></li><li><p>质量：</p><ul><li><p>电学：电感</p></li><li><p>力学：质量</p></li><li><p>声学：声质量 <em>inertance</em></p><blockquote><p>（流动介质的质量除以波阵面的横截面积）</p></blockquote></li></ul></li><li><p>阻抗：</p><ul><li><p>电学：电阻</p></li><li><p>力学：摩擦</p></li><li><p>声学：粘滞力，介质的耗散属性</p><blockquote><p>（波阵面上的声波压强除以体积速度）</p></blockquote><p><img src="/../images/image-20230901115909642.png" alt="image-20230901115909642"></p></li></ul></li><li><p>容抗</p><ul><li>电学：电容</li><li>力学：柔度，硬度的倒数</li><li>声学：声容，与所施压强的变化相抗的量<br>  <img src="/../images/image-20230901115803986.png" alt="image-20230901115803986"></li></ul></li></ul><p><strong>将被敲打的弦的类比系统</strong>：</p><p><img src="/../images/image-20230901120723041.png" alt="image-20230901120723041"></p><p><strong>对钟和小提琴的entity-action解构</strong>：</p><p><img src="/../images/image-20230901120828572.png" alt="image-20230901120828572"></p>        <h3 id="振动"   >          <a href="#振动" class="heading-link"><i class="fas fa-link"></i></a><a href="#振动" class="headerlink" title="振动"></a>振动</h3>      <p>周期波听起来像有固定的音高，而非周期波听起来很复杂或类似噪声。</p><ul><li><p>弛豫振荡relaxation oscillator</p></li><li><p>简谐振荡</p></li></ul><p>弦的固有频率：(L:长度；T:张力；mu:单位长度质量)<br>$$<br>f&#x3D;\frac{1}{2L}\sqrt{\frac{T}{m_u}}<br>$$<br>简单几何形状的物体大致可以分为两类：能够自由振动的物体，和在张力下的物体。琴弦，鼓皮会以与它们所受张力有关的频率振动。</p>        <h4 id="受激振荡与谐振"   >          <a href="#受激振荡与谐振" class="heading-link"><i class="fas fa-link"></i></a><a href="#受激振荡与谐振" class="headerlink" title="受激振荡与谐振"></a>受激振荡与谐振</h4>      <p>共振系统在不同阻尼下的响应：</p><p><img src="/../images/image-20230901145420644.png" alt="image-20230901145420644"></p><p>将驱动振荡器看作是对能量流动的阻抗，随着驱动频率远离固有频率，能量的转移越来越小。</p><p>受激系统的行为就像是<strong>滤波器(filter)<strong>。当系统阻尼较小时，系统具有</strong>高谐振，窄带宽</strong>的特性，而受到强烈阻尼的系统具有<strong>低谐振，宽带宽</strong>的特性。</p>        <h2 id="声学系统"   >          <a href="#声学系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#声学系统" class="headerlink" title="声学系统"></a>声学系统</h2>      <p>在声学中我们仅考虑<strong>纵波</strong>，总体积的行为。</p><p>空气中的声速方程：<br>$$<br>c&#x3D;\sqrt{\frac{γp}{ρ}}&#x3D;\sqrt{\frac{γRT}{M}}<br>$$<br>R：摩尔气体常数，T：绝对温度，M：摩尔质量</p>        <h3 id="声压级-amp-声强级"   >          <a href="#声压级-amp-声强级" class="heading-link"><i class="fas fa-link"></i></a><a href="#声压级-amp-声强级" class="headerlink" title="声压级&amp;声强级"></a>声压级&amp;声强级</h3>      <p>声压p是单位面积上的一个力，波的峰值声压反比于距离，所以若与声源相距为r，则峰值按1&#x2F;r减少。</p><p>声压级（Sound pressure level）是一个以分贝为单位的比率，设20μN&#x2F;m^2^作为声学上最小可测量值，则：<br>$$<br>SPL&#x3D;20log_{10}\frac{p(N&#x2F;m^2)}{2*10^{-5}}<br>$$<br>※声波的声压级不会超过194dB，这个值意味着疏部压强为真空压强。（在爆炸和闪电中存在压强大于194dB的单极性脉冲）</p><hr><p>声音强度I是单位面积上的功率，用W(瓦特)&#x2F;m^2表示，它正比于声压级的平方。</p><p>对于谐波平面波：（ρ：密度，c：相速度）<br>$$<br>I&#x3D;±\frac{p^2}{2ρc}<br>$$<br>声强级(sound intensity level)是以分贝为单位的比率，以10^-12^W&#x2F;m^2^作为参考值：<br>$$<br>SIL&#x3D;10log_{10}{\frac{I}{10^{-12}}}<br>$$</p>        <h3 id="位置与相干性"   >          <a href="#位置与相干性" class="heading-link"><i class="fas fa-link"></i></a><a href="#位置与相干性" class="headerlink" title="位置与相干性"></a>位置与相干性</h3>      <p>当观察者听到来自不同声源（或是反射波）的<strong>相关</strong>声音时，声音可能被加强或减小。当声源移动，则声音不断地加强或对消，观察者会听到一个扫频的陷波滤波效果。</p><p><img src="/../images/image-20230901153530820.png" alt="image-20230901153530820"></p><p>如果各个声源相似但由单独的机制产生（如合唱，一团蜜蜂）那么声源之间不具有<strong>相关性</strong>。</p><p>对于大量的声源集合，相关与否会导致观察到的平均幅度上的显著差异：<br>$$<br>A_{相关}&#x3D;A_a+A_b+A_c\cdots\<br>A_{不相关}&#x3D;\sqrtNaN<br>$$</p>        <h3 id="衰减"   >          <a href="#衰减" class="heading-link"><i class="fas fa-link"></i></a><a href="#衰减" class="headerlink" title="衰减"></a>衰减</h3>              <h4 id="距离导致的几何损耗"   >          <a href="#距离导致的几何损耗" class="heading-link"><i class="fas fa-link"></i></a><a href="#距离导致的几何损耗" class="headerlink" title="距离导致的几何损耗"></a>距离导致的几何损耗</h4>      <p><img src="/../images/image-20230901160653650.png" alt="image-20230901160653650"></p><p>对于圆柱模型（琴弦，或是繁忙的公路），辐射功率的耗散正比于距离。</p><p>对于球模型，功率耗散正比于距离的平方。</p>        <h4 id="吸收导致的能量损耗"   >          <a href="#吸收导致的能量损耗" class="heading-link"><i class="fas fa-link"></i></a><a href="#吸收导致的能量损耗" class="headerlink" title="吸收导致的能量损耗"></a>吸收导致的能量损耗</h4>      <p>声音频率越高，速度越快，吸收损耗越大（斯托克斯定律）</p><p>衰减α：(η：粘滞度)<br>$$<br>α&#x3D;\frac{2η2\pi\f^2}{3ρc^3}(Np&#x2F;m)\ *8.685889\rightarrow(dB&#x2F;m)<br>$$</p>        <h3 id="传播效应"   >          <a href="#传播效应" class="heading-link"><i class="fas fa-link"></i></a><a href="#传播效应" class="headerlink" title="传播效应"></a>传播效应</h3>      <p>P58补</p><ul><li>反射</li></ul><p>纵向的声波在反射时会保持相同的(压强)相位，我们将听到由直达波和反射波相互叠加所引起的效果，类似的驻波模式图样将出现在房间等声学空间中。<br><img src="/../images/image-20230904131043414.png" alt="image-20230904131043414"></p><ul><li><p>散射</p></li><li><p>弥散</p></li><li><p>折射</p></li><li><p>衍射</p></li></ul>        <h3 id="声学振荡"   >          <a href="#声学振荡" class="heading-link"><i class="fas fa-link"></i></a><a href="#声学振荡" class="headerlink" title="声学振荡"></a>声学振荡</h3>              <h2 id="心理声学"   >          <a href="#心理声学" class="heading-link"><i class="fas fa-link"></i></a><a href="#心理声学" class="headerlink" title="心理声学"></a>心理声学</h2>      <p>人类听觉的频率范围：20~20kHz</p><p>自然声音（语音和音乐）的大部分频率都在300~3kHz之间。</p>        <h3 id="定位"   >          <a href="#定位" class="heading-link"><i class="fas fa-link"></i></a><a href="#定位" class="headerlink" title="定位"></a>定位</h3>      <p>三大规律：</p><ul><li>高频声音比低频声音更容易定位，且声音刚开始的时候比延音更容易定位。</li><li>在户外或自由空间中对声音的定位能力好于在具有大量反射的小房间中的定位能力。</li><li>倾斜头部能获得更好的仰角感知，更容易定位</li></ul>        <h4 id="耳间强度差IID"   >          <a href="#耳间强度差IID" class="heading-link"><i class="fas fa-link"></i></a><a href="#耳间强度差IID" class="headerlink" title="耳间强度差IID"></a>耳间强度差IID</h4>      <p>抵达每只耳朵的相对幅度（即立体声系统中的<strong>声像定位-panning</strong>）</p><p>在频率高于700Hz开始有效，1.5kHz以上时完全工作。</p>        <h4 id="耳间时间差ITD"   >          <a href="#耳间时间差ITD" class="heading-link"><i class="fas fa-link"></i></a><a href="#耳间时间差ITD" class="headerlink" title="耳间时间差ITD"></a>耳间时间差ITD</h4>      <p>声音抵达两只耳朵的时间差值。当多于一个完整波长放到两耳之间（15~25cm），就会引起含糊不清。</p><p>因此耳间时间差对700Hz以下的声音最有效，在1.5kHz以上时无效。</p><p>(r:头部半径；θ：与鼻子方向中线的夹角)<br>$$<br>ITD&#x3D;r\frac{(θ+sinθ)}{c}<br>$$</p>        <h3 id="响度"   >          <a href="#响度" class="heading-link"><i class="fas fa-link"></i></a><a href="#响度" class="headerlink" title="响度"></a>响度</h3>      <p>声音的响度是一个主观数值，单位为sone。</p><p>1sone&#x3D;1kHz的正弦波在40dB SPL的响度。声压级增大10dB SPL，感受到的响度用sone表示会变为原来的2倍。</p><p>对于人耳，同声压级的一些频率比另一些频率听上去会更响，因此人们测量得到了等响度曲线，并定义</p><p>1phon&#x3D;1dB SPL的1kHz纯音</p><p><img src="/../images/image-20230904140147498.png" alt="image-20230904140147498"></p><p>声级表运用“计权滤波器”来补偿频率的相关性，其中A计权标度多用于环境噪声测量，BBC给出的ITU-R468标度用于广播和母带的处理。</p>        <h4 id="时域积分效应"   >          <a href="#时域积分效应" class="heading-link"><i class="fas fa-link"></i></a><a href="#时域积分效应" class="headerlink" title="时域积分效应"></a>时域积分效应</h4>      <p>对于200ms以内的持续时间，通过将声音拉长一些毫秒，就可以使它们具有更大的表观音量。</p>]]></content>
     
     
       
@@ -192,9 +192,9 @@
     <category term="前端" scheme="https://lzmustb.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-    <category term="设计" scheme="https://lzmustb.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="设计" scheme="https://lzmustb.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -266,9 +266,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -289,9 +289,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -312,9 +312,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -340,9 +340,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -370,9 +370,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -398,9 +398,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -430,9 +430,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -459,9 +459,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -487,9 +487,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -519,9 +519,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
@@ -547,9 +547,9 @@
     <category term="从零开始做mc模组" scheme="https://lzmustb.github.io/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%81%9Amc%E6%A8%A1%E7%BB%84/"/>
     
     
-    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
-    
     <category term="编程" scheme="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="游戏" scheme="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="Java" scheme="https://lzmustb.github.io/tags/Java/"/>
     
