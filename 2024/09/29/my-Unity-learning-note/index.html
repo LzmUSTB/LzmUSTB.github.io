@@ -1,0 +1,854 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="Always separate the logic from the visuals in your game objects.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity学习笔记">
+<meta property="og:url" content="https://lzmustb.github.io/2024/09/29/my-Unity-learning-note/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="Always separate the logic from the visuals in your game objects.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20241018165500463.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20241018140338995.png">
+<meta property="article:published_time" content="2024-09-29T02:24:02.000Z">
+<meta property="article:modified_time" content="2024-10-19T13:19:38.384Z">
+<meta property="article:author" content="Lzm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzmustb.github.io/images/image-20241018165500463.png"><title>Unity学习笔记 | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2024/09/29/my-Unity-learning-note/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Unity学习笔记</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-09-29</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.2k</span></span></div></header><div class="post-body"><blockquote>
+<p>Always separate the logic from the visuals in your game objects.</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h1 id="常见问题"   >
+          <a href="#常见问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1>
+      
+        <h2 id="VsCode作为默认编辑器"   >
+          <a href="#VsCode作为默认编辑器" class="heading-link"><i class="fas fa-link"></i></a><a href="#VsCode作为默认编辑器" class="headerlink" title="VsCode作为默认编辑器"></a>VsCode作为默认编辑器</h2>
+      <p><strong>STEP1：</strong>在Package Manager中安装<code>Visual Studio Code Editor</code></p>
+<p><strong>STEP2：</strong>在<code>Edit -&gt; Preferences -&gt; ExternalTools</code>中修改External Script Editor为VsCode后，<strong>在Browse中选到VsCode的exe文件</strong>。</p>
+
+        <h2 id="Animator中使用Trigger的时机"   >
+          <a href="#Animator中使用Trigger的时机" class="heading-link"><i class="fas fa-link"></i></a><a href="#Animator中使用Trigger的时机" class="headerlink" title="Animator中使用Trigger的时机"></a>Animator中使用Trigger的时机</h2>
+      <p>从<code>Any State</code>转到<code>State1</code>时，为了防止<code>State1</code>转到<code>State1</code>，用单次触发的Trigger变量</p>
+
+        <h2 id="打开VsCode后开始下载-NET"   >
+          <a href="#打开VsCode后开始下载-NET" class="heading-link"><i class="fas fa-link"></i></a><a href="#打开VsCode后开始下载-NET" class="headerlink" title="打开VsCode后开始下载.NET"></a>打开VsCode后开始下载.NET</h2>
+      <p>在settings.json中加上以下内容</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;dotnetAcquisitionExtension.existingDotnetPath&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;extensionId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ms-dotnettools.csharp&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\dotnet\\dotnet.exe&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;extensionId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;visualstudiotoolsforunity.vstuc&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\dotnet\\dotnet.exe&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="Inspector-标签"   >
+          <a href="#Inspector-标签" class="heading-link"><i class="fas fa-link"></i></a><a href="#Inspector-标签" class="headerlink" title="Inspector 标签"></a>Inspector 标签</h1>
+      <p><code>HideInInspector</code>：使变量在检视器中不可见</p>
+<p><code>ReadOnly</code>：使变量在检视器中不可编辑</p>
+<p><code>DefaultExecutionOrder(NUMBER)</code>：修改脚本的优先级</p>
+<p><code>RuntimeInitializeOnLoadMethod</code>：让脚本的静态方法成为入口方法，并在所有脚本的Awake()之前执行</p>
+<p><code>Range(0,100)</code>：限制参数范围</p>
+<p><code>Tooptip(&quot;提示&quot;)</code>：鼠标悬浮提示</p>
+
+        <h2 id="序列化"   >
+          <a href="#序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2>
+      <p><code>System.Serializable</code>：序列化一个类</p>
+<p><code>System.NonSerialized</code>：表示属性不参与序列化</p>
+<p><code>SerializeField</code>：让私有属性参与序列化</p>
+<p><code>SerializeReference</code>：序列化一个引用</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">System.Serializable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Data</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> a; <span class="comment">//序列化</span></span><br><span class="line">    [<span class="meta">System.NonSerialized</span>] </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> b; <span class="comment">//不序列化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">SerializeField</span>]</span><br><span class="line"><span class="keyword">private</span> Data data; <span class="comment">//序列化</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Header"   >
+          <a href="#Header" class="heading-link"><i class="fas fa-link"></i></a><a href="#Header" class="headerlink" title="Header"></a>Header</h2>
+      <p><code>Header(&quot;name&quot;)</code>：在面板中添加标记，方便查看。</p>
+
+        <h2 id="强绑定脚本"   >
+          <a href="#强绑定脚本" class="heading-link"><i class="fas fa-link"></i></a><a href="#强绑定脚本" class="headerlink" title="强绑定脚本"></a>强绑定脚本</h2>
+      <p><code>RequireComponent(typeof(&quot;类名&quot;),typeof(&quot;...&quot;))</code></p>
+<p>自动导入关联的脚本，并且限制手动无法删除依赖的脚本</p>
+
+        <h1 id="脚本生命周期"   >
+          <a href="#脚本生命周期" class="heading-link"><i class="fas fa-link"></i></a><a href="#脚本生命周期" class="headerlink" title="脚本生命周期"></a>脚本生命周期</h1>
+      
+        <h2 id="脚本的执行顺序"   >
+          <a href="#脚本的执行顺序" class="heading-link"><i class="fas fa-link"></i></a><a href="#脚本的执行顺序" class="headerlink" title="脚本的执行顺序"></a>脚本的执行顺序</h2>
+      <p>在<code>ScriptExecution Order</code>中可以设置脚本的执行顺序，数值越小越先执行。</p>
+<p>※Unity在执行生命周期方法时要通过遍历找到所有脚本，然后反射调用每个脚本的方法，因此<strong>脚本绑定越多，执行效率越低</strong>。</p>
+<p>※不要在脚本内留下<strong>空的</strong>生命周期方法。</p>
+
+        <h2 id="初始化"   >
+          <a href="#初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th>执行时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Awake()</td>
+<td>脚本被首次初始化时</td>
+</tr>
+<tr>
+<td>OnEnable()</td>
+<td>每当脚本被启动(勾选)时</td>
+</tr>
+<tr>
+<td>Reset()</td>
+<td>只在编辑模式下执行</td>
+</tr>
+<tr>
+<td>Start()</td>
+<td>在所有Awake()执行完后的下一帧执行</td>
+</tr>
+</tbody></table></div>
+<p>在<code>Awake()</code>中初始化<strong>脚本内</strong>数据，在<code>start()</code>中访问<strong>脚本外或其他脚本</strong>数据。</p>
+<p><code>Awake()</code>和<code>OnEnable()</code>在第0帧执行，<code>start()</code>和<code>Update()等</code>在第一帧执行。</p>
+
+        <h2 id="循环"   >
+          <a href="#循环" class="heading-link"><i class="fas fa-link"></i></a><a href="#循环" class="headerlink" title="循环"></a>循环</h2>
+      
+        <h3 id="固定更新"   >
+          <a href="#固定更新" class="heading-link"><i class="fas fa-link"></i></a><a href="#固定更新" class="headerlink" title="固定更新"></a>固定更新</h3>
+      <p>对帧率有稳定要求的地方使用，如动画系统，物理系统。<code>FixedUpdate()</code>依赖于每帧执行的<code>Update()</code>，如果帧率不稳定，<code>FixedUpdate()</code>可能在一帧里执行多次。</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FixedUpdate()</td>
+<td>默认每0.02s调用一次，在<code>TimeManager -&gt; Fixed Timestep</code>中修改</td>
+</tr>
+<tr>
+<td>内部动画更新</td>
+<td></td>
+</tr>
+<tr>
+<td>内部物理更新</td>
+<td></td>
+</tr>
+<tr>
+<td>OnTriggerXXX</td>
+<td>碰撞的回调事件</td>
+</tr>
+<tr>
+<td>OnCollisioinXXX</td>
+<td></td>
+</tr>
+<tr>
+<td>yield <code>WaitForFixedUpdate</code></td>
+<td>协程回调，表示：<em>等待下一个FixedUpdate()执行完毕</em></td>
+</tr>
+</tbody></table></div>
+
+        <h3 id="逻辑更新"   >
+          <a href="#逻辑更新" class="heading-link"><i class="fas fa-link"></i></a><a href="#逻辑更新" class="headerlink" title="逻辑更新"></a>逻辑更新</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Update()</td>
+<td></td>
+</tr>
+<tr>
+<td>yield <code>null</code> <code>WaitForSeconds</code> <code>WWW</code> <code>StartCoroutine</code></td>
+<td>部分协程回调</td>
+</tr>
+<tr>
+<td>动画系统的每帧更新，内部逻辑</td>
+<td></td>
+</tr>
+<tr>
+<td>Late Update()</td>
+<td></td>
+</tr>
+</tbody></table></div>
+
+        <h3 id="场景渲染"   >
+          <a href="#场景渲染" class="heading-link"><i class="fas fa-link"></i></a><a href="#场景渲染" class="headerlink" title="场景渲染"></a>场景渲染</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OnPreCull</td>
+<td>场景被摄像机裁剪之前</td>
+</tr>
+<tr>
+<td>OnWillRenderObject</td>
+<td>物体对当前摄像机可见时</td>
+</tr>
+<tr>
+<td>OnBecameVisible</td>
+<td>物体对任意摄像机可见时</td>
+</tr>
+<tr>
+<td>OnBecameInvisible</td>
+<td>物体对所有摄像机都不可见时</td>
+</tr>
+<tr>
+<td>OnPreRender</td>
+<td>摄像机开始渲染场景前</td>
+</tr>
+<tr>
+<td>OnRenderObject</td>
+<td>摄像机开始渲染场景后</td>
+</tr>
+<tr>
+<td>OnPostRender</td>
+<td>摄像机完成渲染场景后</td>
+</tr>
+<tr>
+<td>OnRenderImage</td>
+<td>全部渲染完毕后</td>
+</tr>
+</tbody></table></div>
+
+        <h3 id="编辑器UI更新"   >
+          <a href="#编辑器UI更新" class="heading-link"><i class="fas fa-link"></i></a><a href="#编辑器UI更新" class="headerlink" title="编辑器UI更新"></a>编辑器UI更新</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OnDrawGizmos</td>
+<td><code>OnDraw...</code>系列API调用</td>
+</tr>
+<tr>
+<td>OnGUI</td>
+<td>早期制作界面的接口</td>
+</tr>
+<tr>
+<td>yield <code>WaitForEndOfFrame</code></td>
+<td></td>
+</tr>
+<tr>
+<td>OnApplicationPause</td>
+<td></td>
+</tr>
+</tbody></table></div>
+
+        <h2 id="销毁"   >
+          <a href="#销毁" class="heading-link"><i class="fas fa-link"></i></a><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">执行顺序</th>
+<th>执行时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">OnApplicationQuit()</td>
+<td>程序退出时</td>
+</tr>
+<tr>
+<td align="left">OnDisable()</td>
+<td>脚本被关闭时</td>
+</tr>
+<tr>
+<td align="left">OnDestroy()</td>
+<td>脚本被销毁时</td>
+</tr>
+</tbody></table></div>
+
+        <h1 id="Events"   >
+          <a href="#Events" class="heading-link"><i class="fas fa-link"></i></a><a href="#Events" class="headerlink" title="Events"></a>Events</h1>
+      <p>事件分为<code>Publisher/广播者</code>和<code>Subscriber/监听者</code>，多个<code>Subscriber</code>可以监听同一个Event。</p>
+<p>事件的<code>Publisher</code>不关心事件的<code>Subscriber</code>,在游戏中，可以由游戏逻辑发送事件，让游戏表现监听事件，从而实现逻辑和表现的分离。</p>
+
+        <h2 id="C-Events"   >
+          <a href="#C-Events" class="heading-link"><i class="fas fa-link"></i></a><a href="#C-Events" class="headerlink" title="C# Events"></a>C# Events</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> EventHandler OnSpacePressed;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带参数的声明</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> EventHandler&lt;OnSpacePressedArgs&gt; OnSpacePressed;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OnSpacePressedArgs</span> : <span class="title">EventArgs</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> counter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播事件</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//判断有无监听者</span></span><br><span class="line">    <span class="keyword">if</span>(OnSpacePressed != <span class="literal">null</span>)&#123;</span><br><span class="line">    	OnSpacePressed(<span class="keyword">this</span>,EventArgs.Empty);        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//或简写</span></span><br><span class="line">    OnSpacePressed?.Invoke(<span class="keyword">this</span>,EventArgs.Empty);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听事件</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt;组件实例&gt;.OnSpacePressed += HandleSpacePressed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取消监听</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt;组件实例&gt;.OnSpacePressed -= HandleSpacePressed;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="协程"   >
+          <a href="#协程" class="heading-link"><i class="fas fa-link"></i></a><a href="#协程" class="headerlink" title="协程"></a>协程</h1>
+      <p>※协程不是多线程</p>
+<p>语法：</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//协程方法：</span></span><br><span class="line"><span class="function">IEnumerator <span class="title">Func</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&#x27;※协程回调&#x27;</span>;</span><br><span class="line">   	Debug.Log(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span>&#123;</span><br><span class="line">    <span class="comment">//启动协程</span></span><br><span class="line">    StartCoroutine(Func());</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//关闭协程</span></span><br><span class="line">    StopCoroutine(Func());</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//关闭所有协程</span></span><br><span class="line">    StopAllCoroutines();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//启动其他脚本的协程</span></span><br><span class="line">    GetComponent&lt;ComponentName&gt;().StartCoroutine(Func());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>协程回调：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>null</td>
+<td>等待一帧</td>
+</tr>
+<tr>
+<td>new WaitForSeconds(1)</td>
+<td>等待固定时间</td>
+</tr>
+<tr>
+<td>new WaitForSecondRealtime(1)</td>
+<td>等待固定时间，且忽略时间缩放</td>
+</tr>
+</tbody></table></div>
+
+        <h1 id="脚本"   >
+          <a href="#脚本" class="heading-link"><i class="fas fa-link"></i></a><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1>
+      
+        <h2 id="脚本序列化"   >
+          <a href="#脚本序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#脚本序列化" class="headerlink" title="脚本序列化"></a>脚本序列化</h2>
+      <p>使用<code>public</code>声明的属性会被序列化。标注<code>[System.NonSerialized]</code>可以让属性不参与序列化，防止浪费内存。</p>
+
+        <h2 id="DontDestroyOnLoad"   >
+          <a href="#DontDestroyOnLoad" class="heading-link"><i class="fas fa-link"></i></a><a href="#DontDestroyOnLoad" class="headerlink" title="DontDestroyOnLoad"></a>DontDestroyOnLoad</h2>
+      <p>使用<code>DontDestroyOnLoad(GameObject)</code>标记的游戏对象在切换场景时不会销毁。（默认会卸载场景中的所有游戏对象和脚本）</p>
+
+        <h2 id="Interface-接口"   >
+          <a href="#Interface-接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#Interface-接口" class="headerlink" title="Interface 接口"></a>Interface 接口</h2>
+      <p>一个接口可以实现另一个接口</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IOwner</span> &lt;: 另一个接口&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//只能使用property，不能使用field</span></span><br><span class="line">    <span class="keyword">public</span> KitchenObj KitchenObj &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ClearKitchenObject</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetKitchenObject</span>()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Singleton-单例模式"   >
+          <a href="#Singleton-单例模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#Singleton-单例模式" class="headerlink" title="Singleton 单例模式"></a>Singleton 单例模式</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DataManager</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> DataManager instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//确保只有一个实例</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>)</span><br><span class="line">            instance = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            Destroy(<span class="keyword">this</span>.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方案2</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//设为 类外只读权限</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Player Instance &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//在多于一个实例时报错</span></span><br><span class="line">        <span class="keyword">if</span>(Instance!=<span class="literal">null</span>)&#123;</span><br><span class="line">            Debug.LogError(<span class="string">&quot;Player is not singleton&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Instance = <span class="keyword">this</span>;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="获取组件"   >
+          <a href="#获取组件" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取组件" class="headerlink" title="获取组件"></a>获取组件</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回布尔值</span></span><br><span class="line">transform.TryGetComponent(<span class="keyword">out</span> &lt;类名(组件名)&gt; 实例形参)</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="GameObject"   >
+          <a href="#GameObject" class="heading-link"><i class="fas fa-link"></i></a><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h1>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//激活或销毁游戏对象</span></span><br><span class="line">&lt;游戏对象实例&gt;.SetActive(<span class="literal">true</span>/<span class="literal">false</span>);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="Prefab"   >
+          <a href="#Prefab" class="heading-link"><i class="fas fa-link"></i></a><a href="#Prefab" class="headerlink" title="Prefab"></a>Prefab</h1>
+      <p>Prefab（预制体）</p>
+
+        <h2 id="Instantiate-创建实例"   >
+          <a href="#Instantiate-创建实例" class="heading-link"><i class="fas fa-link"></i></a><a href="#Instantiate-创建实例" class="headerlink" title="Instantiate 创建实例"></a>Instantiate 创建实例</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> &lt;组件&gt; : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Transform prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(Input.GetKeyDown(KeyCode.T))&#123;</span><br><span class="line">            Transform prefabTransform = Instantiate(prefab);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="Tag"   >
+          <a href="#Tag" class="heading-link"><i class="fas fa-link"></i></a><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h1>
+      
+        <h2 id="特殊tag：EditorOnly"   >
+          <a href="#特殊tag：EditorOnly" class="heading-link"><i class="fas fa-link"></i></a><a href="#特殊tag：EditorOnly" class="headerlink" title="特殊tag：EditorOnly"></a>特殊tag：EditorOnly</h2>
+      <p><code>EditorOnly</code>：标记后，打包游戏时会自动忽略该游戏对象</p>
+
+        <h2 id="相关方法"   >
+          <a href="#相关方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2>
+      <p><code>GameObject.FindGameObjectWithTag(&quot;tagName&quot;)</code>：通过tag找到游戏对象</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> GameObject.FindGameObjectsWithTag(<span class="string">&quot;tagName&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取所有tagName的对象并遍历</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="InputSystem"   >
+          <a href="#InputSystem" class="heading-link"><i class="fas fa-link"></i></a><a href="#InputSystem" class="headerlink" title="InputSystem"></a>InputSystem</h1>
+      
+        <h2 id="导入项目"   >
+          <a href="#导入项目" class="heading-link"><i class="fas fa-link"></i></a><a href="#导入项目" class="headerlink" title="导入项目"></a>导入项目</h2>
+      <p><code>Package Manager -&gt; input System -&gt; install</code> </p>
+
+        <h2 id="修改生效的输入方式"   >
+          <a href="#修改生效的输入方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改生效的输入方式" class="headerlink" title="修改生效的输入方式"></a>修改生效的输入方式</h2>
+      <p><code>Edit -&gt; Project Settings -&gt; Player -&gt; Other Settings -&gt; Active Input Handling</code></p>
+
+        <h2 id="创建InputAction"   >
+          <a href="#创建InputAction" class="heading-link"><i class="fas fa-link"></i></a><a href="#创建InputAction" class="headerlink" title="创建InputAction"></a>创建InputAction</h2>
+      <p><code>Project -&gt; [new]Input Action</code></p>
+<p><img src="/../images/image-20241018165500463.png" alt="image-20241018165500463"></p>
+
+        <h2 id="生成Input-Action的C-类"   >
+          <a href="#生成Input-Action的C-类" class="heading-link"><i class="fas fa-link"></i></a><a href="#生成Input-Action的C-类" class="headerlink" title="生成Input Action的C#类"></a>生成Input Action的C#类</h2>
+      <p><img src="/../images/image-20241018140338995.png" alt="image-20241018140338995"></p>
+
+        <h2 id="引入input-action"   >
+          <a href="#引入input-action" class="heading-link"><i class="fas fa-link"></i></a><a href="#引入input-action" class="headerlink" title="引入input action"></a>引入input action</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建实例</span></span><br><span class="line">PlayerInputControls inputControls = <span class="keyword">new</span> PlayerInputControls();</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span>&#123;</span><br><span class="line">    inputControls?.Enable();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关闭</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	inputControl?.Disable();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//按帧读取输入值</span></span><br><span class="line">Vector2 inputDir = inputControl.&lt;MAP名&gt;.&lt;Action名&gt;.ReadValue&lt;Vector2&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册事件</span></span><br><span class="line">inputControls.&lt;MAP名&gt;.&lt;Action名&gt;.started/canceled/performed += &lt;函数名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//示例（回调函数）</span></span><br><span class="line">inputControl.GamePlay.WalkButton.performed += ctx =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (physicsCheck.isGround)</span><br><span class="line">    	speed = walkSpeed;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局事件（需引入UnityEngine.InputSystem）</span></span><br><span class="line"> <span class="comment">//输入设备发生变化时触发</span></span><br><span class="line">InputSystem.onActionChange += OnActionChange;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="ScriptableObject"   >
+          <a href="#ScriptableObject" class="heading-link"><i class="fas fa-link"></i></a><a href="#ScriptableObject" class="headerlink" title="ScriptableObject"></a>ScriptableObject</h1>
+      <p>scriptableObject是一种数据容器，以<code>.asset</code>的形式保存在项目中。</p>
+
+        <h2 id="创建AssetMenu"   >
+          <a href="#创建AssetMenu" class="heading-link"><i class="fas fa-link"></i></a><a href="#创建AssetMenu" class="headerlink" title="创建AssetMenu"></a>创建AssetMenu</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">CreateAssetMenu(menuName = <span class="string">&quot;目录/选项名&quot;</span>)</span>]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="作为gameObject基类"   >
+          <a href="#作为gameObject基类" class="heading-link"><i class="fas fa-link"></i></a><a href="#作为gameObject基类" class="headerlink" title="作为gameObject基类"></a>作为gameObject基类</h2>
+      
+        <h2 id="作为事件传递"   >
+          <a href="#作为事件传递" class="heading-link"><i class="fas fa-link"></i></a><a href="#作为事件传递" class="headerlink" title="作为事件传递"></a>作为事件传递</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">CreateAssetMenu(menuName = <span class="string">&quot;Event/CharacterEventSO&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CharacterEventSO</span> : <span class="title">ScriptableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> UnityAction&lt;Character&gt; OnEventRaised;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RaiseEvent</span>(<span class="params">Character character</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        OnEventRaised?.Invoke(character);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="Animator"   >
+          <a href="#Animator" class="heading-link"><i class="fas fa-link"></i></a><a href="#Animator" class="headerlink" title="Animator"></a>Animator</h1>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Animator playerAnim;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置参数</span></span><br><span class="line">playerAnim.SetBool(<span class="string">&quot;Anim_isWalking&quot;</span>, isWalking);</span><br><span class="line">playerAnim.SetTrigger(<span class="string">&quot;hurt&quot;</span>);</span><br><span class="line">playerAnim.SetFloat(<span class="string">&quot;velocityX&quot;</span>, Math.Abs(rb.velocity.x));</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="动画状态机脚本"   >
+          <a href="#动画状态机脚本" class="heading-link"><i class="fas fa-link"></i></a><a href="#动画状态机脚本" class="headerlink" title="动画状态机脚本"></a>动画状态机脚本</h2>
+      <p>状态机可以生成c#脚本，在状态机的各个生命周期进行操作</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">class</span> &lt;状态机名&gt; : StateMachineBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state</span></span><br><span class="line">    <span class="function"><span class="keyword">override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnStateEnter</span>(<span class="params">Animator animator, AnimatorStateInfo stateInfo, <span class="built_in">int</span> layerIndex</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        animator.GetComponent&lt;PlayerController&gt;().isAttacking = <span class="literal">false</span>;</span><br><span class="line">        animator.GetComponent&lt;PlayerController&gt;().attackMotion = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks</span></span><br><span class="line">    <span class="comment">//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)</span></span><br><span class="line">    <span class="comment">//&#123;</span></span><br><span class="line">    <span class="comment">//    </span></span><br><span class="line">    <span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// OnStateExit is called when a transition ends and the state machine finishes evaluating this state</span></span><br><span class="line">    <span class="function"><span class="keyword">override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnStateExit</span>(<span class="params">Animator animator, AnimatorStateInfo stateInfo, <span class="built_in">int</span> layerIndex</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        animator.GetComponent&lt;PlayerController&gt;().attackMotion = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// OnStateMove is called right after Animator.OnAnimatorMove()</span></span><br><span class="line">    <span class="comment">//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)</span></span><br><span class="line">    <span class="comment">//&#123;</span></span><br><span class="line">    <span class="comment">//    // Implement code that processes and affects root motion</span></span><br><span class="line">    <span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// OnStateIK is called right after Animator.OnAnimatorIK()</span></span><br><span class="line">    <span class="comment">//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)</span></span><br><span class="line">    <span class="comment">//&#123;</span></span><br><span class="line">    <span class="comment">//    // Implement code that sets up animation IK (inverse kinematics)</span></span><br><span class="line">    <span class="comment">//&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="2D游戏"   >
+          <a href="#2D游戏" class="heading-link"><i class="fas fa-link"></i></a><a href="#2D游戏" class="headerlink" title="2D游戏"></a>2D游戏</h1>
+      
+        <h2 id="Sprite-Renderer"   >
+          <a href="#Sprite-Renderer" class="heading-link"><i class="fas fa-link"></i></a><a href="#Sprite-Renderer" class="headerlink" title="Sprite Renderer"></a>Sprite Renderer</h2>
+      
+        <h2 id="碰撞检测"   >
+          <a href="#碰撞检测" class="heading-link"><i class="fas fa-link"></i></a><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h2>
+      
+        <h3 id="Physics2D"   >
+          <a href="#Physics2D" class="heading-link"><i class="fas fa-link"></i></a><a href="#Physics2D" class="headerlink" title="Physics2D"></a>Physics2D</h3>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包围圈，检测圈内有无碰撞。LayerMask可以指定检测的层级。</span></span><br><span class="line">Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, checkRadius, groundLayerMask);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Collider2D"   >
+          <a href="#Collider2D" class="heading-link"><i class="fas fa-link"></i></a><a href="#Collider2D" class="headerlink" title="Collider2D"></a>Collider2D</h3>
+      <p>Layer Overrides：</p>
+<ul>
+<li><p>Priority：规则矛盾时，采取规则的优先级，优先级相同，不会发生碰撞</p>
+</li>
+<li><p>Include Layers：发生碰撞的层级</p>
+</li>
+<li><p>Exclude Layers：不会产生碰撞的层级</p>
+</li>
+<li><p>Contact Capture Layers：</p>
+</li>
+<li><p>Callback Layers：触发回调函数的层级（OnCollisionXXX，OnTriggerXXX）</p>
+</li>
+</ul>
+
+        <h4 id="触发器"   >
+          <a href="#触发器" class="heading-link"><i class="fas fa-link"></i></a><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4>
+      <p>触发条件：</p>
+<ul>
+<li>双方都有<code>Collider</code>组件</li>
+<li>其中一方必须是<code>Rigidbody</code></li>
+<li>至少其中一方勾选<code>isTrigger</code></li>
+</ul>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有物体进入触发器时调用</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter2D</span>(<span class="params">Collider2D other</span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有物体离开触发器时调用</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerExit2D</span>(<span class="params">Collider2D other</span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有物体触发时持续调用</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerStay2D</span>(<span class="params">Collider2D other</span>)</span>&#123;&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="3D游戏"   >
+          <a href="#3D游戏" class="heading-link"><i class="fas fa-link"></i></a><a href="#3D游戏" class="headerlink" title="3D游戏"></a>3D游戏</h1>
+      
+        <h2 id="碰撞检测-1"   >
+          <a href="#碰撞检测-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#碰撞检测-1" class="headerlink" title="碰撞检测"></a>碰撞检测</h2>
+      
+        <h3 id="Raycast"   >
+          <a href="#Raycast" class="heading-link"><i class="fas fa-link"></i></a><a href="#Raycast" class="headerlink" title="Raycast"></a>Raycast</h3>
+      <p>使用<code>Physics.CapsuleCast</code>可以判断前方是否有物体</p>
+<figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirection, moveDistance) </span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="调试"   >
+          <a href="#调试" class="heading-link"><i class="fas fa-link"></i></a><a href="#调试" class="headerlink" title="调试"></a>调试</h1>
+      
+        <h2 id="Gizmos"   >
+          <a href="#Gizmos" class="heading-link"><i class="fas fa-link"></i></a><a href="#Gizmos" class="headerlink" title="Gizmos"></a>Gizmos</h2>
+      <figure class="highlight c#"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在Object被选中时绘制</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDrawGizmosSelected</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//绘制圆框</span></span><br><span class="line">    Gizmos.DrawWireSphere((Vector2)transform.position + bottomOffset, checkRadius);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2024/09/29/my-Unity-learning-note/">https://lzmustb.github.io/2024/09/29/my-Unity-learning-note/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/06/24/my-study-tinyrenderer/"><span class="paginator-prev__text">tinyrenderer开源项目学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">
+          常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VsCode%E4%BD%9C%E4%B8%BA%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">
+          VsCode作为默认编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Animator%E4%B8%AD%E4%BD%BF%E7%94%A8Trigger%E7%9A%84%E6%97%B6%E6%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Animator中使用Trigger的时机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80VsCode%E5%90%8E%E5%BC%80%E5%A7%8B%E4%B8%8B%E8%BD%BD-NET"><span class="toc-number">1.3.</span> <span class="toc-text">
+          打开VsCode后开始下载.NET</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inspector-%E6%A0%87%E7%AD%BE"><span class="toc-number">2.</span> <span class="toc-text">
+          Inspector 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">
+          序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Header"><span class="toc-number">2.2.</span> <span class="toc-text">
+          Header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BB%91%E5%AE%9A%E8%84%9A%E6%9C%AC"><span class="toc-number">2.3.</span> <span class="toc-text">
+          强绑定脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.</span> <span class="toc-text">
+          脚本生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">3.1.</span> <span class="toc-text">
+          脚本的执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">
+          初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.3.</span> <span class="toc-text">
+          循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E6%9B%B4%E6%96%B0"><span class="toc-number">3.3.1.</span> <span class="toc-text">
+          固定更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E6%9B%B4%E6%96%B0"><span class="toc-number">3.3.2.</span> <span class="toc-text">
+          逻辑更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E6%B8%B2%E6%9F%93"><span class="toc-number">3.3.3.</span> <span class="toc-text">
+          场景渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8UI%E6%9B%B4%E6%96%B0"><span class="toc-number">3.3.4.</span> <span class="toc-text">
+          编辑器UI更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%80%E6%AF%81"><span class="toc-number">3.4.</span> <span class="toc-text">
+          销毁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Events"><span class="toc-number">4.</span> <span class="toc-text">
+          Events</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Events"><span class="toc-number">4.1.</span> <span class="toc-text">
+          C# Events</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">
+          协程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number">6.</span> <span class="toc-text">
+          脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">6.1.</span> <span class="toc-text">
+          脚本序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DontDestroyOnLoad"><span class="toc-number">6.2.</span> <span class="toc-text">
+          DontDestroyOnLoad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interface-%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.3.</span> <span class="toc-text">
+          Interface 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.4.</span> <span class="toc-text">
+          Singleton 单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%BB%84%E4%BB%B6"><span class="toc-number">6.5.</span> <span class="toc-text">
+          获取组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GameObject"><span class="toc-number">7.</span> <span class="toc-text">
+          GameObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Prefab"><span class="toc-number">8.</span> <span class="toc-text">
+          Prefab</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Instantiate-%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B"><span class="toc-number">8.1.</span> <span class="toc-text">
+          Instantiate 创建实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tag"><span class="toc-number">9.</span> <span class="toc-text">
+          Tag</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8Atag%EF%BC%9AEditorOnly"><span class="toc-number">9.1.</span> <span class="toc-text">
+          特殊tag：EditorOnly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95"><span class="toc-number">9.2.</span> <span class="toc-text">
+          相关方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#InputSystem"><span class="toc-number">10.</span> <span class="toc-text">
+          InputSystem</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE"><span class="toc-number">10.1.</span> <span class="toc-text">
+          导入项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%94%9F%E6%95%88%E7%9A%84%E8%BE%93%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">10.2.</span> <span class="toc-text">
+          修改生效的输入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAInputAction"><span class="toc-number">10.3.</span> <span class="toc-text">
+          创建InputAction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90Input-Action%E7%9A%84C-%E7%B1%BB"><span class="toc-number">10.4.</span> <span class="toc-text">
+          生成Input Action的C#类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5input-action"><span class="toc-number">10.5.</span> <span class="toc-text">
+          引入input action</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ScriptableObject"><span class="toc-number">11.</span> <span class="toc-text">
+          ScriptableObject</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAAssetMenu"><span class="toc-number">11.1.</span> <span class="toc-text">
+          创建AssetMenu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BAgameObject%E5%9F%BA%E7%B1%BB"><span class="toc-number">11.2.</span> <span class="toc-text">
+          作为gameObject基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BA%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="toc-number">11.3.</span> <span class="toc-text">
+          作为事件传递</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Animator"><span class="toc-number">12.</span> <span class="toc-text">
+          Animator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E7%8A%B6%E6%80%81%E6%9C%BA%E8%84%9A%E6%9C%AC"><span class="toc-number">12.1.</span> <span class="toc-text">
+          动画状态机脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2D%E6%B8%B8%E6%88%8F"><span class="toc-number">13.</span> <span class="toc-text">
+          2D游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sprite-Renderer"><span class="toc-number">13.1.</span> <span class="toc-text">
+          Sprite Renderer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B"><span class="toc-number">13.2.</span> <span class="toc-text">
+          碰撞检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Physics2D"><span class="toc-number">13.2.1.</span> <span class="toc-text">
+          Physics2D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collider2D"><span class="toc-number">13.2.2.</span> <span class="toc-text">
+          Collider2D</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">13.2.2.1.</span> <span class="toc-text">
+          触发器</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3D%E6%B8%B8%E6%88%8F"><span class="toc-number">14.</span> <span class="toc-text">
+          3D游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B-1"><span class="toc-number">14.1.</span> <span class="toc-text">
+          碰撞检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Raycast"><span class="toc-number">14.1.1.</span> <span class="toc-text">
+          Raycast</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E8%AF%95"><span class="toc-number">15.</span> <span class="toc-text">
+          调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gizmos"><span class="toc-number">15.1.</span> <span class="toc-text">
+          Gizmos</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/202201121316093.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
