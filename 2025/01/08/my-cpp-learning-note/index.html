@@ -1,0 +1,1307 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="头文件       头文件通常包含那些只能被定义一次的实体，如类，const和constexpr变量等。  ※头文件不应使用using声明，否则会导致每个使用了该头文件的文件都有这个声明                      预处理器       在编译之前执行，用于部分改变我们缩写的程序 预处理指令： 12345678910&#x2F;&#x2F;用指定的头文件代替inc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++笔记">
+<meta property="og:url" content="https://lzmustb.github.io/2025/01/08/my-cpp-learning-note/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="头文件       头文件通常包含那些只能被定义一次的实体，如类，const和constexpr变量等。  ※头文件不应使用using声明，否则会导致每个使用了该头文件的文件都有这个声明                      预处理器       在编译之前执行，用于部分改变我们缩写的程序 预处理指令： 12345678910&#x2F;&#x2F;用指定的头文件代替inc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250108151203596.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250108145832735.png">
+<meta property="article:published_time" content="2025-01-08T05:07:12.000Z">
+<meta property="article:modified_time" content="2025-01-20T06:12:49.456Z">
+<meta property="article:author" content="Lzm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzmustb.github.io/images/image-20250108151203596.png"><title>c++笔记 | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2025/01/08/my-cpp-learning-note/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">c++笔记</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-01-08</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">5.3k</span></span></div></header><div class="post-body">
+        <h1 id="头文件"   >
+          <a href="#头文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1>
+      <p>头文件通常包含那些只能被定义一次的实体，如类，const和constexpr变量等。</p>
+<blockquote>
+<p>※头文件不应使用using声明，否则会导致每个使用了该头文件的文件都有这个声明</p>
+</blockquote>
+
+        <h2 id="预处理器"   >
+          <a href="#预处理器" class="heading-link"><i class="fas fa-link"></i></a><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h2>
+      <p>在编译之前执行，用于部分改变我们缩写的程序</p>
+<p>预处理指令：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用指定的头文件代替include</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Sales_data.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//防止头文件重复包含</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> SALES_DATA_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SALES_DATA_H</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="基本类型"   >
+          <a href="#基本类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1>
+      
+        <h2 id="标识符identifier"   >
+          <a href="#标识符identifier" class="heading-link"><i class="fas fa-link"></i></a><a href="#标识符identifier" class="headerlink" title="标识符identifier"></a>标识符identifier</h2>
+      <p>标识符identifier由字母，数字，下划线组成，<strong>必须以字母或下划线开头</strong>，长度无限制，大小写敏感。</p>
+
+        <h3 id="c-关键字"   >
+          <a href="#c-关键字" class="heading-link"><i class="fas fa-link"></i></a><a href="#c-关键字" class="headerlink" title="c++关键字"></a>c++关键字</h3>
+      <p><img src="/../images/image-20250108151203596.png" alt="image-20250108151203596"></p>
+
+        <h3 id="作用域scope"   >
+          <a href="#作用域scope" class="heading-link"><i class="fas fa-link"></i></a><a href="#作用域scope" class="headerlink" title="作用域scope"></a>作用域scope</h3>
+      <p>同一个名字在不同作用域可能指向不同的实体。</p>
+<p>一个名字的有效区域始于名字的声明，在作用域末端结束。</p>
+<p>使用<code>using</code>引入命名空间的成员：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使所有库函数都默认std（不常用）</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//个别引入</span></span><br><span class="line"><span class="keyword">using</span> std::cin;</span><br><span class="line"><span class="keyword">using</span> std::cout;</span><br><span class="line"><span class="keyword">using</span> std::endl;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="无符号-x2F-有符号"   >
+          <a href="#无符号-x2F-有符号" class="heading-link"><i class="fas fa-link"></i></a><a href="#无符号-x2F-有符号" class="headerlink" title="无符号&#x2F;有符号"></a>无符号&#x2F;有符号</h2>
+      <blockquote>
+<p>※在同一个表达式中，有符号类型会转换为无符号类型</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">-2</span>;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> b = <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; a + b; <span class="comment">//输出1+2^32-2=2^32-1</span></span><br></pre></td></tr></table></div></figure>
+</blockquote>
+
+        <h2 id="变量初始化"   >
+          <a href="#变量初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2>
+      
+        <h3 id="声明和定义"   >
+          <a href="#声明和定义" class="heading-link"><i class="fas fa-link"></i></a><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h3>
+      <p>※声明不分配空间，定义申请空间并赋初值</p>
+<p>※变量可以被多次声明，但只能被定义一次</p>
+<p>仅声明：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="type">int</span> i;	<span class="comment">//仅声明</span></span><br><span class="line"><span class="type">int</span> j;			<span class="comment">//声明并定义</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="默认初始化"   >
+          <a href="#默认初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h3>
+      <p>定义变量时没有指定初值，将会被默认初始化</p>
+<ul>
+<li><p>函数体外的基本类型变量初始化为0</p>
+</li>
+<li><p>函数体内部的基本类型变量将<strong>不被初始化</strong></p>
+</li>
+</ul>
+
+        <h3 id="列表初始化"   >
+          <a href="#列表初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#列表初始化" class="headerlink" title="{}列表初始化"></a>{}列表初始化</h3>
+      <p>禁止类型的自动转化，防止因自动转换而丢失信息</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i1 = <span class="number">7.2</span> 	<span class="comment">//自动转换为7</span></span><br><span class="line"><span class="type">int</span> i2 &#123;<span class="number">7.2</span>&#125; 	<span class="comment">//报错</span></span><br><span class="line"><span class="type">int</span> i3 = &#123;<span class="number">7.2</span>&#125; 	<span class="comment">//报错</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="auto"   >
+          <a href="#auto" class="heading-link"><i class="fas fa-link"></i></a><a href="#auto" class="headerlink" title="auto"></a>auto</h3>
+      <p>c++11</p>
+<p>编译器自动推断类型</p>
+<p>※auto定义的变量必须有初始值</p>
+
+        <h3 id="decltype"   >
+          <a href="#decltype" class="heading-link"><i class="fas fa-link"></i></a><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h3>
+      <p>c++11</p>
+<p>表达式的返回类型作为类型声明</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">decltype</span>(<span class="built_in">func</span>()) sum = x;</span><br><span class="line"><span class="comment">//将func()的返回值类型作为sum的类型，但不调用func()</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span>* p = &amp;i;</span><br><span class="line"><span class="comment">//c的类型为int&amp;</span></span><br><span class="line"><span class="keyword">decltype</span>(*p) c = <span class="number">1</span>; <span class="comment">//传入解引用，则得到引用类型，必须初始化</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">decltype</span>(i) c;		<span class="comment">//正确，c的类型为int</span></span><br><span class="line"><span class="keyword">decltype</span>((i)) c;	<span class="comment">//错误，c的类型为int&amp;,必须初始化</span></span><br></pre></td></tr></table></div></figure>
+
+<p>加上括号的变量可以作为赋值语句左值的特殊表达式，所以<strong>一定</strong>得到引用类型</p>
+</blockquote>
+
+        <h2 id="常量"   >
+          <a href="#常量" class="heading-link"><i class="fas fa-link"></i></a><a href="#常量" class="headerlink" title="常量"></a>常量</h2>
+      
+        <h3 id="字面值常量"   >
+          <a href="#字面值常量" class="heading-link"><i class="fas fa-link"></i></a><a href="#字面值常量" class="headerlink" title="字面值常量"></a>字面值常量</h3>
+      <p>字面值常量（literal）</p>
+<ul>
+<li>整型</li>
+</ul>
+<p>不同进制的20声明：</p>
+<p>十六进制：<code>0x14</code></p>
+<p>八进制：<code>024</code></p>
+<p>十进制：<code>20</code></p>
+<ul>
+<li>浮点型</li>
+</ul>
+<p><code>3.14159</code>，<code>3.14159E0</code>，<code>0.</code>，<code>.001</code></p>
+<ul>
+<li>字符型</li>
+</ul>
+<p><code>&#39;a&#39;</code>：字符只占一个字节</p>
+<p><code>&quot;a&quot;</code>：字符串是字符数组，多占一个字节存储空字符<code>&#39;\0&#39;</code></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串字面值可以分多行书写</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;a really long string literal&quot;</span></span><br><span class="line">    		<span class="string">&quot;that spans two lines&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="字符转义"   >
+          <a href="#字符转义" class="heading-link"><i class="fas fa-link"></i></a><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>转义序列(escape sequence)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符(tab)</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>报警(响铃)符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜线</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="指定字面值类型"   >
+          <a href="#指定字面值类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#指定字面值类型" class="headerlink" title="指定字面值类型"></a>指定字面值类型</h4>
+      <p><img src="/../images/image-20250108145832735.png" alt="image-20250108145832735"></p>
+
+        <h3 id="常量标识符"   >
+          <a href="#常量标识符" class="heading-link"><i class="fas fa-link"></i></a><a href="#常量标识符" class="headerlink" title="常量标识符"></a>常量标识符</h3>
+      
+        <h4 id="const"   >
+          <a href="#const" class="heading-link"><i class="fas fa-link"></i></a><a href="#const" class="headerlink" title="const"></a>const</h4>
+      <blockquote>
+<p>※默认情况下，<code>const</code>定义的变量只在文件内有效。</p>
+<p>跨文件使用：都使用<code>extern</code>关键字</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">//file1</span></span><br><span class="line">&gt;<span class="keyword">extern</span> <span class="type">const</span> <span class="type">int</span> bufSize = <span class="built_in">func</span>();</span><br><span class="line">&gt;<span class="comment">//file2</span></span><br><span class="line">&gt;<span class="keyword">extern</span> <span class="type">const</span> <span class="type">int</span> bufSize;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<p>常量引用：</p>
+<blockquote>
+<p>※不能用普通引用去引用一个常量</p>
+<p>本质：创建一个临时变量的引用</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;ref = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> temp = <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;ref = temp;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">1024</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">1024</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;r = a;	<span class="comment">//正确</span></span><br><span class="line"><span class="type">int</span> &amp;r2 = a;		<span class="comment">//错误，引用也必须声明为常量</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;r3 = b;	<span class="comment">//正确</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;r4 = <span class="number">42</span>;	<span class="comment">//正确</span></span><br><span class="line"><span class="type">int</span> &amp;r5 = r;		<span class="comment">//错误，引用也必须声明为常量</span></span><br></pre></td></tr></table></div></figure>
+
+<p><code>const</code>修饰形参，防止修改：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">int</span> &amp;val)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="constexpr"   >
+          <a href="#constexpr" class="heading-link"><i class="fas fa-link"></i></a><a href="#constexpr" class="headerlink" title="constexpr"></a>constexpr</h4>
+      <p>c++11</p>
+<p>常量表达式（const expression）是指不会改变且在编译过程就能预知结果的表达式</p>
+<p><strong>非</strong>常量表达式：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">27</span>;					<span class="comment">//在后续可能改变</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> b = <span class="built_in">random</span>();		<span class="comment">//编译时不确定</span></span><br></pre></td></tr></table></div></figure>
+
+<p>用于指针：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span>* p = <span class="literal">nullptr</span>;	<span class="comment">//p是一个const pointer，顶层const</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="复合类型"   >
+          <a href="#复合类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h2>
+      <p>基于其他类型定义的类型</p>
+<ul>
+<li>引用</li>
+<li>指针</li>
+</ul>
+
+        <h3 id="左值引用"   >
+          <a href="#左值引用" class="heading-link"><i class="fas fa-link"></i></a><a href="#左值引用" class="headerlink" title="左值引用"></a>左值引用</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1024</span>;</span><br><span class="line"><span class="type">int</span> &amp;b = a;	<span class="comment">//b指向a，当a改变b也改变</span></span><br><span class="line"><span class="type">int</span> &amp;c;		<span class="comment">//报错，引用必须被初始化</span></span><br><span class="line"><span class="type">int</span> &amp;d = <span class="number">10</span>	<span class="comment">//报错,引用的初始值不能为字面值</span></span><br></pre></td></tr></table></div></figure>
+
+<p>引用的本质：指针常量（无法修改指向的地址）</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> &amp;ref = a;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="type">int</span>* <span class="type">const</span> ref = &amp;a;</span><br></pre></td></tr></table></div></figure>
+
+<p>引用传递：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>引用返回：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span>&amp; <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//使得函数调用可以作为左值</span></span><br><span class="line"><span class="comment">//※不能返回局部变量的引用（会被释放）</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="指针"   >
+          <a href="#指针" class="heading-link"><i class="fas fa-link"></i></a><a href="#指针" class="headerlink" title="指针"></a>指针</h3>
+      <blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p1,p2;	<span class="comment">//p1为指针，p2为int</span></span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1024</span>;</span><br><span class="line"><span class="type">int</span>* p;			<span class="comment">//指针无需在定义时赋值</span></span><br><span class="line"><span class="type">int</span>* p = &amp;a;	<span class="comment">//指针存放地址，因此使用取址符</span></span><br></pre></td></tr></table></div></figure>
+
+<p>指针的解引用：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout&lt;&lt; *p;		<span class="comment">//获取p指向的值</span></span><br><span class="line">*p = <span class="number">0</span>;			<span class="comment">//给指针所指的变量赋值</span></span><br></pre></td></tr></table></div></figure>
+
+<p>c++11空指针：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="literal">nullptr</span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>指向指针的指针：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>** p = <span class="keyword">new</span> <span class="type">int</span>*[<span class="number">10</span>]; <span class="comment">//指向一个int指针数组</span></span><br><span class="line">cout&lt;&lt; **p;				<span class="comment">//解引用到int</span></span><br></pre></td></tr></table></div></figure>
+
+<p>指向指针的引用：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="type">int</span>* &amp;r = p;</span><br></pre></td></tr></table></div></figure>
+
+<p>※面对比较复杂的指针或引用声明时，从右向左有助于弄清真实含义。</p>
+
+        <h4 id="指针和const"   >
+          <a href="#指针和const" class="heading-link"><i class="fas fa-link"></i></a><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h4>
+      <p>pointer to const（low-level const）：不能改变值，可以改变指向的地址</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">1024</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * ptr = &amp;a;</span><br></pre></td></tr></table></div></figure>
+
+<p>const pointer（top-level const）：不可改变指向（引用的本质）</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> &amp;ref = a;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="type">int</span>* <span class="type">const</span> ref = &amp;a;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="void"   >
+          <a href="#void" class="heading-link"><i class="fas fa-link"></i></a><a href="#void" class="headerlink" title="void*"></a>void*</h4>
+      <p>可以用于存放任意类型的指针</p>
+
+        <h3 id="声明"   >
+          <a href="#声明" class="heading-link"><i class="fas fa-link"></i></a><a href="#声明" class="headerlink" title="声明"></a>声明</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* p;</span><br><span class="line"><span class="type">char</span> v[<span class="number">6</span>]; <span class="comment">//变量&#x27;v&#x27;存的是数组第一个值的地址</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="取值-amp-取址"   >
+          <a href="#取值-amp-取址" class="heading-link"><i class="fas fa-link"></i></a><a href="#取值-amp-取址" class="headerlink" title="取值&amp;取址"></a>取值&amp;取址</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* p = &amp;v[<span class="number">3</span>]; <span class="comment">//前置&amp;获取变量的地址</span></span><br><span class="line"><span class="type">char</span> x = *p;     <span class="comment">//前置*获取变量的值</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="遍历"   >
+          <a href="#遍历" class="heading-link"><i class="fas fa-link"></i></a><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2>
+      
+        <h3 id="for"   >
+          <a href="#for" class="heading-link"><i class="fas fa-link"></i></a><a href="#for" class="headerlink" title="for"></a>for</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//复制v中的元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : v)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用v中的元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp; x : v)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="类型别名"   >
+          <a href="#类型别名" class="heading-link"><i class="fas fa-link"></i></a><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h1>
+      
+        <h2 id="类型别名type-alias"   >
+          <a href="#类型别名type-alias" class="heading-link"><i class="fas fa-link"></i></a><a href="#类型别名type-alias" class="headerlink" title="类型别名type alias"></a>类型别名type alias</h2>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">double</span> wages;	<span class="comment">//wages是double的同义词</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> *pstring;</span><br><span class="line"><span class="comment">//cstr是const pointer</span></span><br><span class="line"><span class="type">const</span> pstring cstr = <span class="number">0</span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>不能简单将pstring替换为char*来理解</p>
+</blockquote>
+
+        <h2 id="别名声明alias-declaration"   >
+          <a href="#别名声明alias-declaration" class="heading-link"><i class="fas fa-link"></i></a><a href="#别名声明alias-declaration" class="headerlink" title="别名声明alias declaration"></a>别名声明alias declaration</h2>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> SI = Sales_item;	<span class="comment">//SI是Sales_item的同义词</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="标准库类型"   >
+          <a href="#标准库类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#标准库类型" class="headerlink" title="标准库类型"></a>标准库类型</h1>
+      
+        <h2 id="string"   >
+          <a href="#string" class="heading-link"><i class="fas fa-link"></i></a><a href="#string" class="headerlink" title="string"></a>string</h2>
+      <blockquote>
+<p>为了与c兼容，字符串字面值与string类型不同，字符串字面值为char array</p>
+</blockquote>
+<p>可变长的字符序列</p>
+<p>引入：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="定义"   >
+          <a href="#定义" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义" class="headerlink" title="定义"></a>定义</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接初始化</span></span><br><span class="line"><span class="function">string <span class="title">a</span><span class="params">(<span class="string">&quot;a&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//拷贝初始化（将创建临时变量）</span></span><br><span class="line">string a = <span class="string">&quot;a&quot;</span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="读取"   >
+          <a href="#读取" class="heading-link"><i class="fas fa-link"></i></a><a href="#读取" class="headerlink" title="读取"></a>读取</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.按单词读取（空格截断）</span></span><br><span class="line">string word;</span><br><span class="line"><span class="keyword">while</span>(cin &gt;&gt; word)&#123;</span><br><span class="line">    cout &lt;&lt; word &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.整行读取（换行符截断）(string中不包含换行符)</span></span><br><span class="line">string line;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">getline</span>(cin, line))&#123;</span><br><span class="line">	cout &lt;&lt; line &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="empty"   >
+          <a href="#empty" class="heading-link"><i class="fas fa-link"></i></a><a href="#empty" class="headerlink" title="empty"></a>empty</h3>
+      <p>用于判断字符串是否为空</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!line.<span class="built_in">empty</span>())</span><br><span class="line">    cout &lt;&lt; line &lt;&lt; endl;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="size"   >
+          <a href="#size" class="heading-link"><i class="fas fa-link"></i></a><a href="#size" class="headerlink" title="size"></a>size</h3>
+      <p>返回字符数量（不包括空字符）</p>
+<p>返回类型：<code>size_type</code>，无符号整数</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">a</span><span class="params">(<span class="string">&quot;abc&quot;</span>)</span></span>;</span><br><span class="line">a.<span class="built_in">size</span>();		<span class="comment">//为3</span></span><br><span class="line">a[<span class="number">3</span>]			<span class="comment">//得到空字符</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="运算"   >
+          <a href="#运算" class="heading-link"><i class="fas fa-link"></i></a><a href="#运算" class="headerlink" title="运算"></a>运算</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string s3 = s1 + s2;	</span><br><span class="line">string s3 = s1 + <span class="string">&quot;, &quot;</span> + s2 + <span class="string">&#x27;\n&#x27;</span>;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>必须确保每个<code>+</code>运算符两边至少有一个string对象</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误！</span></span><br><span class="line">string s3 = <span class="string">&quot;hello&quot;</span> + <span class="string">&quot;world&quot;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">//正确，前面的运算返回string类型</span></span><br><span class="line">string s4 = s1 + <span class="string">&quot;,&quot;</span> + <span class="string">&quot;world&quot;</span>;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+
+        <h3 id="遍历-1"   >
+          <a href="#遍历-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;c : str)&#123;</span><br><span class="line">    c = <span class="built_in">toupper</span>(c);</span><br><span class="line">    cout &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="c风格字符串"   >
+          <a href="#c风格字符串" class="heading-link"><i class="fas fa-link"></i></a><a href="#c风格字符串" class="headerlink" title="c风格字符串"></a>c风格字符串</h3>
+      <p>定义在cstring头文件中</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回长度，不包含空字符</span></span><br><span class="line"><span class="comment">//※strlen会找到空字符才停下来，因此不能用于不包含空字符的字符数组</span></span><br><span class="line"><span class="built_in">strlen</span>(p)</span><br><span class="line"></span><br><span class="line"><span class="comment">//比较p1p2</span></span><br><span class="line"><span class="built_in">strcmp</span>(p1,p2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将p2附加到p1后</span></span><br><span class="line"><span class="built_in">strcat</span>(p1,p2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将p2拷贝给p1</span></span><br><span class="line"><span class="built_in">strcpy</span>(p1,p2);</span><br></pre></td></tr></table></div></figure>
+
+<p>string和c风格字符串的转换：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将string转换为const char</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *str = s.<span class="built_in">c_str</span>();</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="vector"   >
+          <a href="#vector" class="heading-link"><i class="fas fa-link"></i></a><a href="#vector" class="headerlink" title="vector"></a>vector</h2>
+      <p>vector不是一个类，而是<strong>类模板</strong></p>
+<p>引入：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::vector;</span><br></pre></td></tr></table></div></figure>
+
+<p>vector包含vector：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//早期版本中右尖括号之间要有空格</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt; &gt;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="初始化"   >
+          <a href="#初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//列表初始化 c++11,创建一个元素，值为10</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v1&#123;<span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建10个元素，值为0</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v1</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建10个元素，每个值为1</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v1</span><span class="params">(<span class="number">10</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建2个元素，值分别为10和1</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v1&#123;<span class="number">10</span>, <span class="number">1</span>&#125;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="遍历-2"   >
+          <a href="#遍历-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#遍历-2" class="headerlink" title="遍历"></a>遍历</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//范围for语句</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i:v)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+<blockquote>
+<p>范围for语句中不应出现向vector添加元素的语句（遍历序列的大小会改变）</p>
+</blockquote>
+
+        <h3 id="迭代器"   >
+          <a href="#迭代器" class="heading-link"><i class="fas fa-link"></i></a><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>v.begin()</code></td>
+<td>第一个元素的迭代器</td>
+</tr>
+<tr>
+<td><code>v.end()</code></td>
+<td>尾后迭代器（最后一个元素的后一个位置）</td>
+</tr>
+</tbody></table></div>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = v.<span class="built_in">begin</span>(); it != v.<span class="built_in">end</span>(); it++)&#123;</span><br><span class="line">    *it...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取中间位置迭代器(返回difference_type，有符号整数)</span></span><br><span class="line"><span class="keyword">auto</span> mid = v.<span class="built_in">begin</span>() + v.<span class="built_in">size</span>()/<span class="number">2</span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="数组"   >
+          <a href="#数组" class="heading-link"><i class="fas fa-link"></i></a><a href="#数组" class="headerlink" title="数组"></a>数组</h2>
+      
+        <h3 id="初始化-1"   >
+          <a href="#初始化-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前两个元素初始化为1，2，后面元素为默认值</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">3</span>]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>※字符数组可以用字符串字面值初始化，<strong>但字符串末的空字符也会被存入</strong></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> arr[]&#123;<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;+&#x27;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误，&quot;apple&quot;要占6个元素</span></span><br><span class="line"><span class="type">char</span> arr[<span class="number">5</span>] = <span class="string">&quot;apple&quot;</span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>※不能直接把另一个数组拷贝初始化或赋值</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误</span></span><br><span class="line"><span class="type">int</span> a2[] = a;</span><br><span class="line">a2 = a	<span class="comment">//(一些编译器支持)</span></span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<p>复杂数组声明：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Parray指向一个含有10个整数的数组</span></span><br><span class="line"><span class="comment">//没加括号会报错</span></span><br><span class="line"><span class="comment">//arr大小不是10会报错</span></span><br><span class="line"><span class="built_in">int</span> (*Parray)[<span class="number">10</span>] = &amp;arr;</span><br><span class="line"></span><br><span class="line"><span class="comment">//arrRef引用一个含有10个整数的数组</span></span><br><span class="line"><span class="built_in">int</span> (&amp;arrRef)[<span class="number">10</span>] = arr;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>数组的对象实际上是指向该数组首元素的指针</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ia[<span class="number">2</span>]&#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">ia2</span><span class="params">(ia)</span></span>;		<span class="comment">//ia2的类型被推断为int*</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">ia2</span><span class="params">(&amp;ia[<span class="number">0</span>])</span>	<span class="comment">//等价</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">decltype</span><span class="params">(ia)</span>		<span class="comment">//推断为int[10]</span></span></span><br></pre></td></tr></table></div></figure>
+</blockquote>
+
+        <h3 id="遍历-3"   >
+          <a href="#遍历-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#遍历-3" class="headerlink" title="遍历"></a>遍历</h3>
+      <p>c++11 begin，end：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">3</span>]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="type">int</span> *begin = <span class="built_in">begin</span>(arr);</span><br><span class="line"><span class="type">int</span> *end = <span class="built_in">end</span>(arr);		<span class="comment">//返回尾元素的下一位置(不能解引用)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ptrdiff_t类型，有符号</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">end</span>(arr) - <span class="built_in">begin</span>(arr);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="多维数组"   >
+          <a href="#多维数组" class="heading-link"><i class="fas fa-link"></i></a><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3>
+      <blockquote>
+<p>本质是数组的数组</p>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//内层花括号可以省略</span></span><br><span class="line"><span class="type">int</span> ia[<span class="number">3</span>][<span class="number">4</span>]&#123;</span><br><span class="line">    &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;,</span><br><span class="line">    &#123;<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="表达式"   >
+          <a href="#表达式" class="heading-link"><i class="fas fa-link"></i></a><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1>
+      
+        <h2 id="算数运算"   >
+          <a href="#算数运算" class="heading-link"><i class="fas fa-link"></i></a><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h2>
+      <p>c++11除法运算int类型，向0取整（直接去除小数部分），且结果的符号看m和n</p>
+<p>m%n如果不等于零，则符号与m相同</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">21</span> % <span class="number">-5</span> == <span class="number">1</span></span><br><span class="line"><span class="number">21</span> / <span class="number">-5</span> == <span class="number">-4</span></span><br><span class="line">    </span><br><span class="line"><span class="number">-21</span> % <span class="number">-8</span> == <span class="number">-5</span></span><br><span class="line"><span class="number">-21</span> / <span class="number">-8</span> == <span class="number">2</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="递增递减"   >
+          <a href="#递增递减" class="heading-link"><i class="fas fa-link"></i></a><a href="#递增递减" class="headerlink" title="递增递减"></a>递增递减</h3>
+      <blockquote>
+<p>除非必须，否则不用后置递增递减：后置版本需要<strong>额外</strong>将修改前的原始值存储下来</p>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = v.<span class="built_in">begin</span>();</span><br><span class="line"><span class="keyword">while</span>(iter !=v.<span class="built_in">end</span>())&#123;</span><br><span class="line">    <span class="comment">//解引用后递增</span></span><br><span class="line">    cout &lt;&lt;*iter++ &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="逻辑和关系运算"   >
+          <a href="#逻辑和关系运算" class="heading-link"><i class="fas fa-link"></i></a><a href="#逻辑和关系运算" class="headerlink" title="逻辑和关系运算"></a>逻辑和关系运算</h2>
+      
+        <h3 id="短路求值"   >
+          <a href="#短路求值" class="heading-link"><i class="fas fa-link"></i></a><a href="#短路求值" class="headerlink" title="短路求值"></a>短路求值</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;&amp; ||</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="赋值"   >
+          <a href="#赋值" class="heading-link"><i class="fas fa-link"></i></a><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h2>
+      <p>c++新标准：初始值列表</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k = &#123;<span class="number">3.14</span>&#125;;	<span class="comment">//错误，窄化转换</span></span><br></pre></td></tr></table></div></figure>
+
+<p>赋值满足<strong>右结合律</strong>：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival, jval;</span><br><span class="line">ival = jval = <span class="number">0</span>;	<span class="comment">//0赋值给jval,jval赋值给ival</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ival, *pval;</span><br><span class="line">ival = pval = <span class="number">0</span>;	<span class="comment">//错误，pval无法转换为ival</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="位运算符"   >
+          <a href="#位运算符" class="heading-link"><i class="fas fa-link"></i></a><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2>
+      <p>位运算符作用于<strong>整数类型</strong>的运算对象</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~</td>
+<td>按位求反</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p>位运算符对符号位的处理依赖于机器，因此建议仅用于<strong>无符号类型</strong></p>
+</blockquote>
+
+        <h3 id="移位操作"   >
+          <a href="#移位操作" class="heading-link"><i class="fas fa-link"></i></a><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3>
+      <p>移位运算符满足<strong>左结合律</strong></p>
+<p>优先级比算术运算符低，比关系，赋值，条件运算符高</p>
+
+        <h2 id="sizeof"   >
+          <a href="#sizeof" class="heading-link"><i class="fas fa-link"></i></a><a href="#sizeof" class="headerlink" title="sizeof"></a>sizeof</h2>
+      <p>※<code>sizeof</code>的返回值是<strong>常量表达式</strong>，可以声明数组的维度</p>
+<p>※<code>sizeof</code>中解引用一个无效指针是<strong>安全行为</strong></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sizeof</span>(*p); <span class="comment">//即使p指向无效地址也安全，因为sizeof不需要真的解引用指针</span></span><br></pre></td></tr></table></div></figure>
+
+<p>※对数组名执行<code>sizeof</code>，得到整个数组元素所占空间大小</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算arr中的元素数量</span></span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">size_t</span> count = <span class="built_in">sizeof</span>(arr)/<span class="built_in">sizeof</span>(*arr);</span><br></pre></td></tr></table></div></figure>
+
+<p>※对string或vector对象执行<code>sizeof</code>，返回的是<strong>固定部分的大小</strong>，</p>
+<p>不会计算对象中的元素占用空间：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string a = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">string b = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="built_in">sizeof</span>(a) == <span class="built_in">sizeof</span>(b) == <span class="number">32</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="逗号运算符"   >
+          <a href="#逗号运算符" class="heading-link"><i class="fas fa-link"></i></a><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h2>
+      <p>※优先级小于赋值符号</p>
+<p>含有两个运算对象，按从左到右的顺序求值，返回的是<strong>右侧表达式的值</strong>：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = (<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">// a==2</span></span><br></pre></td></tr></table></div></figure>
+
+<p>常用在for循环中，用于递增递减两个变量</p>
+
+        <h1 id="类型转换"   >
+          <a href="#类型转换" class="heading-link"><i class="fas fa-link"></i></a><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1>
+      <blockquote>
+<p>尽量避免强制类型转换</p>
+</blockquote>
+
+        <h2 id="隐式转换"   >
+          <a href="#隐式转换" class="heading-link"><i class="fas fa-link"></i></a><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2>
+      <ul>
+<li>比int小的整型值和char首先提升为较大的整数类型</li>
+<li>在条件表达式中非布尔值转换成布尔类型</li>
+<li>初始化和赋值过程中，右侧对象转换为左侧对象的类型</li>
+<li>用数组名初始化指针</li>
+</ul>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14159L</span> + <span class="string">&#x27;a&#x27;</span>	<span class="comment">//&#x27;a&#x27;提升成int，然后转化为long double</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="显示转换"   >
+          <a href="#显示转换" class="heading-link"><i class="fas fa-link"></i></a><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h2>
+      
+        <h3 id="static-cast"   >
+          <a href="#static-cast" class="heading-link"><i class="fas fa-link"></i></a><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3>
+      <p>不包含<code>low-level const</code>的任何具有明确定义的类型转换都可以使用<code>static_cast</code>，使用静态转换时相当于告诉编译器<strong>忽略潜在的精度损失</strong>。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用static_cast还原void*</span></span><br><span class="line"><span class="type">void</span>* p = &amp;d;</span><br><span class="line"><span class="type">double</span> *dp = <span class="built_in">static_cast</span>&lt;<span class="type">double</span>*&gt;(p);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将char*转换为string</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* cp;</span><br><span class="line"><span class="built_in">static_cast</span>&lt;string&gt;(cp);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="const-cast"   >
+          <a href="#const-cast" class="heading-link"><i class="fas fa-link"></i></a><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h3>
+      <p><code>const_cast</code>只能改变运算对象的<code>low-level const</code>性质</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *pc;</span><br><span class="line"><span class="type">char</span> *p = <span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pc);</span><br></pre></td></tr></table></div></figure>
+
+<p>常用于函数重载中：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> string &amp;<span class="title">shorterString</span><span class="params">(<span class="type">const</span> string &amp;s1, <span class="type">const</span> string &amp;s2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1.<span class="built_in">size</span>() &lt;= s2.<span class="built_in">size</span>() ? s1 : s2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将s1,s2转换成const后调用const版本的函数</span></span><br><span class="line"><span class="function">string &amp;<span class="title">shorterString</span><span class="params">(string &amp;s1, string &amp;s2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> &amp;r = <span class="built_in">shorterString</span>(<span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&gt;(s1),</span><br><span class="line">                           <span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&gt;(s2));</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;string&amp;&gt;(r);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="reinterpret-cast"   >
+          <a href="#reinterpret-cast" class="heading-link"><i class="fas fa-link"></i></a><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h3>
+      <p>重新解释运算对象的底层位模式</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ip;</span><br><span class="line"><span class="type">char</span> *pc = <span class="built_in">reinterpret_cast</span>&lt;<span class="type">char</span>*&gt;(ip);</span><br><span class="line"><span class="comment">//将*ip的数据解释为char</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="异常处理"   >
+          <a href="#异常处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1>
+      <ul>
+<li>throw表达式：用于抛出异常（异常检测）。</li>
+<li>try语句块：以<code>try</code>开始，一个或多个<code>catch</code>语句结束。（异常处理）</li>
+<li>一套异常类：用于在<code>throw</code>和<code>try-catch</code>之间传递信息。</li>
+</ul>
+
+        <h2 id="throw表达式"   >
+          <a href="#throw表达式" class="heading-link"><i class="fas fa-link"></i></a><a href="#throw表达式" class="headerlink" title="throw表达式"></a>throw表达式</h2>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(...)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">runtime_error</span>(<span class="string">&quot;...&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><code>throw</code>表达式抛出异常后，将<strong>终止当前函数，把控制权转移给能处理异常的代码</strong></p>
+
+        <h2 id="try语句块"   >
+          <a href="#try语句块" class="heading-link"><i class="fas fa-link"></i></a><a href="#try语句块" class="headerlink" title="try语句块"></a>try语句块</h2>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//执行有可能异常的代码，并抛出异常</span></span><br><span class="line">    <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    	<span class="keyword">throw</span> <span class="built_in">runtime_error</span>(<span class="string">&quot;...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="built_in">catch</span>(runtime_error e)&#123;</span><br><span class="line">    <span class="comment">//如果抛出了runtime_error,则跳转到该语句块处理</span></span><br><span class="line">&#125;<span class="built_in">catch</span>(异常声明)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>若程序在抛出异常时经过了<strong>多层try语句块</strong>，则会自底向上，不断向调用该函数的函数抛出异常，直到找到匹配的<code>catch</code>语句。</p>
+<p>如果没要找到任何匹配的<code>catch</code>（或没有try语句块），则转到名为<code>terminate</code>的标准库函数，该函数的行为与系统相关，一般导致程序非正常退出（闪退）</p>
+</blockquote>
+
+        <h2 id="标准异常类"   >
+          <a href="#标准异常类" class="heading-link"><i class="fas fa-link"></i></a><a href="#标准异常类" class="headerlink" title="标准异常类"></a>标准异常类</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>&lt;stdexcept&gt;异常类</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>exception</td>
+<td>最常见的问题</td>
+</tr>
+<tr>
+<td>runtime_error</td>
+<td>运行时才能检测出的问题</td>
+</tr>
+<tr>
+<td>range_error</td>
+<td>运算结果超出了有效值</td>
+</tr>
+<tr>
+<td>overflow_error</td>
+<td>计算上溢</td>
+</tr>
+<tr>
+<td>underflow_error</td>
+<td>计算下溢</td>
+</tr>
+<tr>
+<td>logic_error</td>
+<td>程序逻辑错误</td>
+</tr>
+<tr>
+<td>domain_error</td>
+<td>参数对应的结果值不存在</td>
+</tr>
+<tr>
+<td>invalid_argument</td>
+<td>不合法的参数</td>
+</tr>
+<tr>
+<td>length_error</td>
+<td>试图创建超出最大长度的对象</td>
+</tr>
+<tr>
+<td>out_of_range</td>
+<td>使用一个超出有效范围的值</td>
+</tr>
+</tbody></table></div>
+
+        <h1 id="函数"   >
+          <a href="#函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数" class="headerlink" title="函数"></a>函数</h1>
+      
+        <h3 id="局部静态对象"   >
+          <a href="#局部静态对象" class="heading-link"><i class="fas fa-link"></i></a><a href="#局部静态对象" class="headerlink" title="局部静态对象"></a>局部静态对象</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//静态变量知道程序终止才销毁</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//统计函数调用次数</span></span><br><span class="line">    count++;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="参数传递"   >
+          <a href="#参数传递" class="heading-link"><i class="fas fa-link"></i></a><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2>
+      
+        <h3 id="值传递"   >
+          <a href="#值传递" class="heading-link"><i class="fas fa-link"></i></a><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h3>
+      <p>初始化一个非引用类型的形参时，初始值被拷贝，<strong>在函数内的改动不会影响实参本身</strong>。</p>
+
+        <h3 id="引用传递"   >
+          <a href="#引用传递" class="heading-link"><i class="fas fa-link"></i></a><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3>
+      <p>通过引用传递可以在函数内<strong>改变实参本身</strong>，也可以专门用一个参数返回额外信息</p>
+
+        <h3 id="引用形参与const"   >
+          <a href="#引用形参与const" class="heading-link"><i class="fas fa-link"></i></a><a href="#引用形参与const" class="headerlink" title="引用形参与const"></a>引用形参与const</h3>
+      <p>※可以使用非常量初始化一个底层const对象，但不能用const对象，字面值传给普通的引用形参。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//规范传入数组</span></span><br><span class="line"><span class="comment">//传入头尾指针</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">int</span>* beg, <span class="type">const</span> <span class="type">int</span>* end)</span></span>&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//传入数组和大小</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">int</span> arr[], <span class="type">size_t</span> size)</span></span>&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="参数默认值"   >
+          <a href="#参数默认值" class="heading-link"><i class="fas fa-link"></i></a><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h3>
+      <p>※一旦某个形参有默认值，<strong>后面的所有形参都必须有默认值</strong>。</p>
+
+        <h2 id="返回值"   >
+          <a href="#返回值" class="heading-link"><i class="fas fa-link"></i></a><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2>
+      <p>※不要返回局部对象的引用或指针</p>
+
+        <h3 id="列表初始化返回值"   >
+          <a href="#列表初始化返回值" class="heading-link"><i class="fas fa-link"></i></a><a href="#列表初始化返回值" class="headerlink" title="列表初始化返回值"></a>列表初始化返回值</h3>
+      <p>c++11</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;string&gt; <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="尾置返回类型"   >
+          <a href="#尾置返回类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#尾置返回类型" class="headerlink" title="尾置返回类型"></a>尾置返回类型</h3>
+      <p>用于函数<strong>声明</strong>，在形参列表后用箭头声明返回类型，前面用<code>auto</code>。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">func</span><span class="params">(<span class="type">int</span> i)</span> -&gt; <span class="title">int</span><span class="params">(*)</span>[10]</span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>使用<code>decltype</code>也可以声明：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//decltype(arr)返回一个大小为3的整形数组，用*转换为指针</span></span><br><span class="line"><span class="keyword">decltype</span>(arr)* <span class="built_in">func</span>(<span class="type">int</span> i)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; </span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="main函数"   >
+          <a href="#main函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2>
+      
+        <h3 id="传参"   >
+          <a href="#传参" class="heading-link"><i class="fas fa-link"></i></a><a href="#传参" class="headerlink" title="传参"></a>传参</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="返回值-1"   >
+          <a href="#返回值-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3>
+      <p>main函数如果没有写return语句，编译器将自动插入<code>return 0</code></p>
+<p>main函数的返回值可以看作是状态指示器，返回0表示<strong>执行成功</strong>，返回其他值表示执行失败。</p>
+<p><code>cstdlib</code>定义了两个预处理变量，可以表示执行成功与失败：<code>EXIT_FAILURE</code>，<code>EXIT_SUCCESS</code></p>
+
+        <h2 id="函数重载"   >
+          <a href="#函数重载" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2>
+      <p>同一作用域内，<strong>形参列表不同，函数名相同</strong>的函数称之为<strong>重载函数overloaded</strong>。</p>
+<p>※不能只有<strong>返回类型不同</strong>。</p>
+<p>局部函数会覆盖全局函数（一般不在局部作用域声明函数）:</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> string &amp;)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//导致上面两个print均被隐藏</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>c++中先进行名字查找，再类型检查。</p>
+</blockquote>
+
+        <h3 id="函数匹配"   >
+          <a href="#函数匹配" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数匹配" class="headerlink" title="函数匹配"></a>函数匹配</h3>
+      
+        <h2 id="函数内联"   >
+          <a href="#函数内联" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数内联" class="headerlink" title="函数内联"></a>函数内联</h2>
+      <p>在函数声明的开头标注</p>
+<p>在编译过程中展开函数，用函数体替换函数调用。（提升性能）</p>
+
+        <h2 id="常量表达式"   >
+          <a href="#常量表达式" class="heading-link"><i class="fas fa-link"></i></a><a href="#常量表达式" class="headerlink" title="常量表达式"></a>常量表达式</h2>
+      <ul>
+<li>函数的返回类型和所有形参都是字面值类型</li>
+<li>函数体有且只有一条return</li>
+</ul>
+<p>编译时，<code>constexpr</code>函数被隐式指定为内联函数，在执行初始化任务时替换为结果值。</p>
+
+        <h2 id="函数指针"   >
+          <a href="#函数指针" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2>
+      
+        <h1 id="类"   >
+          <a href="#类" class="heading-link"><i class="fas fa-link"></i></a><a href="#类" class="headerlink" title="类"></a>类</h1>
+      <p>※类本身就是一个作用域，类的成员函数的定义嵌套在作用域内。</p>
+<p>※class和struct的唯一区别是默认的访问权限不同。</p>
+<p>※类内定义的函数默认<code>inline</code>。</p>
+<p>类外显示定义类成员函数为<code>inline</code>：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span></span></span><br><span class="line"><span class="function">Screen&amp; <span class="title">Screen::move</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">//返回对象本身</span></span><br><span class="line">   	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="构造函数"   >
+          <a href="#构造函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2>
+      
+        <h3 id="默认构造函数的作用"   >
+          <a href="#默认构造函数的作用" class="heading-link"><i class="fas fa-link"></i></a><a href="#默认构造函数的作用" class="headerlink" title="默认构造函数的作用"></a>默认构造函数的作用</h3>
+      <p>对象被默认初始化或值初始化时，自动执行默认构造函数</p>
+
+        <h3 id="手动生成默认构造函数"   >
+          <a href="#手动生成默认构造函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#手动生成默认构造函数" class="headerlink" title="手动生成默认构造函数"></a>手动生成默认构造函数</h3>
+      <p>c++11</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义了其他构造函数的情况下，还需要默认构造函数时</span></span><br><span class="line"><span class="built_in">Class</span>() = <span class="keyword">default</span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="初始值列表"   >
+          <a href="#初始值列表" class="heading-link"><i class="fas fa-link"></i></a><a href="#初始值列表" class="headerlink" title="初始值列表"></a>初始值列表</h3>
+      <p>※初始值列表的前后位置关系不会影响初始化顺序，成员的初始化顺序与<strong>类定义中出现的顺序一致</strong>。</p>
+<blockquote>
+<p><strong>必须使用初始值的情况：</strong></p>
+<ul>
+<li>const或引用成员</li>
+<li>类类型，且无默认构造函数的成员</li>
+</ul>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">class</span> <span class="title class_">Class</span>&#123;</span><br><span class="line">&gt;<span class="keyword">private</span>:</span><br><span class="line">   <span class="type">const</span> <span class="type">int</span> i;</span><br><span class="line">   <span class="type">int</span> &amp;ri;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Class</span>(): <span class="built_in">var1</span>(value1), <span class="built_in">var2</span>(value2) &#123;&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="委托构造函数"   >
+          <a href="#委托构造函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#委托构造函数" class="headerlink" title="委托构造函数"></a>委托构造函数</h3>
+      <p>c++11</p>
+<p>可以将构造函数的一部分职责交给其他构造函数</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">    <span class="comment">//先执行委托的构造函数的初始值列表和函数体</span></span><br><span class="line">    <span class="comment">//再执行自身构造函数的内容</span></span><br><span class="line">    <span class="built_in">Sales_data</span>(): <span class="built_in">Sales_data</span>(<span class="string">&quot;&quot;</span>, <span class="number">0</span>, <span class="number">0</span>)&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="友元"   >
+          <a href="#友元" class="heading-link"><i class="fas fa-link"></i></a><a href="#友元" class="headerlink" title="友元"></a>友元</h2>
+      <p>令其他类或函数成为**友元(friend)**，就可以允许其他类或函数访问<code>private</code>成员。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> Sales_data <span class="title">add</span><span class="params">(<span class="type">const</span> Sales_data&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line">   	...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//类外声明</span></span><br><span class="line"><span class="function">Sales_data <span class="title">add</span><span class="params">(<span class="type">const</span> Sales_data&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="可变成员"   >
+          <a href="#可变成员" class="heading-link"><i class="fas fa-link"></i></a><a href="#可变成员" class="headerlink" title="可变成员"></a>可变成员</h2>
+      <p><code>mutable</code>关键字声明的成员属性，可以在<code>const</code>函数内被修改。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mutable</span> <span class="type">size_t</span> count;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用mutable成员记录函数调用次数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Screen::func</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">    ++count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="类类型转换"   >
+          <a href="#类类型转换" class="heading-link"><i class="fas fa-link"></i></a><a href="#类类型转换" class="headerlink" title="类类型转换"></a>类类型转换</h2>
+      <p>※隐式转换只会转换一步</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该构造函数会在需要Sales_data类型时，自动将istream类型转换</span></span><br><span class="line"><span class="built_in">Sales_data</span>(std::istream&amp;);</span><br><span class="line"></span><br><span class="line">item.<span class="built_in">combine</span>(cin);<span class="comment">//函数接受Sales_data类型，但传入的是istream</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="抑制隐式转换"   >
+          <a href="#抑制隐式转换" class="heading-link"><i class="fas fa-link"></i></a><a href="#抑制隐式转换" class="headerlink" title="抑制隐式转换"></a>抑制隐式转换</h3>
+      <p>※<code>explicit</code>只对一个实参的构造函数有效</p>
+<p>※只能在类内声明时使用<code>explicit</code>，在类外定义时不使用</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止构造函数的隐式转换</span></span><br><span class="line"><span class="function"><span class="keyword">explicit</span> <span class="title">Sales_data</span><span class="params">(std::istream&amp;)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>仍然可以显式地转换：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两者都调用构造函数，创建一个临时的Sales_data对象</span></span><br><span class="line">item.<span class="built_in">combine</span>(<span class="built_in">Sales_data</span>(cin));</span><br><span class="line">item.<span class="built_in">combine</span>(<span class="built_in">static_cast</span>&lt;Sales_data&gt;(cin));</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="聚合类"   >
+          <a href="#聚合类" class="heading-link"><i class="fas fa-link"></i></a><a href="#聚合类" class="headerlink" title="聚合类"></a>聚合类</h2>
+      <p>aggregate class</p>
+<p>满足以下条件的类，称为聚合类：</p>
+<ul>
+<li>所有成员public</li>
+<li>没有定义任何构造函数</li>
+<li>没有类内初始值</li>
+<li>没有基类，virtual函数</li>
+</ul>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Data</span>&#123;</span><br><span class="line">    <span class="type">int</span> ival;</span><br><span class="line">    string s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以用初始值列表初始化：</span></span><br><span class="line">Data data = &#123;<span class="number">0</span>, <span class="string">&quot;Vavid&quot;</span>&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="字面值常量类"   >
+          <a href="#字面值常量类" class="heading-link"><i class="fas fa-link"></i></a><a href="#字面值常量类" class="headerlink" title="字面值常量类"></a>字面值常量类</h3>
+      <p>数据成员都是字面值类型的聚合类<strong>或</strong>满足以下条件的类，称为字面值常量类：</p>
+<ul>
+<li>数据成员都是字面值类型</li>
+<li>含有一个<code>constexpr</code>构造函数，且类成员也有自己的<code>constexpr</code>构造函数</li>
+<li>使用默认析构函数</li>
+</ul>
+
+        <h2 id="静态成员"   >
+          <a href="#静态成员" class="heading-link"><i class="fas fa-link"></i></a><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2>
+      <p>该类的所有对象<strong>共用</strong>类的静态成员。</p>
+
+        <h1 id="IO库"   >
+          <a href="#IO库" class="heading-link"><i class="fas fa-link"></i></a><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iostream</td>
+<td>istream：输入流类型<br />ostream：输出流类型<br /></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+
+        <h1 id="调试"   >
+          <a href="#调试" class="heading-link"><i class="fas fa-link"></i></a><a href="#调试" class="headerlink" title="调试"></a>调试</h1>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//未定义NDEBUG时触发</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> NDEBUG</span></span><br><span class="line">	cerr &lt;&lt; _ _func_ _ &lt;&lt; endl;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></div></figure>
+
+<ul>
+<li><code>_ _func_ _</code>：输出当前调试的函数的名字</li>
+<li><code>_ _FILE_ _</code>：存放文件名的字符串字面值</li>
+<li><code>_ _LINE_ _</code>：存放当前行号的整形字面值</li>
+<li><code>_ _TIME_ _</code>：存放文件编译时间的字符串字面值</li>
+<li><code>_ _DATE_ _</code>：存放文件编译日期的字符串字面值</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2025/01/08/my-cpp-learning-note/">https://lzmustb.github.io/2025/01/08/my-cpp-learning-note/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/12/18/my-OpenGL-notes/"><span class="paginator-prev__text">OpenGL学习笔记</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">
+          头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">
+          预处理器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">
+          基本类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6identifier"><span class="toc-number">2.1.</span> <span class="toc-text">
+          标识符identifier</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          c++关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9Fscope"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          作用域scope</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7-x2F-%E6%9C%89%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.2.</span> <span class="toc-text">
+          无符号&#x2F;有符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">
+          变量初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          声明和定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+          默认初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.3.</span> <span class="toc-text">
+          {}列表初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auto"><span class="toc-number">2.3.4.</span> <span class="toc-text">
+          auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#decltype"><span class="toc-number">2.3.5.</span> <span class="toc-text">
+          decltype</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">
+          常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E5%80%BC%E5%B8%B8%E9%87%8F"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          字面值常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E4%B9%89"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">
+          字符转义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%AD%97%E9%9D%A2%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.4.1.2.</span> <span class="toc-text">
+          指定字面值类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          常量标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#const"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">
+          const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#constexpr"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">
+          constexpr</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.5.</span> <span class="toc-text">
+          复合类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-number">2.5.1.</span> <span class="toc-text">
+          左值引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">2.5.2.</span> <span class="toc-text">
+          指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8Cconst"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">
+          指针和const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#void"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">
+          void*</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-number">2.5.3.</span> <span class="toc-text">
+          声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E5%80%BC-amp-%E5%8F%96%E5%9D%80"><span class="toc-number">2.5.4.</span> <span class="toc-text">
+          取值&amp;取址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86"><span class="toc-number">2.6.</span> <span class="toc-text">
+          遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for"><span class="toc-number">2.6.1.</span> <span class="toc-text">
+          for</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D"><span class="toc-number">3.</span> <span class="toc-text">
+          类型别名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8Dtype-alias"><span class="toc-number">3.1.</span> <span class="toc-text">
+          类型别名type alias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%AB%E5%90%8D%E5%A3%B0%E6%98%8Ealias-declaration"><span class="toc-number">3.2.</span> <span class="toc-text">
+          别名声明alias declaration</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%BA%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">
+          标准库类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">4.1.</span> <span class="toc-text">
+          string</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.1.</span> <span class="toc-text">
+          定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-number">4.1.2.</span> <span class="toc-text">
+          读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#empty"><span class="toc-number">4.1.3.</span> <span class="toc-text">
+          empty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size"><span class="toc-number">4.1.4.</span> <span class="toc-text">
+          size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97"><span class="toc-number">4.1.5.</span> <span class="toc-text">
+          运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-1"><span class="toc-number">4.1.6.</span> <span class="toc-text">
+          遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E9%A3%8E%E6%A0%BC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.1.7.</span> <span class="toc-text">
+          c风格字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vector"><span class="toc-number">4.2.</span> <span class="toc-text">
+          vector</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.2.1.</span> <span class="toc-text">
+          初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-2"><span class="toc-number">4.2.2.</span> <span class="toc-text">
+          遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">4.2.3.</span> <span class="toc-text">
+          迭代器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">4.3.</span> <span class="toc-text">
+          数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">
+          初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">
+          遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">4.3.3.</span> <span class="toc-text">
+          多维数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">
+          表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">5.1.</span> <span class="toc-text">
+          算数运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%A2%9E%E9%80%92%E5%87%8F"><span class="toc-number">5.1.1.</span> <span class="toc-text">
+          递增递减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%92%8C%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97"><span class="toc-number">5.2.</span> <span class="toc-text">
+          逻辑和关系运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E6%B1%82%E5%80%BC"><span class="toc-number">5.2.1.</span> <span class="toc-text">
+          短路求值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC"><span class="toc-number">5.3.</span> <span class="toc-text">
+          赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.4.</span> <span class="toc-text">
+          位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">5.4.1.</span> <span class="toc-text">
+          移位操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sizeof"><span class="toc-number">5.5.</span> <span class="toc-text">
+          sizeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%97%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.6.</span> <span class="toc-text">
+          逗号运算符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.</span> <span class="toc-text">
+          类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.1.</span> <span class="toc-text">
+          隐式转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.2.</span> <span class="toc-text">
+          显示转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#static-cast"><span class="toc-number">6.2.1.</span> <span class="toc-text">
+          static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-cast"><span class="toc-number">6.2.2.</span> <span class="toc-text">
+          const_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reinterpret-cast"><span class="toc-number">6.2.3.</span> <span class="toc-text">
+          reinterpret_cast</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">
+          异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#throw%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">7.1.</span> <span class="toc-text">
+          throw表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#try%E8%AF%AD%E5%8F%A5%E5%9D%97"><span class="toc-number">7.2.</span> <span class="toc-text">
+          try语句块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-number">7.3.</span> <span class="toc-text">
+          标准异常类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">
+          函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1"><span class="toc-number">8.0.1.</span> <span class="toc-text">
+          局部静态对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">8.1.</span> <span class="toc-text">
+          参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92"><span class="toc-number">8.1.1.</span> <span class="toc-text">
+          值传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">8.1.2.</span> <span class="toc-text">
+          引用传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%BD%A2%E5%8F%82%E4%B8%8Econst"><span class="toc-number">8.1.3.</span> <span class="toc-text">
+          引用形参与const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">8.1.4.</span> <span class="toc-text">
+          参数默认值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">8.2.</span> <span class="toc-text">
+          返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">8.2.1.</span> <span class="toc-text">
+          列表初始化返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BE%E7%BD%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.2.2.</span> <span class="toc-text">
+          尾置返回类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main%E5%87%BD%E6%95%B0"><span class="toc-number">8.3.</span> <span class="toc-text">
+          main函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E5%8F%82"><span class="toc-number">8.3.1.</span> <span class="toc-text">
+          传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC-1"><span class="toc-number">8.3.2.</span> <span class="toc-text">
+          返回值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="toc-number">8.4.</span> <span class="toc-text">
+          函数重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8C%B9%E9%85%8D"><span class="toc-number">8.4.1.</span> <span class="toc-text">
+          函数匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%86%85%E8%81%94"><span class="toc-number">8.5.</span> <span class="toc-text">
+          函数内联</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">8.6.</span> <span class="toc-text">
+          常量表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-number">8.7.</span> <span class="toc-text">
+          函数指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">9.</span> <span class="toc-text">
+          类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">9.1.</span> <span class="toc-text">
+          构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">9.1.1.</span> <span class="toc-text">
+          默认构造函数的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">9.1.2.</span> <span class="toc-text">
+          手动生成默认构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%80%BC%E5%88%97%E8%A1%A8"><span class="toc-number">9.1.3.</span> <span class="toc-text">
+          初始值列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">9.1.4.</span> <span class="toc-text">
+          委托构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8B%E5%85%83"><span class="toc-number">9.2.</span> <span class="toc-text">
+          友元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%88%90%E5%91%98"><span class="toc-number">9.3.</span> <span class="toc-text">
+          可变成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">9.4.</span> <span class="toc-text">
+          类类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%91%E5%88%B6%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">9.4.1.</span> <span class="toc-text">
+          抑制隐式转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E7%B1%BB"><span class="toc-number">9.5.</span> <span class="toc-text">
+          聚合类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E5%80%BC%E5%B8%B8%E9%87%8F%E7%B1%BB"><span class="toc-number">9.5.1.</span> <span class="toc-text">
+          字面值常量类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-number">9.6.</span> <span class="toc-text">
+          静态成员</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO%E5%BA%93"><span class="toc-number">10.</span> <span class="toc-text">
+          IO库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E8%AF%95"><span class="toc-number">11.</span> <span class="toc-text">
+          调试</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/202201121316093.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2025</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
