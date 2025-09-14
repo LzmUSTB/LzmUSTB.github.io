@@ -1,0 +1,643 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="注意事项        建模中，不允许出现超过四个点组成的面（多边面） UV展开前先冻结变换                      显示                           面数       [Display]-&gt;[heads up display]-&gt;[poly count]                     操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="my-maya-note">
+<meta property="og:url" content="https://lzmustb.github.io/2025/07/16/my-maya-note/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="注意事项        建模中，不允许出现超过四个点组成的面（多边面） UV展开前先冻结变换                      显示                           面数       [Display]-&gt;[heads up display]-&gt;[poly count]                     操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250717103626720.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250717103529450.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250717170607119.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250719222900082.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250720123420924.png">
+<meta property="article:published_time" content="2025-07-16T06:22:09.000Z">
+<meta property="article:modified_time" content="2025-08-02T13:31:16.145Z">
+<meta property="article:author" content="Lzm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzmustb.github.io/images/image-20250717103626720.png"><title>my-maya-note | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2025/07/16/my-maya-note/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">my-maya-note</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-07-16</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">980</span></span></div></header><div class="post-body">
+        <h1 id="注意事项"   >
+          <a href="#注意事项" class="heading-link"><i class="fas fa-link"></i></a><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1>
+      <ul>
+<li>建模中，不允许出现超过四个点组成的面（多边面）</li>
+<li>UV展开前先冻结变换</li>
+</ul>
+
+        <h1 id="显示"   >
+          <a href="#显示" class="heading-link"><i class="fas fa-link"></i></a><a href="#显示" class="headerlink" title="显示"></a>显示</h1>
+      
+        <h2 id="面数"   >
+          <a href="#面数" class="heading-link"><i class="fas fa-link"></i></a><a href="#面数" class="headerlink" title="面数"></a>面数</h2>
+      <p>[Display]-&gt;[heads up display]-&gt;[poly count]</p>
+
+        <h1 id="操作"   >
+          <a href="#操作" class="heading-link"><i class="fas fa-link"></i></a><a href="#操作" class="headerlink" title="操作"></a>操作</h1>
+      
+        <h2 id="变换"   >
+          <a href="#变换" class="heading-link"><i class="fas fa-link"></i></a><a href="#变换" class="headerlink" title="变换"></a>变换</h2>
+      <p><code>G</code>：重复操作</p>
+<p><code>alt + 鼠标左键</code>：视角旋转</p>
+<p><code>alt + 鼠标中键</code>：视角移动</p>
+<p><code>alt + 鼠标右键</code>：视角缩放</p>
+<p><code>alt + shift + 鼠标</code>：单轴缩放&#x2F;移动&#x2F;旋转</p>
+<p><code>F</code>：聚焦物体</p>
+<p><code>w</code>：平移物体</p>
+<p>​	<code>ctrl + shift + 左键</code>：沿着边滑动</p>
+<p><code>E</code>：旋转物体</p>
+<p><code>R</code>：缩放物体</p>
+<p>​	<code>J</code>：固定变换比例</p>
+
+        <h2 id="显示-1"   >
+          <a href="#显示-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#显示-1" class="headerlink" title="显示"></a>显示</h2>
+      <p><code>1</code>：普通</p>
+<p><code>2</code>：带线框的平滑着色</p>
+<p><code>3</code>：平滑着色</p>
+<p><code>4</code>：线框</p>
+<p><code>5</code>：面着色</p>
+<p><code>6</code>：带纹理的着色</p>
+<p><code>alt + H</code> ：只显示选中的模型</p>
+<p>[Display]-&gt;[Show]-&gt;[All]显示outliner的所有物体</p>
+
+        <h2 id="soft-select"   >
+          <a href="#soft-select" class="heading-link"><i class="fas fa-link"></i></a><a href="#soft-select" class="headerlink" title="soft select"></a>soft select</h2>
+      <p><code>B</code>：启动</p>
+<p>选中顶点，<code>B + 鼠标中键</code>：改变影响范围</p>
+
+        <h2 id="multi-cut"   >
+          <a href="#multi-cut" class="heading-link"><i class="fas fa-link"></i></a><a href="#multi-cut" class="headerlink" title="multi-cut"></a>multi-cut</h2>
+      <p><code>ctrl</code>：环状切</p>
+<p><code>shift</code>：整数百分比</p>
+
+        <h2 id="挤出边Extrude"   >
+          <a href="#挤出边Extrude" class="heading-link"><i class="fas fa-link"></i></a><a href="#挤出边Extrude" class="headerlink" title="挤出边Extrude"></a>挤出边Extrude</h2>
+      <p><code>ctrl + E</code></p>
+
+        <h2 id="参考图的导入"   >
+          <a href="#参考图的导入" class="heading-link"><i class="fas fa-link"></i></a><a href="#参考图的导入" class="headerlink" title="参考图的导入"></a>参考图的导入</h2>
+      <p>[View]-&gt;[Image Plane]-&gt;[Import Image Plane]</p>
+<p>在Layers窗口可以添加Layer，将参考图添加到Layer中后，可以锁定</p>
+
+        <h2 id="右键菜单"   >
+          <a href="#右键菜单" class="heading-link"><i class="fas fa-link"></i></a><a href="#右键菜单" class="headerlink" title="右键菜单"></a>右键菜单</h2>
+      <p><code>右键</code>：切换选择的组件</p>
+<p><code>shift + 右键</code>：</p>
+<p><code>ctrl + shift + 右键</code>：(在放射变换选中的情况下)可以将仿射变换的参照在世界&#x2F;物体&#x2F;组件之间切换</p>
+
+        <h2 id="冻结变化"   >
+          <a href="#冻结变化" class="heading-link"><i class="fas fa-link"></i></a><a href="#冻结变化" class="headerlink" title="冻结变化"></a>冻结变化</h2>
+      <p>应用并重置物体的变换</p>
+
+        <h2 id="移动中心点"   >
+          <a href="#移动中心点" class="heading-link"><i class="fas fa-link"></i></a><a href="#移动中心点" class="headerlink" title="移动中心点"></a>移动中心点</h2>
+      <p><code>D</code></p>
+<p>居中中心点</p>
+
+        <h2 id="吸附"   >
+          <a href="#吸附" class="heading-link"><i class="fas fa-link"></i></a><a href="#吸附" class="headerlink" title="吸附"></a>吸附</h2>
+      <p><img src="/../images/image-20250717103626720.png" alt="image-20250717103626720"></p>
+<p>吸附网格<code>x</code></p>
+<p>吸附曲线<code>c</code>：选定物体，打开线框显示，对着曲线中键</p>
+<p>吸附端点<code>v</code>：按住<code>ctrl</code></p>
+<p>吸附多边形面</p>
+<p>吸附视锥体：吸附到摄像机投影平面</p>
+<p>吸附物体：选中物体开启，吸附到选中物体表面</p>
+
+        <h2 id="复制Transform"   >
+          <a href="#复制Transform" class="heading-link"><i class="fas fa-link"></i></a><a href="#复制Transform" class="headerlink" title="复制Transform"></a>复制Transform</h2>
+      <p>① 选中复制目标</p>
+<p>②选中复制源</p>
+<p>③在Channel Box中，对需要复制的属性按<code>Tab</code></p>
+
+        <h2 id="选择"   >
+          <a href="#选择" class="heading-link"><i class="fas fa-link"></i></a><a href="#选择" class="headerlink" title="选择"></a>选择</h2>
+      <p>选择循环面：①选中一个面，按住<code>Shift</code>双击相邻面</p>
+
+        <h2 id="合并顶点工具"   >
+          <a href="#合并顶点工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#合并顶点工具" class="headerlink" title="合并顶点工具"></a>合并顶点工具</h2>
+      <ul>
+<li>合并顶点到中心</li>
+<li>根据阈值合并顶点</li>
+<li>目标焊接工具</li>
+</ul>
+
+        <h2 id="反转法线"   >
+          <a href="#反转法线" class="heading-link"><i class="fas fa-link"></i></a><a href="#反转法线" class="headerlink" title="反转法线"></a>反转法线</h2>
+      <p>在maya中，正面为<strong>灰色</strong>，北面为<strong>黑色</strong></p>
+<p>反转：[Mesh Display]-&gt;[Reverse]</p>
+
+        <h2 id="复制"   >
+          <a href="#复制" class="heading-link"><i class="fas fa-link"></i></a><a href="#复制" class="headerlink" title="复制"></a>复制</h2>
+      <p><code>ctrl + D</code>：原位置复制</p>
+<p><code>shift + 平移</code>：（物体模式下）复制并移动</p>
+
+        <h3 id="特殊复制"   >
+          <a href="#特殊复制" class="heading-link"><i class="fas fa-link"></i></a><a href="#特殊复制" class="headerlink" title="特殊复制"></a>特殊复制</h3>
+      <p>[Edit]-&gt;[Duplicate Special]</p>
+<p>复制类型改为实例，可以与复制源关联</p>
+
+        <h2 id="清理"   >
+          <a href="#清理" class="heading-link"><i class="fas fa-link"></i></a><a href="#清理" class="headerlink" title="清理"></a>清理</h2>
+      <p>[Mesh]-&gt;[Clean Up]</p>
+
+        <h2 id="隔离选择"   >
+          <a href="#隔离选择" class="heading-link"><i class="fas fa-link"></i></a><a href="#隔离选择" class="headerlink" title="隔离选择"></a>隔离选择</h2>
+      <p><code>alt + H</code> ：只显示选择的物体</p>
+<p><code>ctrl + H</code>：隐藏选择的物体</p>
+<p><code>ctrl + Shift + H</code>：显示隐藏的物体</p>
+
+        <h2 id="面提取-x2F-面复制"   >
+          <a href="#面提取-x2F-面复制" class="heading-link"><i class="fas fa-link"></i></a><a href="#面提取-x2F-面复制" class="headerlink" title="面提取&#x2F;面复制"></a>面提取&#x2F;面复制</h2>
+      <p><img src="/../images/image-20250717103529450.png" alt="image-20250717103529450"></p>
+<p>面提取：从模型分离选中的面</p>
+
+        <h2 id="晶格"   >
+          <a href="#晶格" class="heading-link"><i class="fas fa-link"></i></a><a href="#晶格" class="headerlink" title="晶格"></a>晶格</h2>
+      <p>[Deform]-&gt;[Lattice]</p>
+<p><img src="/../images/image-20250717170607119.png" alt="image-20250717170607119"></p>
+<p>删除晶格：[Edit]-&gt;[Delete by Type]-&gt;[History]</p>
+
+        <h2 id="弯曲"   >
+          <a href="#弯曲" class="heading-link"><i class="fas fa-link"></i></a><a href="#弯曲" class="headerlink" title="弯曲"></a>弯曲</h2>
+      <p>[Deform]-&gt;[Nonlinear]-&gt;[bend]</p>
+
+        <h2 id="Outliner分组"   >
+          <a href="#Outliner分组" class="heading-link"><i class="fas fa-link"></i></a><a href="#Outliner分组" class="headerlink" title="Outliner分组"></a>Outliner分组</h2>
+      <p><code>Ctrl + G</code>或[Edit]-&gt;[Group]</p>
+
+        <h1 id="纹理"   >
+          <a href="#纹理" class="heading-link"><i class="fas fa-link"></i></a><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h1>
+      <p>Panels-&gt;UV Editor</p>
+
+        <h2 id="材质"   >
+          <a href="#材质" class="heading-link"><i class="fas fa-link"></i></a><a href="#材质" class="headerlink" title="材质"></a>材质</h2>
+      <p><code>右键</code>-&gt;[Material Attributes]</p>
+
+        <h2 id="AO-bake"   >
+          <a href="#AO-bake" class="heading-link"><i class="fas fa-link"></i></a><a href="#AO-bake" class="headerlink" title="AO bake"></a>AO bake</h2>
+      <p>[Arnold]-&gt;[Utilities]-&gt;[Render Selection to Texture]</p>
+
+        <h2 id="输出snapshot"   >
+          <a href="#输出snapshot" class="heading-link"><i class="fas fa-link"></i></a><a href="#输出snapshot" class="headerlink" title="输出snapshot"></a>输出snapshot</h2>
+      <p>在UV Editor中，选中切割后的UV，菜单[Image]-&gt;[UV snapshot]</p>
+
+        <h1 id="骨骼"   >
+          <a href="#骨骼" class="heading-link"><i class="fas fa-link"></i></a><a href="#骨骼" class="headerlink" title="骨骼"></a>骨骼</h1>
+      
+        <h2 id="Joint"   >
+          <a href="#Joint" class="heading-link"><i class="fas fa-link"></i></a><a href="#Joint" class="headerlink" title="Joint"></a>Joint</h2>
+      <ul>
+<li>[Menu Set] -&gt; [Rigging]</li>
+<li>Skeleton-&gt;Create Joints</li>
+</ul>
+<p>在Ourliner中，<code>中键</code>拖拽可以添加子节点</p>
+
+        <h3 id="显示节点的旋转轴"   >
+          <a href="#显示节点的旋转轴" class="heading-link"><i class="fas fa-link"></i></a><a href="#显示节点的旋转轴" class="headerlink" title="显示节点的旋转轴"></a>显示节点的旋转轴</h3>
+      <p>[DIsplay]-&gt;[Transform Display]-&gt;[Local Rotate Axis]</p>
+
+        <h3 id="修改旋转轴"   >
+          <a href="#修改旋转轴" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改旋转轴" class="headerlink" title="修改旋转轴"></a>修改旋转轴</h3>
+      <p>[Skeleton]-&gt;[Orient Joints]</p>
+
+        <h3 id="镜像"   >
+          <a href="#镜像" class="heading-link"><i class="fas fa-link"></i></a><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3>
+      <p>[Skeleton]-&gt;[Mirror Joints]</p>
+
+        <h2 id="Skin"   >
+          <a href="#Skin" class="heading-link"><i class="fas fa-link"></i></a><a href="#Skin" class="headerlink" title="Skin"></a>Skin</h2>
+      
+        <h3 id="绑定"   >
+          <a href="#绑定" class="heading-link"><i class="fas fa-link"></i></a><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3>
+      <p>选中模型&amp;骨骼，[Skin]-&gt;[Bind Skin]</p>
+
+        <h3 id="调整权重"   >
+          <a href="#调整权重" class="heading-link"><i class="fas fa-link"></i></a><a href="#调整权重" class="headerlink" title="调整权重"></a>调整权重</h3>
+      <p>[Skin]-&gt;[Paint Skin Weights]</p>
+<p>笔刷大小：<code>B + 左键</code></p>
+
+        <h2 id="Rig"   >
+          <a href="#Rig" class="heading-link"><i class="fas fa-link"></i></a><a href="#Rig" class="headerlink" title="Rig"></a>Rig</h2>
+      <p><img src="/../images/image-20250719222900082.png" alt="image-20250719222900082"></p>
+
+        <h3 id="IK"   >
+          <a href="#IK" class="heading-link"><i class="fas fa-link"></i></a><a href="#IK" class="headerlink" title="IK"></a>IK</h3>
+      <p>[Skeleton]-&gt;[Create IK Handle]</p>
+
+        <h3 id="HumanIK"   >
+          <a href="#HumanIK" class="heading-link"><i class="fas fa-link"></i></a><a href="#HumanIK" class="headerlink" title="HumanIK"></a>HumanIK</h3>
+      <p>[Windows]-&gt;[Animation Editor]-&gt;[HumanIK]</p>
+<p>Create Character definition</p>
+<p>在Outliner中选择骨骼，在任务面板右键骨骼选择[assign selected bone]</p>
+<p>绑定完后，点击[Create Control Rig]（垃圾桶旁边）</p>
+<p><img src="/../images/image-20250720123420924.png" alt="image-20250720123420924"></p>
+
+        <h3 id="Constrain"   >
+          <a href="#Constrain" class="heading-link"><i class="fas fa-link"></i></a><a href="#Constrain" class="headerlink" title="Constrain"></a>Constrain</h3>
+      <p>Rigging模式下：[Constrain]</p>
+<ul>
+<li>用一个物体约束另一个物体的某些属性</li>
+</ul>
+<p>[Parent]：相对位置</p>
+<p>[Point]：绝对位置</p>
+<p>[Orient]：方向</p>
+<p>[Scale]：缩放</p>
+<p>[Aim]：物体B朝向物体A所在方向</p>
+<p>[Pole Vector]：物体B(IK Handle)折向物体A</p>
+
+        <h1 id="光源"   >
+          <a href="#光源" class="heading-link"><i class="fas fa-link"></i></a><a href="#光源" class="headerlink" title="光源"></a>光源</h1>
+      <p>创建：[Create]-&gt;[Light]</p>
+
+        <h1 id="Blender"   >
+          <a href="#Blender" class="heading-link"><i class="fas fa-link"></i></a><a href="#Blender" class="headerlink" title="Blender"></a>Blender</h1>
+      
+        <h2 id="物体半透明"   >
+          <a href="#物体半透明" class="heading-link"><i class="fas fa-link"></i></a><a href="#物体半透明" class="headerlink" title="物体半透明"></a>物体半透明</h2>
+      <p><code>alt + z</code></p>
+
+        <h2 id="选择循环边"   >
+          <a href="#选择循环边" class="heading-link"><i class="fas fa-link"></i></a><a href="#选择循环边" class="headerlink" title="选择循环边"></a>选择循环边</h2>
+      <p><code>alt 左键</code></p>
+
+        <h2 id="Edge-Crease"   >
+          <a href="#Edge-Crease" class="heading-link"><i class="fas fa-link"></i></a><a href="#Edge-Crease" class="headerlink" title="Edge Crease"></a>Edge Crease</h2>
+      <p>Shift + E</p>
+
+        <h2 id="贝塞尔曲线"   >
+          <a href="#贝塞尔曲线" class="heading-link"><i class="fas fa-link"></i></a><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2>
+      <p><code>F</code>连接两个端点</p>
+<p><code>ctrl + 右键</code>：在指针处添加端点</p>
+<p>[subdivide]：在两个端点之间添加一个端点</p>
+<p><code>p</code>：分离选中的两个端点之间的线段</p>
+<p><code>v</code>：修改曲线定义</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2025/07/16/my-maya-note/">https://lzmustb.github.io/2025/07/16/my-maya-note/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2025/06/23/my-java-notes/"><span class="paginator-prev__text">Java笔记</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">
+          注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">
+          显示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">
+          面数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">
+          操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">
+          变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA-1"><span class="toc-number">3.2.</span> <span class="toc-text">
+          显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#soft-select"><span class="toc-number">3.3.</span> <span class="toc-text">
+          soft select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multi-cut"><span class="toc-number">3.4.</span> <span class="toc-text">
+          multi-cut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%A4%E5%87%BA%E8%BE%B9Extrude"><span class="toc-number">3.5.</span> <span class="toc-text">
+          挤出边Extrude</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%9B%BE%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="toc-number">3.6.</span> <span class="toc-text">
+          参考图的导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="toc-number">3.7.</span> <span class="toc-text">
+          右键菜单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%BB%E7%BB%93%E5%8F%98%E5%8C%96"><span class="toc-number">3.8.</span> <span class="toc-text">
+          冻结变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E4%B8%AD%E5%BF%83%E7%82%B9"><span class="toc-number">3.9.</span> <span class="toc-text">
+          移动中心点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%B8%E9%99%84"><span class="toc-number">3.10.</span> <span class="toc-text">
+          吸附</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6Transform"><span class="toc-number">3.11.</span> <span class="toc-text">
+          复制Transform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9"><span class="toc-number">3.12.</span> <span class="toc-text">
+          选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E9%A1%B6%E7%82%B9%E5%B7%A5%E5%85%B7"><span class="toc-number">3.13.</span> <span class="toc-text">
+          合并顶点工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E8%BD%AC%E6%B3%95%E7%BA%BF"><span class="toc-number">3.14.</span> <span class="toc-text">
+          反转法线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="toc-number">3.15.</span> <span class="toc-text">
+          复制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%A4%8D%E5%88%B6"><span class="toc-number">3.15.1.</span> <span class="toc-text">
+          特殊复制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%90%86"><span class="toc-number">3.16.</span> <span class="toc-text">
+          清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E9%80%89%E6%8B%A9"><span class="toc-number">3.17.</span> <span class="toc-text">
+          隔离选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E6%8F%90%E5%8F%96-x2F-%E9%9D%A2%E5%A4%8D%E5%88%B6"><span class="toc-number">3.18.</span> <span class="toc-text">
+          面提取&#x2F;面复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%B6%E6%A0%BC"><span class="toc-number">3.19.</span> <span class="toc-text">
+          晶格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%AF%E6%9B%B2"><span class="toc-number">3.20.</span> <span class="toc-text">
+          弯曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Outliner%E5%88%86%E7%BB%84"><span class="toc-number">3.21.</span> <span class="toc-text">
+          Outliner分组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%B9%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">
+          纹理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8"><span class="toc-number">4.1.</span> <span class="toc-text">
+          材质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AO-bake"><span class="toc-number">4.2.</span> <span class="toc-text">
+          AO bake</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BAsnapshot"><span class="toc-number">4.3.</span> <span class="toc-text">
+          输出snapshot</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AA%A8%E9%AA%BC"><span class="toc-number">5.</span> <span class="toc-text">
+          骨骼</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Joint"><span class="toc-number">5.1.</span> <span class="toc-text">
+          Joint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%8A%82%E7%82%B9%E7%9A%84%E6%97%8B%E8%BD%AC%E8%BD%B4"><span class="toc-number">5.1.1.</span> <span class="toc-text">
+          显示节点的旋转轴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%97%8B%E8%BD%AC%E8%BD%B4"><span class="toc-number">5.1.2.</span> <span class="toc-text">
+          修改旋转轴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F"><span class="toc-number">5.1.3.</span> <span class="toc-text">
+          镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skin"><span class="toc-number">5.2.</span> <span class="toc-text">
+          Skin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A"><span class="toc-number">5.2.1.</span> <span class="toc-text">
+          绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E6%9D%83%E9%87%8D"><span class="toc-number">5.2.2.</span> <span class="toc-text">
+          调整权重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rig"><span class="toc-number">5.3.</span> <span class="toc-text">
+          Rig</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IK"><span class="toc-number">5.3.1.</span> <span class="toc-text">
+          IK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HumanIK"><span class="toc-number">5.3.2.</span> <span class="toc-text">
+          HumanIK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constrain"><span class="toc-number">5.3.3.</span> <span class="toc-text">
+          Constrain</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%89%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">
+          光源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Blender"><span class="toc-number">7.</span> <span class="toc-text">
+          Blender</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E4%BD%93%E5%8D%8A%E9%80%8F%E6%98%8E"><span class="toc-number">7.1.</span> <span class="toc-text">
+          物体半透明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%BE%AA%E7%8E%AF%E8%BE%B9"><span class="toc-number">7.2.</span> <span class="toc-text">
+          选择循环边</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Edge-Crease"><span class="toc-number">7.3.</span> <span class="toc-text">
+          Edge Crease</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF"><span class="toc-number">7.4.</span> <span class="toc-text">
+          贝塞尔曲线</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/202201121316093.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2025</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

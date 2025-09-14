@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><meta name="description" content="前言       观看Cherno GameEngine系列教程所做的笔记                     游戏引擎编程                           项目架构        引擎本体（生成dll，给sandbox使用） Sandbox（依赖engine的dll，继承engine的Application类）  123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏引擎编程学习笔记">
+<meta property="og:url" content="https://lzmustb.github.io/2025/02/25/my-gameEngine-learning/index.html">
+<meta property="og:site_name" content="Distant Dreamer">
+<meta property="og:description" content="前言       观看Cherno GameEngine系列教程所做的笔记                     游戏引擎编程                           项目架构        引擎本体（生成dll，给sandbox使用） Sandbox（依赖engine的dll，继承engine的Application类）  123456789">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250227194015335.png">
+<meta property="og:image" content="https://lzmustb.github.io/images/image-20250227193811006.png">
+<meta property="article:published_time" content="2025-02-25T11:14:54.000Z">
+<meta property="article:modified_time" content="2025-03-20T07:35:55.139Z">
+<meta property="article:author" content="Lzm">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzmustb.github.io/images/image-20250227194015335.png"><title>游戏引擎编程学习笔记 | Distant Dreamer</title><link ref="canonical" href="https://lzmustb.github.io/2025/02/25/my-gameEngine-learning/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: undefined,
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Distant Dreamer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-align-left"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">书单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/films/"><span class="header-nav-menu-item__icon"><i class="fas fa-film"></i></span><span class="header-nav-menu-item__text">影单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/test/"><span class="header-nav-menu-item__icon"><i class="fas fa-cogs"></i></span><span class="header-nav-menu-item__text">测试区</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/links/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">游戏引擎编程学习笔记</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-02-25</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.4k</span></span></div></header><div class="post-body">
+        <h1 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h1>
+      <p>观看Cherno <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa3FXT0VLbHctcGxTWFB0LVEyVjVxN0kwa05oUXxBQ3Jtc0tsc082bWs3YmFPVXY3WE5WMlJrUU1URlFxaXIxa1ZGMFhwVU1xQ29DT0ZIVzVNbFdDenJ0MXFTY25QT2hoUEh1V3lHV0pEUWhQZ0hBOUZkelNzb2NVU2Y2T0JJUzdBUWVKX3VHTU9Ob2w1eThtZll5WQ&q=https://thecherno.com/engine&v=5mlziHwq90k" >GameEngine系列教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>所做的笔记</p>
+
+        <h1 id="游戏引擎编程"   >
+          <a href="#游戏引擎编程" class="heading-link"><i class="fas fa-link"></i></a><a href="#游戏引擎编程" class="headerlink" title="游戏引擎编程"></a>游戏引擎编程</h1>
+      
+        <h2 id="项目架构"   >
+          <a href="#项目架构" class="heading-link"><i class="fas fa-link"></i></a><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2>
+      <ul>
+<li>引擎本体（生成dll，给sandbox使用）</li>
+<li>Sandbox（依赖engine的dll，继承engine的<code>Application</code>类）</li>
+</ul>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GameEnginePractice</span><br><span class="line">├─ GameEnginePractice</span><br><span class="line">│  ├─ src</span><br><span class="line">│  │  ├─ Core</span><br><span class="line">│  │  │  ├─ Application.cpp	【引擎应用层】</span><br><span class="line">│  │  │  ├─ Application.h</span><br><span class="line">│  │  │  ├─ Core.h			【通过宏配置dllexport/import】</span><br><span class="line">│  │  │  ├─ EntryPoint.h	【应用程序入口】</span><br><span class="line">│  │  │  ├─ Log.cpp			【日志类】</span><br><span class="line">│  │  │  └─ Log.h</span><br><span class="line">│  │  └─ pEngine.h			【用于包含整个项目，用户只需include这个头文件】</span><br><span class="line">│  └─ vendor				【第三方库文件夹】</span><br><span class="line">├─ Sandbox</span><br><span class="line">│  └─ src</span><br><span class="line">│     └─ Source.cpp</span><br><span class="line">└─ vendor</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="单头文件"   >
+          <a href="#单头文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#单头文件" class="headerlink" title="单头文件"></a>单头文件</h2>
+      <p>在<code>pEngine.h</code>中，统一include其他文件，则用户在使用该dll时，只需包含<code>pEngine.h</code>。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Core/Application.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Core/Log.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// --Entry Point--</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Core/EntryPoint.h&quot;</span></span></span><br><span class="line"><span class="comment">// ---------------</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="EntryPoint"   >
+          <a href="#EntryPoint" class="heading-link"><i class="fas fa-link"></i></a><a href="#EntryPoint" class="headerlink" title="EntryPoint"></a>EntryPoint</h2>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> PE_PLATFORM_WINDOWS</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">extern</span> pEngine::Application* <span class="title">pEngine::CreateApplication</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span> </span>&#123;</span><br><span class="line">	pEngine::Log::<span class="built_in">Init</span>();</span><br><span class="line"></span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;Run Application&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">	<span class="keyword">auto</span> app = pEngine::<span class="built_in">CreateApplication</span>();</span><br><span class="line">	app-&gt;<span class="built_in">Run</span>();</span><br><span class="line">	<span class="keyword">delete</span> app;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></div></figure>
+
+<p>在dll文件的<code>EntryPoint.h</code>中定义<strong>main函数</strong>，而不是在Sandbox中。Sandbox中只需继承Application类，并定义<code>CreateApplication()</code></p>
+
+        <h2 id="日志系统"   >
+          <a href="#日志系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h2>
+      <p>本教程采用的是<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/gabime/spdlog" >spdlog</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<ul>
+<li>包装为log类：未来更换日志库时，不影响用户的使用</li>
+<li>用宏代替直接调用：通过<code>undef</code>可以轻易屏蔽日志</li>
+</ul>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Core.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;spdlog/spdlog.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> pEngine &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">class</span> <span class="title class_">PENGINE_API</span> Log</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">Init</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">inline</span> <span class="type">static</span> std::shared_ptr&lt;spdlog::logger&gt;&amp; <span class="title">GetCoreLogger</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> s_CoreLogger; &#125;</span><br><span class="line">		<span class="function"><span class="keyword">inline</span> <span class="type">static</span> std::shared_ptr&lt;spdlog::logger&gt;&amp; <span class="title">GetClientLogger</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> s_ClientLogger; &#125;</span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">		<span class="type">static</span> std::shared_ptr&lt;spdlog::logger&gt; s_CoreLogger;</span><br><span class="line">		<span class="type">static</span> std::shared_ptr&lt;spdlog::logger&gt; s_ClientLogger;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//core log macros</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_CORE_ERROR(...)	::pEngine::Log::GetCoreLogger()-&gt;<span class="keyword">error</span>(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_CORE_WARN(...)	::pEngine::Log::GetCoreLogger()-&gt;warn(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_CORE_INFO(...)	::pEngine::Log::GetCoreLogger()-&gt;info(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_CORE_TRACE(...)	::pEngine::Log::GetCoreLogger()-&gt;trace(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_CORE_FATAL(...)	::pEngine::Log::GetCoreLogger()-&gt;fatal(__VA_ARGS__)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//client log macros</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_ERROR(...)	::pEngine::Log::GetClientLogger()-&gt;<span class="keyword">error</span>(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_WARN(...)	::pEngine::Log::GetClientLogger()-&gt;warn(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_INFO(...)	::pEngine::Log::GetClientLogger()-&gt;info(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_TRACE(...)	::pEngine::Log::GetClientLogger()-&gt;trace(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PE_FATAL(...)	::pEngine::Log::GetClientLogger()-&gt;fatal(__VA_ARGS__)</span></span><br></pre></td></tr></table></div></figure>
+
+<p>Init:</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Log::Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	spdlog::<span class="built_in">set_pattern</span>(<span class="string">&quot;%^[%T] %n: %v%$&quot;</span>);</span><br><span class="line">	s_CoreLogger = spdlog::<span class="built_in">stdout_color_mt</span>(<span class="string">&quot;pEngine&quot;</span>);</span><br><span class="line">	s_CoreLogger-&gt;<span class="built_in">set_level</span>(spdlog::level::trace);</span><br><span class="line">	<span class="built_in">PE_CORE_WARN</span>(<span class="string">&quot;CoreLogger Initialized.&quot;</span>);</span><br><span class="line"></span><br><span class="line">	s_ClientLogger = spdlog::<span class="built_in">stdout_color_mt</span>(<span class="string">&quot;APP&quot;</span>);</span><br><span class="line">	s_ClientLogger-&gt;<span class="built_in">set_level</span>(spdlog::level::trace);</span><br><span class="line">	<span class="built_in">PE_INFO</span>(<span class="string">&quot;ClientLogger Initialized.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="premake"   >
+          <a href="#premake" class="heading-link"><i class="fas fa-link"></i></a><a href="#premake" class="headerlink" title="premake"></a>premake</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/premake/premake-core" >github</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>用于项目构建的程序，cmake的替代方案</p>
+
+        <h3 id="使用"   >
+          <a href="#使用" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用" class="headerlink" title="使用"></a>使用</h3>
+      <p>下载premake5.exe</p>
+<p>在项目根目录创建<code>premake5.lua</code>，写配置脚本</p>
+<p>创建<code>GenerateProjects.bat</code>：</p>
+<figure class="highlight bat"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> vendor\bin\premake\premake5.exe vs2022</span><br><span class="line"><span class="built_in">PAUSE</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="EventSystem"   >
+          <a href="#EventSystem" class="heading-link"><i class="fas fa-link"></i></a><a href="#EventSystem" class="headerlink" title="EventSystem"></a>EventSystem</h2>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├─ Events</span><br><span class="line">│  ├─ Event.h</span><br><span class="line">│  ├─ KeyEvent.h</span><br><span class="line">│  ├─ MouseEvent.h</span><br><span class="line">│  ├─ ApplicationEvent.h</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Event基类"   >
+          <a href="#Event基类" class="heading-link"><i class="fas fa-link"></i></a><a href="#Event基类" class="headerlink" title="Event基类"></a>Event基类</h3>
+      <p>枚举类型EventType用于标注事件具体类型，EventCategory用于区分事件标签</p>
+<p><strong>Event基类</strong></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PENGINE_API</span> Event</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">virtual</span> ~<span class="built_in">Event</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">	<span class="type">bool</span> Handled = <span class="literal">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> EventType <span class="title">GetEventType</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">const</span> <span class="type">char</span>* <span class="title">GetName</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">int</span> <span class="title">GetCategoryFlags</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> std::string <span class="title">ToString</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">GetName</span>(); &#125;</span><br><span class="line">    <span class="comment">//一个事件可以有多个category，用与运算判断</span></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">IsInCategory</span><span class="params">(EventCategory category)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">GetCategoryFlags</span>() &amp; category;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>事件发送类</strong></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PENGINE_API</span> EventDispatcher</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">EventDispatcher</span>(Event&amp; event)</span><br><span class="line">		: <span class="built_in">m_Event</span>(event)</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// F will be deduced by the compiler</span></span><br><span class="line">	<span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> F&gt;</span></span><br><span class="line"><span class="function">	<span class="type">bool</span> <span class="title">Dispatch</span><span class="params">(<span class="type">const</span> F&amp; func)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (m_Event.<span class="built_in">GetEventType</span>() == T::<span class="built_in">GetStaticType</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			m_Event.Handled |= <span class="built_in">func</span>(<span class="built_in">static_cast</span>&lt;T&amp;&gt;(m_Event));</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">		Event&amp; m_Event;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="KeyEvent类"   >
+          <a href="#KeyEvent类" class="heading-link"><i class="fas fa-link"></i></a><a href="#KeyEvent类" class="headerlink" title="KeyEvent类"></a>KeyEvent类</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">KeyEvent</span> : <span class="keyword">public</span> Event</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">KeyCode <span class="title">GetKeyCode</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_KeyCode; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义EventCategory</span></span><br><span class="line">	<span class="built_in">EVENT_CLASS_CATEGORY</span>(EventCategoryKeyboard | EventCategoryInput)</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="built_in">KeyEvent</span>(<span class="type">const</span> KeyCode keycode)</span><br><span class="line">		: <span class="built_in">m_KeyCode</span>(keycode) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">	KeyCode m_KeyCode;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//KeyPressedEvent</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">KeyPressedEvent</span> : <span class="keyword">public</span> KeyEvent</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">KeyPressedEvent</span>(<span class="type">const</span> KeyCode keycode, <span class="type">bool</span> isRepeat = <span class="literal">false</span>)</span><br><span class="line">		: <span class="built_in">KeyEvent</span>(keycode), <span class="built_in">m_IsRepeat</span>(isRepeat) &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">IsRepeat</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_IsRepeat; &#125;</span><br><span class="line">	<span class="function">std::string <span class="title">ToString</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::stringstream ss;</span><br><span class="line">		ss &lt;&lt; <span class="string">&quot;KeyPressedEvent: &quot;</span> &lt;&lt; m_KeyCode &lt;&lt; <span class="string">&quot; (repeat = &quot;</span> &lt;&lt; m_IsRepeat &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> ss.<span class="built_in">str</span>();</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//定义EventType</span></span><br><span class="line">	<span class="built_in">EVENT_CLASS_TYPE</span>(KeyPressed)</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">bool</span> m_IsRepeat;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// KeyReleasedEvent，KeyTypedEvent类似</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="precompiled-header"   >
+          <a href="#precompiled-header" class="heading-link"><i class="fas fa-link"></i></a><a href="#precompiled-header" class="headerlink" title="precompiled header"></a>precompiled header</h2>
+      <p>预编译头文件是一种C++编译技术，用于提高<strong>编译速度</strong></p>
+<p><code>xxpch.h</code>：预编译头文件，包含了<strong>不常修改的api头文件</strong>(标准库头文件等)</p>
+<p><code>xxpch.cpp</code>：对应的源文件，通常只有一句<code>include &quot;xxpch.h&quot;</code>，用于生成<code>xxpch.h</code>的二进制文件。</p>
+
+        <h3 id="premake中使用"   >
+          <a href="#premake中使用" class="heading-link"><i class="fas fa-link"></i></a><a href="#premake中使用" class="headerlink" title="premake中使用"></a>premake中使用</h3>
+      <p>在引擎的project中：</p>
+<figure class="highlight lua"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pchheader <span class="string">&quot;pepch.h&quot;</span></span><br><span class="line">pchsource <span class="string">&quot;pepch.cpp所在路径&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Visual-Studio-中使用"   >
+          <a href="#Visual-Studio-中使用" class="heading-link"><i class="fas fa-link"></i></a><a href="#Visual-Studio-中使用" class="headerlink" title="Visual Studio 中使用"></a>Visual Studio 中使用</h3>
+      <p>在Visual Studio的项目属性中：</p>
+<p>Precompiled Header 设为<code>Use</code>，File设为<code>pepch.h</code></p>
+<p><img src="/../images/image-20250227194015335.png" alt="image-20250227194015335"></p>
+<p>在pepch.cpp的属性中：</p>
+<p>Precompiled Header 设为<code>Create</code>即可启用。</p>
+<p><img src="/../images/image-20250227193811006.png" alt="image-20250227193811006"></p>
+
+        <h2 id="Window"   >
+          <a href="#Window" class="heading-link"><i class="fas fa-link"></i></a><a href="#Window" class="headerlink" title="Window"></a>Window</h2>
+      <p>抽象Window类，将逻辑，API从实现平台分离。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├─ Core</span><br><span class="line">│  ├─ Window.h</span><br><span class="line">│  ├─ Window.cpp</span><br><span class="line">├─ Platform</span><br><span class="line">│  ├─ Windows</span><br><span class="line">│  │  ├─WindowsWindow.cpp</span><br><span class="line">│  │  ├─WindowsWindow.h</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PENGINE_API</span> Window</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">using</span> EventCallbackFn = std::function&lt;<span class="built_in">void</span>(Event&amp;)&gt;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Window</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">OnUpdate</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">uint32_t</span> <span class="title">GetWidth</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">uint32_t</span> <span class="title">GetHeight</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Window attributes</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">SetEventCallback</span><span class="params">(<span class="type">const</span> EventCallbackFn&amp; callback)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">SetVSync</span><span class="params">(<span class="type">bool</span> enabled)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">IsVSync</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">static</span> Window* <span class="title">Create</span><span class="params">(<span class="type">const</span> WindowProps&amp; props = WindowProps())</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Window-amp-Event"   >
+          <a href="#Window-amp-Event" class="heading-link"><i class="fas fa-link"></i></a><a href="#Window-amp-Event" class="headerlink" title="Window&amp;Event"></a>Window&amp;Event</h3>
+      <p>在不同平台的事件api中调用抽象类的事件api</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glfwSetWindowSizeCallback</span>(m_Window, [](GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span><br><span class="line">	&#123;</span><br><span class="line">		WindowData&amp; data = *(WindowData*)<span class="built_in">glfwGetWindowUserPointer</span>(window);</span><br><span class="line">		WindowResizeEvent <span class="built_in">event</span>(width, height);</span><br><span class="line">        <span class="comment">//调用抽象类的回调函数</span></span><br><span class="line">		data.<span class="built_in">EventCallback</span>(event);</span><br><span class="line">		data.Width = width;</span><br><span class="line">		data.Height = height;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Layer"   >
+          <a href="#Layer" class="heading-link"><i class="fas fa-link"></i></a><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h2>
+      <p>在主循环中，按照顺序处理不同Layer的逻辑</p>
+
+        <h3 id="Layer-1"   >
+          <a href="#Layer-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Layer-1" class="headerlink" title="Layer"></a>Layer</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PENGINE_API</span> Layer</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">Layer</span>(<span class="type">const</span> std::string&amp; name = <span class="string">&quot;Layer&quot;</span>);</span><br><span class="line">	<span class="keyword">virtual</span> ~<span class="built_in">Layer</span>() = <span class="keyword">default</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">OnAttach</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//销毁</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">OnDetach</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在主循环中，每一帧调用</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">OnUpdate</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在应用的OnEvent中，自底向上调用所有layer的onevent</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">OnEvent</span><span class="params">(Event&amp; event)</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="type">const</span> std::string&amp; <span class="title">GetName</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_DebugName; &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	std::string m_DebugName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="LayerStack"   >
+          <a href="#LayerStack" class="heading-link"><i class="fas fa-link"></i></a><a href="#LayerStack" class="headerlink" title="LayerStack"></a>LayerStack</h3>
+      <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PENGINE_API</span> LayerStack</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">LayerStack</span>() = <span class="keyword">default</span>;</span><br><span class="line">	~<span class="built_in">LayerStack</span>();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">PushLayer</span><span class="params">(Layer* layer)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">PushOverlay</span><span class="params">(Layer* overlay)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">PopLayer</span><span class="params">(Layer* layer)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">PopOverlay</span><span class="params">(Layer* overlay)</span></span>;</span><br><span class="line"></span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">iterator <span class="title">begin</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">begin</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">iterator <span class="title">end</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">end</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">reverse_iterator <span class="title">rbegin</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">rbegin</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">reverse_iterator <span class="title">rend</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">rend</span>(); &#125;</span><br><span class="line"></span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">const_iterator <span class="title">begin</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">begin</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">const_iterator <span class="title">end</span><span class="params">()</span>	<span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">end</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">const_reverse_iterator <span class="title">rbegin</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">rbegin</span>(); &#125;</span><br><span class="line">	std::vector&lt;Layer*&gt;::<span class="function">const_reverse_iterator <span class="title">rend</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_Layers.<span class="built_in">rend</span>(); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	std::vector&lt;Layer*&gt; m_Layers;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> m_LayerInsertIndex = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="导入ImGui"   >
+          <a href="#导入ImGui" class="heading-link"><i class="fas fa-link"></i></a><a href="#导入ImGui" class="headerlink" title="导入ImGui"></a>导入ImGui</h2>
+      
+        <h2 id="RenderAPI"   >
+          <a href="#RenderAPI" class="heading-link"><i class="fas fa-link"></i></a><a href="#RenderAPI" class="headerlink" title="RenderAPI"></a>RenderAPI</h2>
+      
+        <h3 id="API架构"   >
+          <a href="#API架构" class="heading-link"><i class="fas fa-link"></i></a><a href="#API架构" class="headerlink" title="API架构"></a>API架构</h3>
+      <p><strong>※确定平台相关&#x2F;非相关API的分界线</strong></p>
+<p>RenderAPI：(platform specific)</p>
+<ul>
+<li>Render Context</li>
+<li>Swap chain</li>
+<li>Framebuffer</li>
+<li>Vertex Buffer</li>
+<li>Index Buffer</li>
+<li>Texture</li>
+<li>Shader</li>
+<li>states</li>
+<li>pipelines</li>
+<li>Render passes</li>
+</ul>
+<p>Renderer：(platform agnostic)</p>
+<ul>
+<li>2D&amp;3D renderer（forward, defferred, etc）</li>
+<li>scene manager</li>
+<li>sorting</li>
+<li>culling</li>
+<li>materials</li>
+<li>LOD</li>
+<li>animation</li>
+<li>camera</li>
+<li>VFX</li>
+<li>PostFX</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://lzmustb.github.io">Lzm</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://lzmustb.github.io/2025/02/25/my-gameEngine-learning/">https://lzmustb.github.io/2025/02/25/my-gameEngine-learning/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://lzmustb.github.io/tags/C/">C++</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2025/03/21/my-fluid-material-editor/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">my-fluid-material-editor</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2025/01/08/my-cpp-learning-note/"><span class="paginator-prev__text">c++笔记</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="waline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%BC%96%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">
+          游戏引擎编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">
+          项目架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">
+          单头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EntryPoint"><span class="toc-number">2.3.</span> <span class="toc-text">
+          EntryPoint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.4.</span> <span class="toc-text">
+          日志系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#premake"><span class="toc-number">2.5.</span> <span class="toc-text">
+          premake</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.1.</span> <span class="toc-text">
+          使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventSystem"><span class="toc-number">2.6.</span> <span class="toc-text">
+          EventSystem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Event%E5%9F%BA%E7%B1%BB"><span class="toc-number">2.6.1.</span> <span class="toc-text">
+          Event基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KeyEvent%E7%B1%BB"><span class="toc-number">2.6.2.</span> <span class="toc-text">
+          KeyEvent类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#precompiled-header"><span class="toc-number">2.7.</span> <span class="toc-text">
+          precompiled header</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#premake%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.7.1.</span> <span class="toc-text">
+          premake中使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Visual-Studio-%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.7.2.</span> <span class="toc-text">
+          Visual Studio 中使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">2.8.</span> <span class="toc-text">
+          Window</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Window-amp-Event"><span class="toc-number">2.8.1.</span> <span class="toc-text">
+          Window&amp;Event</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Layer"><span class="toc-number">2.9.</span> <span class="toc-text">
+          Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Layer-1"><span class="toc-number">2.9.1.</span> <span class="toc-text">
+          Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LayerStack"><span class="toc-number">2.9.2.</span> <span class="toc-text">
+          LayerStack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5ImGui"><span class="toc-number">2.10.</span> <span class="toc-text">
+          导入ImGui</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RenderAPI"><span class="toc-number">2.11.</span> <span class="toc-text">
+          RenderAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E6%9E%B6%E6%9E%84"><span class="toc-number">2.11.1.</span> <span class="toc-text">
+          API架构</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/LzmUSTB/BlogImages/202201121316093.png" alt="avatar"></div><p class="sidebar-ov-author__text">一意孤行，徒步朝圣。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LzmUSTB/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="499061152" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/1394852578/" target="_blank" rel="noopener" data-popover="BiliBili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">B</span></a></div><div class="sidebar-ov-feed"></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021~2025</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Lzm</span></div><div>做不了天才，那就大器晚成。</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-caret-square-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="110" alpha="0.6" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script><script>function loadWaline () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+
+  new Waline({
+    el: '#waline-container',
+    serverURL: 'https://blog-data-l9w1yfork-lzmustb.vercel.app',
+    placeholder: '欢迎评论🌹会在审核之后发布🙏',
+    pageSize: '10' || 10,
+    lang: '' || 'zh-cn',
+    visitor: false,
+    avatar: 'mp',
+    path: window.location.pathname,
+    meta: guest_info
+  });
+}
+
+if (false) {
+  loadWaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadWaline, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
